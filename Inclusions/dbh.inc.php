@@ -66,3 +66,15 @@ function addProduct($barcode, $naam, $idCategorie, $aantal) {
     $stmt->bindParam(4, $aantal);
     $stmt->execute();
 }
+
+function addVoedselPakket($idKlant, $uitgeefDatum) {
+    global $pdo;
+    $now = date('Y-m-d');
+
+    // Commit to database
+    $stmt = $pdo->prepare("INSERT INTO VoedselPakket(AanmaakDatum, UitgeefDatum, idKlant) VALUES (?, ?, ?)");
+    $stmt->bindParam(1, $now);
+    $stmt->bindParam(2, $uitgeefDatum);
+    $stmt->bindParam(3, $idKlant);
+    $stmt->execute();
+}
