@@ -54,6 +54,3 @@ function addKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aant
     $stmt->bindParam(9, $commentaar);
     $stmt->execute();
 }
-
-addKlant("Smit", "112", "smit@gmail.com", "Poepstraat 12", "6969DN", 0, 5, 3, "Wtf is deze familie");
-addKlant("aahhh", "123", "jisdrgogjh@gmail.com", "Schijtpoepie 26", "help", 0, 5, 3, null);
