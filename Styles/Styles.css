@@ -8,3 +8,28 @@
 body {
   background-color: var(--white);
 }
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login {
+  background-color: var(--light-green);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  width: 10em;
+  padding: 3.5em;
+  padding-bottom: 2.5em;
+}
+
+.login input {
+  margin-bottom: 1em;
+}

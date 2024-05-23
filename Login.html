@@ -6,8 +6,13 @@
     <title>Log in - Voedselbank Maaskantje</title>
     <link rel="stylesheet" href="Styles/Styles.css" />
   </head>
-  <body>
-    <h1>Hello, World!</h1>
-    <p>This is a basic HTML file.</p>
+  <body class="loginContainer">
+    <div class="login">
+      <form action="Responses/loginResponse.php" method="post">
+          <input type="text" name="username" value="" placeholder="Gebruikersnaam"><br>
+          <input type="text" name="password" value="" placeholder="Wachtwoord"><br>
+          <input type="submit" name="submit" value="Verstuur">
+      </form>
+    </div>
   </body>
 </html>
