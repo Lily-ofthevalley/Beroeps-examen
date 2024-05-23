@@ -1,7 +1,7 @@
 <?php 
-$pdo = connect();
+$pdo = dbConnect();
 
-function connect() {
+function dbConnect() {
     $servername = "localhost";
     $username = "root";
     $password = "password";
@@ -21,7 +21,7 @@ function connect() {
     }
 }
 
-function addMedewerker($voornaam, $tussenvoegsels, $achternaam, $rol, $telefoonnummer, $email, $wachtwoord) {
+function dbAddMedewerker($voornaam, $tussenvoegsels, $achternaam, $rol, $telefoonnummer, $email, $wachtwoord) {
     global $pdo;
 
     $hashed_pw = password_hash($wachtwoord, 0);
@@ -38,7 +38,7 @@ function addMedewerker($voornaam, $tussenvoegsels, $achternaam, $rol, $telefoonn
     $stmt->execute();
 }
 
-function addKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aantalVolwassenen, $aantalKinderen, $aantalBabys, $commentaar) {
+function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aantalVolwassenen, $aantalKinderen, $aantalBabys, $commentaar) {
     global $pdo;
 
     // Commit to database
@@ -55,7 +55,7 @@ function addKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aant
     $stmt->execute();
 }
 
-function addProduct($barcode, $naam, $idCategorie, $aantal) {
+function dbAddProduct($barcode, $naam, $idCategorie, $aantal) {
     global $pdo;
 
     // Commit to database
@@ -67,7 +67,7 @@ function addProduct($barcode, $naam, $idCategorie, $aantal) {
     $stmt->execute();
 }
 
-function addVoedselPakket($idKlant, $uitgeefDatum) {
+function dbAddVoedselPakket($idKlant, $uitgeefDatum) {
     global $pdo;
     $now = date('Y-m-d');
 
@@ -79,7 +79,7 @@ function addVoedselPakket($idKlant, $uitgeefDatum) {
     $stmt->execute();
 }
 
-function addLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam, $email, $telefoonnummer) {
+function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam, $email, $telefoonnummer) {
     global $pdo;
 
     // Commit to database
@@ -90,5 +90,33 @@ function addLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam, $
     $stmt->bindParam(4, $contactPersoonNaam);
     $stmt->bindParam(5, $email);
     $stmt->bindParam(6, $telefoonnummer);
+    $stmt->execute();
+}
+
+function dbUpdate($table, $id, $update) {
+    global $pdo;
+
+    // Begin SQL query
+    $sql = "UPDATE " . $table . " SET ";
+    $keys = array_keys($update);
+    
+    // Add the keys we'll be replacing to the query
+    foreach($keys as $key) {
+        $sql = $sql . $key . "=:" . $key . ",";
+    }
+
+    // Finish SQL query
+    $sql = rtrim($sql, ",");
+    $sql = $sql . " WHERE id" . $table . "=" . $id . ";";
+
+    // Now prepare the statement
+    $stmt = $pdo->prepare($sql);
+    foreach($keys as $key) {
+        $param = ":" . $key;
+        $value = $update[$key];
+        $stmt->bindValue($param, $value);
+    }
+
+    // Execute the statement
     $stmt->execute();
 }
