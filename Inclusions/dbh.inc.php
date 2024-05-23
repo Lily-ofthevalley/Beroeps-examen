@@ -54,3 +54,15 @@ function addKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aant
     $stmt->bindParam(9, $commentaar);
     $stmt->execute();
 }
+
+function addProduct($barcode, $naam, $idCategorie, $aantal) {
+    global $pdo;
+
+    // Commit to database
+    $stmt = $pdo->prepare("INSERT INTO Product(Barcode, Naam, idCategorie, Aantal) VALUES (?, ?, ?, ?)");
+    $stmt->bindParam(1, $barcode);
+    $stmt->bindParam(2, $naam);
+    $stmt->bindParam(3, $idCategorie);
+    $stmt->bindParam(4, $aantal);
+    $stmt->execute();
+}
