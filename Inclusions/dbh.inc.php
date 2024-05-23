@@ -37,3 +37,23 @@ function addMedewerker($voornaam, $tussenvoegsels, $achternaam, $rol, $telefoonn
     $stmt->bindParam(7, $hashed_pw);
     $stmt->execute();
 }
+
+function addKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aantalVolwassenen, $aantalKinderen, $aantalBabys, $commentaar) {
+    global $pdo;
+
+    // Commit to database
+    $stmt = $pdo->prepare("INSERT INTO Klant(GezinsNaam, TelefoonNummer, Email, Adres, Postcode, AantalVolwassenen, AantalKinderen, AantalBabys, Comentaar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bindParam(1, $gezinsnaam);
+    $stmt->bindParam(2, $telefoonnummer);
+    $stmt->bindParam(3, $email);
+    $stmt->bindParam(4, $adres);
+    $stmt->bindParam(5, $postcode);
+    $stmt->bindParam(6, $aantalVolwassenen);
+    $stmt->bindParam(7, $aantalKinderen);
+    $stmt->bindParam(8, $aantalBabys);
+    $stmt->bindParam(9, $commentaar);
+    $stmt->execute();
+}
+
+addKlant("Smit", "112", "smit@gmail.com", "Poepstraat 12", "6969DN", 0, 5, 3, "Wtf is deze familie");
+addKlant("aahhh", "123", "jisdrgogjh@gmail.com", "Schijtpoepie 26", "help", 0, 5, 3, null);
