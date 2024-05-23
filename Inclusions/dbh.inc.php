@@ -78,3 +78,17 @@ function addVoedselPakket($idKlant, $uitgeefDatum) {
     $stmt->bindParam(3, $idKlant);
     $stmt->execute();
 }
+
+function addLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam, $email, $telefoonnummer) {
+    global $pdo;
+
+    // Commit to database
+    $stmt = $pdo->prepare("INSERT INTO Leverancier(BedrijfsNaam, Adres, Postcode, ContactspersoonNaam, Email, TelefoonNummer) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bindParam(1, $bedrijfsNaam);
+    $stmt->bindParam(2, $adres);
+    $stmt->bindParam(3, $postcode);
+    $stmt->bindParam(4, $contactPersoonNaam);
+    $stmt->bindParam(5, $email);
+    $stmt->bindParam(6, $telefoonnummer);
+    $stmt->execute();
+}
