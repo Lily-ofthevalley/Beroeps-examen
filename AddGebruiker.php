@@ -12,22 +12,22 @@
     </header>
     <div class="addGebruikersContainer">
       <div id="terugNaarGebruikers">
-        <a href="Gebruikers.html">< Terug</a>
+        <a href="Gebruikers.php">< Terug</a>
       </div>
       <div class="addGebruikers">
         <form action="Responses/addGebruikerResponse.php" method="POST">
-          <input type="text" name="Voornaam" value="" placeholder="Voornaam"><br>
-          <input type="text" name="Tussenvoegsels" value="" placeholder="Tussenvoegsels"><br>
-          <input type="text" name="Achternaam" value="" placeholder="Achternaam"><br>
-          <select name="Rol">
+          <input type="text" name="Voornaam" value="" placeholder="Voornaam" required><br>
+          <input type="text" name="Tussenvoegsels" value="" placeholder="Tussenvoegsels" required><br>
+          <input type="text" name="Achternaam" value="" placeholder="Achternaam" required><br>
+          <select name="Rol" required>
             <option value="" disabled selected>Selecteer een optie</option>
             <option value="Administrator">Administrator</option>
             <option value="MagezijnMedewerker">Magezijn medewerker</option>
             <option value="Vrijwilliger">Vrijwilliger</option>
           </select><br>
-          <input type="text" name="TelefoonNummer" value="" placeholder="TelefoonNummer"><br>
-          <input type="text" name="Email" value="" placeholder="Email"><br>
-          <input type="text" name="Wachtwoord" value="" placeholder="Wachtwoord"><br>
+          <input type="text" name="TelefoonNummer" value="" placeholder="TelefoonNummer" required><br>
+          <input type="text" name="Email" value="" placeholder="Email" required><br>
+          <input type="text" name="Wachtwoord" value="" placeholder="Wachtwoord" required><br>
           <input type="submit" name="submit" value="Voeg toe">
         </form>
       </div>
