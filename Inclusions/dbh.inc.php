@@ -66,18 +66,6 @@ function dbAddProduct($barcode, $naam, $idCategorie, $aantal) {
     $stmt->execute();
 }
 
-function dbAddVoedselPakket($idKlant, $uitgeefDatum) {
-    global $pdo;
-    $now = date('Y-m-d');
-
-    // Commit to database
-    $stmt = $pdo->prepare("INSERT INTO VoedselPakket(AanmaakDatum, UitgeefDatum, idKlant) VALUES (?, ?, ?)");
-    $stmt->bindParam(1, $now);
-    $stmt->bindParam(2, $uitgeefDatum);
-    $stmt->bindParam(3, $idKlant);
-    $stmt->execute();
-}
-
 function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam, $email, $telefoonnummer) {
     global $pdo;
 
@@ -92,20 +80,82 @@ function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam,
     $stmt->execute();
 }
 
-function dbVoedselPakketAddProduct($idKlant, $idProduct) {
+// ================
+// VOEDSELPAKKETTEN
+// ================
+function dbGetKlantVoedselPakketten($idKlant) {
+    global $pdo;
+
+    $stmt = $pdo->prepare("SELECT * FROM VoedselPakket WHERE idKlant = ?");
+    $stmt->bindParam(1, $idKlant);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+function dbAddVoedselPakket($idKlant, $uitgeefDatum) {
+    global $pdo;
+    $now = date('Y-m-d');
+
+    // Commit to database
+    $stmt = $pdo->prepare("INSERT INTO VoedselPakket(AanmaakDatum, UitgeefDatum, idKlant) VALUES (?, ?, ?)");
+    $stmt->bindParam(1, $now);
+    $stmt->bindParam(2, $uitgeefDatum);
+    $stmt->bindParam(3, $idKlant);
+    $stmt->execute();
+}
+
+function dbRemoveVoedselPakket($idPakket) {
+    global $pdo;
+
+    // Commit to database
+    $stmt = $pdo->prepare("DELETE FROM VoedselPakket WHERE idVoedselPakket = ?");
+    $stmt->bindParam(1, $idPakket);
+    $stmt->execute();
+}
+
+function dbVoedselPakketAddProduct($idPakket, $idProduct) {
     global $pdo;
 
     // Commit to database
     $stmt = $pdo->prepare("INSERT INTO VoedselPakket_has_Product(VoedselPakket_idVoedselPakket, Product_idProduct) VALUES (?, ?)");
-    $stmt->bindParam(1, $idKlant);
+    $stmt->bindParam(1, $idPakket);
     $stmt->bindParam(2, $idProduct);
     $stmt->execute();
 }
 
-dbAddKlant("Smit", 123456, "smit@gmail.com", "Smitstraat 3", "3232SM", 2, 1, 0, null);
-dbAddProduct(6969, "Test Product", 1, 3);
-dbAddVoedselPakket(1, date('Y-m-d'));
-dbVoedselPakketAddProduct(1, 1);
+function dbVoedselPakketRemoveProduct($idPakket, $idProduct) {
+    global $pdo;
+
+    // Commit to database
+    $stmt = $pdo->prepare("DELETE FROM voedselpakket_has_product WHERE VoedselPakket_idVoedselPakket = ? AND Product_idProduct = ?");
+    $stmt->bindParam(1, $idPakket);
+    $stmt->bindParam(2, $idProduct);
+    $stmt->execute();
+}
+
+function dbGetVoedselPakketProducten($idPakket) {
+    global $pdo;
+
+    $stmt = $pdo->prepare("SELECT product.* FROM voedselpakket_has_product INNER JOIN product ON product.idProduct = voedselpakket_has_product.Product_idProduct WHERE VoedselPakket_idVoedselPakket = ?");
+    $stmt->bindParam(1, $idPakket);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+// ===========================
+// GENERIC DATABASE OPERATIONS
+// ===========================
+/**
+ * This method simply selects a row from a table by its id.
+ */
+function dbGetById($table, $id) {
+    global $pdo;
+
+    $stmt = $pdo->prepare("SELECT * FROM " . $table . " WHERE id" . $table . "= ?");
+    $stmt->bindParam(1, $id);
+    $stmt->execute();
+    return $stmt->fetch();
+}
 
 /**
  * This method generates a valid SQL UPDATE statement based on a simpler data structure, and executes it.
