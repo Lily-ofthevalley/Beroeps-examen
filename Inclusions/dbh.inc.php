@@ -4,7 +4,7 @@ $pdo = dbConnect();
 function dbConnect() {
     $servername = "localhost";
     $username = "root";
-    $password = "password";
+    $password = "";
     $dbname = "VoedselbankMaaskantje";
 
     try {
@@ -27,7 +27,7 @@ function dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, 
     $hashed_pw = password_hash($wachtwoord, 0);
 
     // Commit to database
-    $stmt = $pdo->prepare("INSERT INTO Medewerker(Voornaam, Tussenvoegsels, Achternaam, Rol, TelefoonNummer, Email, Wachtwoord) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO Medewerker(Voornaam, Achternaam, Rol, TelefoonNummer, Email, Wachtwoord) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $voornaam);
     $stmt->bindParam(2, $achternaam);
     $stmt->bindParam(3, $rol);

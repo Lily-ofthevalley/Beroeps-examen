@@ -2,7 +2,6 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
     $voornaam = $_POST["Voornaam"]; //conferts form data to variables
-    $tussenvoegsels = $_POST["Tussenvoegsels"];
     $achternaam = $_POST["Achternaam"];
     $rol = $_POST["Rol"];
     $telefoonnummer = $_POST["TelefoonNummer"];
