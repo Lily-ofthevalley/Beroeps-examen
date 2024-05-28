@@ -4,7 +4,7 @@ $pdo = dbConnect();
 function dbConnect() {
     $servername = "localhost";
     $username = "root";
-    $password = "password";
+    $password = "";
     $dbname = "VoedselbankMaaskantje";
 
     try {
