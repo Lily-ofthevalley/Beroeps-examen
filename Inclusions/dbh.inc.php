@@ -92,19 +92,46 @@ function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam,
     $stmt->execute();
 }
 
+function dbVoedselPakketAddProduct($idKlant, $idProduct) {
+    global $pdo;
+
+    // Commit to database
+    $stmt = $pdo->prepare("INSERT INTO VoedselPakket_has_Product(VoedselPakket_idVoedselPakket, Product_idProduct) VALUES (?, ?)");
+    $stmt->bindParam(1, $idKlant);
+    $stmt->bindParam(2, $idProduct);
+    $stmt->execute();
+}
+
+dbAddKlant("Smit", 123456, "smit@gmail.com", "Smitstraat 3", "3232SM", 2, 1, 0, null);
+dbAddProduct(6969, "Test Product", 1, 3);
+dbAddVoedselPakket(1, date('Y-m-d'));
+dbVoedselPakketAddProduct(1, 1);
+
+/**
+ * This method generates a valid SQL UPDATE statement based on a simpler data structure, and executes it.
+ * 
+ * Example usage:
+ * dbUpdate("Medewerkers", 1, [
+ *     "Rol" => "Nieuwe rol",
+ *     "TelefoonNummer" => 1234567890
+ * ]);
+ */
 function dbUpdate($table, $id, $update) {
     global $pdo;
 
     // Begin SQL query
+    // sql = "UPDATE [TABLE] SET"
     $sql = "UPDATE " . $table . " SET ";
     $keys = array_keys($update);
     
-    // Add the keys we'll be replacing to the query
+    // Add the keys we'll be updating to the query
     foreach($keys as $key) {
+        // sql += "[KEY] = :[KEY]"
         $sql = $sql . $key . "=:" . $key . ",";
     }
 
     // Finish SQL query
+    // sql += "WHERE id[TABLE] = [ID];
     $sql = rtrim($sql, ",");
     $sql = $sql . " WHERE id" . $table . "=" . $id . ";";
 
