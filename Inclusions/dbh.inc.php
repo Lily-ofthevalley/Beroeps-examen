@@ -4,7 +4,7 @@ $pdo = dbConnect();
 function dbConnect() {
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "password";
     $dbname = "VoedselbankMaaskantje";
 
     try {
@@ -21,20 +21,19 @@ function dbConnect() {
     }
 }
 
-function dbAddMedewerker($voornaam, $tussenvoegsels, $achternaam, $rol, $telefoonnummer, $email, $wachtwoord) {
+function dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, $wachtwoord) {
     global $pdo;
 
     $hashed_pw = password_hash($wachtwoord, 0);
 
     // Commit to database
-    $stmt = $pdo->prepare("INSERT INTO Medewerker(Voornaam, Tussenvoegsels, Achternaam, Rol, TelefoonNummer, Email, Wachtwoord) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO Medewerker(Voornaam, Tussenvoegsels, Achternaam, Rol, TelefoonNummer, Email, Wachtwoord) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $voornaam);
-    $stmt->bindParam(2, $tussenvoegsels);
-    $stmt->bindParam(3, $achternaam);
-    $stmt->bindParam(4, $rol);
-    $stmt->bindParam(5, $telefoonnummer);
-    $stmt->bindParam(6, $email);
-    $stmt->bindParam(7, $hashed_pw);
+    $stmt->bindParam(2, $achternaam);
+    $stmt->bindParam(3, $rol);
+    $stmt->bindParam(4, $telefoonnummer);
+    $stmt->bindParam(5, $email);
+    $stmt->bindParam(6, $hashed_pw);
     $stmt->execute();
 }
 

@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
     try{
         require_once "../Inclusions/dbh.inc.php"; //connects to database
 
-        dbAddMedewerker($voornaam, $tussenvoegsels, $achternaam, $rol, $telefoonnummer, $email, $wachtwoord); // Call the function
+        dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, $wachtwoord); // Call the function
 
         header("Location: ../AddGebruiker.php"); //sends user back
         exit();

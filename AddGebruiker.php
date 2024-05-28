@@ -17,7 +17,6 @@
       <div class="addGebruikers">
         <form action="Responses/addGebruikerResponse.php" method="POST">
           <input type="text" name="Voornaam" value="" placeholder="Voornaam" required><br>
-          <input type="text" name="Tussenvoegsels" value="" placeholder="Tussenvoegsels" required><br>
           <input type="text" name="Achternaam" value="" placeholder="Achternaam" required><br>
           <select name="Rol" required>
             <option value="" disabled selected>Selecteer een optie</option>
