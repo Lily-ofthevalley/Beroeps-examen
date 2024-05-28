@@ -21,9 +21,13 @@ function dbConnect() {
     }
 }
 
-////////////////
-// GEBRUIKERS //
-////////////////
+/////////////////
+// MEDEWERKERS //
+/////////////////
+
+/**
+ * Insert a new Medewerker into the database.
+ */
 function dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, $wachtwoord) {
     global $pdo;
 
@@ -40,21 +44,34 @@ function dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, 
     $stmt->execute();
 }
 
+/**
+ * Remove a Medewerker from the database by ID.
+ */
 function dbRemoveMedewerker($idMedewerker) {
     dbDelete("Medewerker", "idMedewerker", $idMedewerker);
 }
 
-function dbGetEmailMedewerker($email) {
+/**
+ * Find a Medewerker in the database by their Email address.
+ */
+function dbGetMedewerkerByEmail($email) {
     return dbSelectOne("Medewerker", "Email", $email);
 }
 
-function dbGetTelefoonNummerMedewerker($telefoonnummer) {
+/**
+ * Find a Medewerker in the database by their Phone Number.
+ */
+function dbGetMedewerkerByTelefoonnummer($telefoonnummer) {
     return dbSelectOne("Medewerker", "TelefoonNummer", $telefoonnummer);
 }
 
 /////////////
 // KLANTEN //
 /////////////
+
+/**
+ * Insert a new Klant into the database.
+ */
 function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aantalVolwassenen, $aantalKinderen, $aantalBabys, $commentaar) {
     global $pdo;
 
@@ -72,29 +89,48 @@ function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aa
     $stmt->execute();
 }
 
+/**
+ * Remove a Klant from the database by ID.
+ */
 function dbRemoveKlant($idKlant) {
     dbDelete("Klant", "idKlant", $idKlant);
 }
 
-function dbGetGezinsNaamKlant($gezinsNaam) {
+/**
+ * Find a Klant in the database by their Family Name.
+ */
+function dbGetKlantByGezinsNaam($gezinsNaam) {
     return dbSelectOne("Klant", "GezinsNaam", $gezinsNaam);
 }
 
-function dbGetTelefoonNummerKlant($telefoonnummer) {
+/**
+ * Find a Klant in the database by their Telefoon nummer.
+ */
+function dbGetKlantByTelefoonnummer($telefoonnummer) {
     return dbSelectOne("Klant", "TelefoonNummer", $telefoonnummer);
 }
 
-function dbGetEmailKlant($email) {
+/**
+ * Find a Klant in the database by their Email address.
+ */
+function dbGetKlantByEmail($email) {
     return dbSelectOne("Klant", "Email", $email);
 }
 
-function dbGetPostcodeKlant($postcode) {
+/**
+ * Find a Klant in the database by their Postcode.
+ */
+function dbGetKlantByPostcode($postcode) {
     return dbSelectOne("Klant", "Postcode", $postcode);
 }
 
 //////////////////
 // LEVERANCIERS //
 //////////////////
+
+/**
+ * Insert a new Leverancier into the database.
+ */
 function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam, $email, $telefoonnummer) {
     global $pdo;
 
@@ -109,33 +145,56 @@ function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam,
     $stmt->execute();
 }
 
+/**
+ * Remove a Leverancier from the database by ID.
+ */
 function dbRemoveLeverancier($idLeverancier) {
     dbDelete("Leverancier", "idLeverancier", $idLeverancier);
 }
 
-function dbGetBedrijfsNaamLeverancier($bedrijfsNaam) {
+/**
+ * Find a Leverancier in the database by their Company Name.
+ */
+function dbGetLeverancierByBedrijfsnaam($bedrijfsNaam) {
     dbSelectOne("Leverancier", "BedrijfsNaam", $bedrijfsNaam);
 }
 
-function dbGetPostcodeLeverancier($postcode) {
+/**
+ * Find a Leverancier in the database by their Postcode.
+ */
+function dbGetLeverancierByPostcode($postcode) {
     dbSelectOne("Leverancier", "Postcode", $postcode);
 }
 
-function dbGetContactsPersoonLeverancier($contactPersoonNaam) {
+/**
+ * Find a Leverancier in the database by their Representative's name.
+ * (Representative = Contactspersoon)
+ */
+function dbGetLeverancierByContactspersoon($contactPersoonNaam) {
     dbSelectOne("Leverancier", "Contactspersoon", $contactPersoonNaam);
 }
 
-function dbGetEmailLeverancier($email) {
+/**
+ * Find a Leverancier in the database by their Email address.
+ */
+function dbGetLeverancierByEmail($email) {
     dbSelectOne("Leverancier", "Email", $email);
 }
 
-function dbGetTelefoonNummerLeverancier($telefoonnummer) {
+/**
+ * Find a Leverancier in the database by their Phone number.
+ */
+function dbGetLeverancierByTelefoonnummer($telefoonnummer) {
     dbSelectOne("Leverancier", "TelefoonNummer", $telefoonnummer);
 }
 
 //////////////
 // VOORRAAD //
 //////////////
+
+/**
+ * Insert a new Product into the database.
+ */
 function dbAddProduct($barcode, $naam, $idCategorie, $aantal) {
     global $pdo;
 
@@ -148,21 +207,27 @@ function dbAddProduct($barcode, $naam, $idCategorie, $aantal) {
     $stmt->execute();
 }
 
+/**
+ * Remove a Product from the database by ID.
+ */
 function dbRemoveProduct($idProduct) {
     dbDelete("Product", "idProduct", $idProduct);
 }
 
-function dbGetBarcodeProduct($barcode) {
+/**
+ * Find a Product in the database by its Barcode.
+ */
+function dbGetProductByBarcode($barcode) {
     return dbSelectOne("Product", "Barcode", $barcode);
 }
 
 //////////////////////
 // VOEDSELPAKKETTEN //
 //////////////////////
-function dbGetKlantVoedselPakketten($idKlant) {
-    return dbSelect("VoedselPakket", "idKlant", $idKlant);
-}
 
+/**
+ * Insert a new Voedselpakket into the database.
+ */
 function dbAddVoedselPakket($idKlant, $uitgeefDatum) {
     global $pdo;
     $now = date('Y-m-d');
@@ -175,10 +240,23 @@ function dbAddVoedselPakket($idKlant, $uitgeefDatum) {
     $stmt->execute();
 }
 
+/**
+ * Remove a Voedselpakket from the database by ID.
+ */
 function dbRemoveVoedselPakket($idPakket) {
     dbDelete("VoedselPakket", "idVoedselPakket", $idPakket);
 }
 
+/**
+ * Find a Voedselpakket in the database by its Customer ID.
+ */
+function dbGetVoedselPakkettenByKlantId($idKlant) {
+    return dbSelect("VoedselPakket", "idKlant", $idKlant);
+}
+
+/**
+ * Add a Product to a Voedselpakket in the database.
+ */
 function dbVoedselPakketAddProduct($idPakket, $idProduct) {
     global $pdo;
 
@@ -189,6 +267,9 @@ function dbVoedselPakketAddProduct($idPakket, $idProduct) {
     $stmt->execute();
 }
 
+/**
+ * Remove a Product from a Voedselpakket in the database.
+ */
 function dbVoedselPakketRemoveProduct($idPakket, $idProduct) {
     global $pdo;
 
@@ -199,7 +280,10 @@ function dbVoedselPakketRemoveProduct($idPakket, $idProduct) {
     $stmt->execute();
 }
 
-function dbGetVoedselPakketProducten($idPakket) {
+/**
+ * Find all Producten in a Voedselpakket in the database.
+ */
+function dbGetProductenByVoedselPakketId($idPakket) {
     global $pdo;
 
     $stmt = $pdo->prepare("SELECT product.* FROM voedselpakket_has_product INNER JOIN product ON product.idProduct = voedselpakket_has_product.Product_idProduct WHERE VoedselPakket_idVoedselPakket = ?");
@@ -211,6 +295,10 @@ function dbGetVoedselPakketProducten($idPakket) {
 /////////////////////////////////
 // GENERIC DATABASE OPERATIONS //
 /////////////////////////////////
+
+/**
+ * SELECT a single row from the database.
+ */
 function dbSelectOne($table, $key, $value) {
     $data = dbSelect($table, $key, $value);
     if(count($data) > 0) {
@@ -221,6 +309,9 @@ function dbSelectOne($table, $key, $value) {
     return null;
 }
 
+/**
+ * SELECT multiple rows from the database.
+ */
 function dbSelect($table, $key, $value) {
     global $pdo;
 
@@ -230,6 +321,9 @@ function dbSelect($table, $key, $value) {
     return $stmt->fetchAll();
 }
 
+/**
+ * DELETE multiple rows from the database.
+ */
 function dbDelete($table, $key, $value) {
     global $pdo;
 
@@ -240,7 +334,7 @@ function dbDelete($table, $key, $value) {
 }
 
 /**
- * This method generates a valid SQL UPDATE statement based on a simpler data structure, and executes it.
+ * UPDATE a row in the database.
  * 
  * Example usage:
  * dbUpdate("Medewerkers", 1, [
@@ -251,8 +345,7 @@ function dbDelete($table, $key, $value) {
 function dbUpdate($table, $id, $update) {
     global $pdo;
 
-    // Begin SQL query
-    // sql = "UPDATE [TABLE] SET"
+    // Begin building SQL query
     $sql = "UPDATE " . $table . " SET ";
     $keys = array_keys($update);
     
@@ -267,7 +360,7 @@ function dbUpdate($table, $id, $update) {
     $sql = rtrim($sql, ",");
     $sql = $sql . " WHERE id" . $table . "=" . $id . ";";
 
-    // Now prepare the statement
+    // Now prepare a statement and map all of the values to the keys
     $stmt = $pdo->prepare($sql);
     foreach($keys as $key) {
         $param = ":" . $key;
@@ -275,6 +368,6 @@ function dbUpdate($table, $id, $update) {
         $stmt->bindValue($param, $value);
     }
 
-    // Execute the statement
+    // Execute that statement
     $stmt->execute();
 }
