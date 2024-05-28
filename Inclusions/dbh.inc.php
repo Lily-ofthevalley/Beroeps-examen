@@ -91,12 +91,6 @@ function dbGetBarcodeProduct($barcode) {
     return dbSelectOne("Product", "Barcode", $barcode);
 }
 
-function dbUpdateProductAantal($idProduct, $aantal) {
-    dbUpdate("Product", $idProduct, [
-        "Aantal" => $aantal
-    ]);
-}
-
 //////////////////////
 // VOEDSELPAKKETTEN //
 //////////////////////
