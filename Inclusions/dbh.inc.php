@@ -54,6 +54,9 @@ function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aa
     $stmt->execute();
 }
 
+//////////////////
+// LEVERANCIERS //
+//////////////////
 function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam, $email, $telefoonnummer) {
     global $pdo;
 
@@ -66,6 +69,30 @@ function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam,
     $stmt->bindParam(5, $email);
     $stmt->bindParam(6, $telefoonnummer);
     $stmt->execute();
+}
+
+function dbRemoveLeverancier($idLeverancier) {
+    dbDelete("Leverancier", "idLeverancier", $idLeverancier);
+}
+
+function dbGetBedrijfsNaamLeverancier($bedrijfsNaam) {
+    dbSelectOne("Leverancier", "BedrijfsNaam", $bedrijfsNaam);
+}
+
+function dbGetPostcodeLeverancier($postcode) {
+    dbSelectOne("Leverancier", "Postcode", $postcode);
+}
+
+function dbGetContactsPersoonLeverancier($contactPersoonNaam) {
+    dbSelectOne("Leverancier", "Contactspersoon", $contactPersoonNaam);
+}
+
+function dbGetEmailLeverancier($email) {
+    dbSelectOne("Leverancier", "Email", $email);
+}
+
+function dbGetTelefoonNummerLeverancier($telefoonnummer) {
+    dbSelectOne("Leverancier", "TelefoonNummer", $telefoonnummer);
 }
 
 //////////////
