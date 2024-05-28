@@ -22,14 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../Vooraad.php");
             exit();
         } else {
-            // header("Location: ../login.php?error=incorrect_password");
-            // exit();
+            header("Location: ../login.php?error=incorrect_password");
+            exit();
         }
     } else {
-        // header("Location: ../login.php?error=user_not_found");
-        // exit();
+        header("Location: ../login.php?error=user_not_found");
+        exit();
     }
 } else {
-    // header("Location: ../login.php");
-    // exit();
+    header("Location: ../login.php");
+    exit();
 }

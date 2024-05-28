@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "Vrijwilliger"){
+  header('location: Vooraad.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
