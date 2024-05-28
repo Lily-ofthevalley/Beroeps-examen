@@ -21,6 +21,9 @@ function dbConnect() {
     }
 }
 
+////////////////
+// GEBRUIKERS //
+////////////////
 function dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, $wachtwoord) {
     global $pdo;
 
@@ -37,6 +40,21 @@ function dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, 
     $stmt->execute();
 }
 
+function dbRemoveMedewerker($idMedewerker) {
+    dbDelete("Medewerker", "idMedewerker", $idMedewerker);
+}
+
+function dbGetEmailMedewerker($email) {
+    return dbSelectOne("Medewerker", "Email", $email);
+}
+
+function dbGetTelefoonNummerMedewerker($telefoonnummer) {
+    return dbSelectOne("Medewerker", "TelefoonNummer", $telefoonnummer);
+}
+
+/////////////
+// KLANTEN //
+/////////////
 function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aantalVolwassenen, $aantalKinderen, $aantalBabys, $commentaar) {
     global $pdo;
 
@@ -52,6 +70,26 @@ function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aa
     $stmt->bindParam(8, $aantalBabys);
     $stmt->bindParam(9, $commentaar);
     $stmt->execute();
+}
+
+function dbRemoveKlant($idKlant) {
+    dbDelete("Klant", "idKlant", $idKlant);
+}
+
+function dbGetGezinsNaamKlant($gezinsNaam) {
+    return dbSelectOne("Klant", "GezinsNaam", $gezinsNaam);
+}
+
+function dbGetTelefoonNummerKlant($telefoonnummer) {
+    return dbSelectOne("Klant", "TelefoonNummer", $telefoonnummer);
+}
+
+function dbGetEmailKlant($email) {
+    return dbSelectOne("Klant", "Email", $email);
+}
+
+function dbGetPostcodeKlant($postcode) {
+    return dbSelectOne("Klant", "Postcode", $postcode);
 }
 
 //////////////////
