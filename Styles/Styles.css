@@ -13,7 +13,8 @@ body {
   padding: 0;
 }
 
-Header {
+/* /////HEADER///// */
+header {
   background-color: var(--green);
   position: fixed;
   top: 0%;
@@ -36,6 +37,11 @@ header a:hover {
   background-color: var(--dark-green);
 }
 
+.userbtn {
+  margin-left: auto;
+}
+
+/* /////LOGIN///// */
 .loginContainer, .addGebruikersContainer {
   display: flex;
   justify-content: center;
@@ -63,6 +69,7 @@ header a:hover {
   margin-bottom: 1em;
 }
 
+/* /////ADD GEBRUIKERS///// */
 .addGebruikers {
   background-color: var(--light-green);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -86,3 +93,5 @@ header a:hover {
   font-size: 2em;
   color: var(--black);
 }
+
+
