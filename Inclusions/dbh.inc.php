@@ -167,13 +167,6 @@ function dbGetKlantByPostcode($postcode) {
 // LEVERANCIERS //
 //////////////////
 
-$lever = dbGetLeverancierByBedrijfsnaam("test");
-$leverId = $lever["idLeverancier"];
-
-dbLeverancierUpdateContactspersoon($leverId, "Jake");
-dbLeverancierUpdateEmail($leverId, "nieuweEmail");
-dbLeverancierUpdateTelefoonnummer($leverId, 696969696);
-
 /**
  * Insert a new Leverancier into the database.
  */
