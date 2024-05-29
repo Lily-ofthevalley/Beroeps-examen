@@ -233,6 +233,33 @@ function dbGetLeverancierByEmail($email) {
 function dbGetLeverancierByTelefoonnummer($telefoonnummer) {
     return dbSelectOne("Leverancier", "TelefoonNummer", $telefoonnummer);
 }
+
+/**
+ * Update a Leverancier's email address in the database.
+ */
+function dbLeverancierUpdateEmail($idLeverancier, $email) {
+    dbUpdate("Leverancier", $idLeverancier, [
+        "Email" => $email
+    ]);
+}
+
+/**
+ * Update a Leverancier's representative name in the database.
+ * (Representative = contactspersoon)
+ */
+function dbLeverancierUpdateContactspersoon($idLeverancier, $contactPersoonNaam) {
+    dbUpdate("Leverancier", $idLeverancier, [
+        "ContactspersoonNaam" => $contactPersoonNaam
+    ]);
+}
+
+/**
+ * Update a Leverancier's phone number in the database.
+ */
+function dbLeverancierUpdateTelefoonnummer($idLeverancier, $telefoonnummer) {
+    dbUpdate("Leverancier", $idLeverancier, [
+        "TelefoonNummer" => $telefoonnummer
+    ]);
 }
 
 //////////////
