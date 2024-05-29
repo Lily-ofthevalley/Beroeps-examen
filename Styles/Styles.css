@@ -20,6 +20,7 @@ body {
   padding: 0;
 }
 
+/* /////HEADER///// */
 header {
   background-color: var(--green);
   position: fixed;
@@ -177,6 +178,7 @@ header a:hover {
   margin-bottom: 1em;
 }
 
+/* /////ADD GEBRUIKERS///// */
 .addGebruikers {
   background-color: var(--light-green);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

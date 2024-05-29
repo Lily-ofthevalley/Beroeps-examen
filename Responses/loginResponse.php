@@ -4,7 +4,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $voornaam = $_POST["voornaam"];
     $achternaam = $_POST["achternaam"];
-    $pwd = $_POST["password"]; // Use lowercase for consistency
+    $pwd = $_POST["password"];
 
     require_once "../Inclusions/dbh.inc.php"; // Connect to the database
 
@@ -33,3 +33,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../login.php");
     exit();
 }
+

@@ -65,6 +65,45 @@ function dbGetMedewerkerByTelefoonnummer($telefoonnummer) {
     return dbSelectOne("Medewerker", "TelefoonNummer", $telefoonnummer);
 }
 
+/**
+ * Update a Medewerker's password in the database.
+ */
+function dbMedewerkerUpdateWachtwoord($idMedewerker, $wachtwoord) {
+    $hashed_pw = password_hash($wachtwoord, 0);
+
+    // Commit to database
+    dbUpdate("Medewerker", $idMedewerker, [
+        "Wachtwoord" => $hashed_pw
+    ]);
+}
+
+/**
+ * Update a Medewerker's Email address in the database.
+ */
+function dbMedewerkerUpdateEmail($idMedewerker, $email) {
+    dbUpdate("Medewerker", $idMedewerker, [
+        "Email" => $email
+    ]);
+}
+
+/**
+ * Update a Medewerker's Phone number in the database.
+ */
+function dbMedewerkerUpdateTelefoonnummer($idMedewerker, $telefoonnummer) {
+    dbUpdate("Medewerker", $idMedewerker, [
+        "TelefoonNummer" => $telefoonnummer
+    ]);
+}
+
+/**
+ * Update a Medewerker's role in the database.
+ */
+function dbMedewerkerUpdateRol($idMedewerker, $rol) {
+    dbUpdate("Medewerker", $idMedewerker, [
+        "Rol" => $rol
+    ]);
+}
+
 /////////////
 // KLANTEN //
 /////////////
@@ -156,14 +195,14 @@ function dbRemoveLeverancier($idLeverancier) {
  * Find a Leverancier in the database by their Company Name.
  */
 function dbGetLeverancierByBedrijfsnaam($bedrijfsNaam) {
-    dbSelectOne("Leverancier", "BedrijfsNaam", $bedrijfsNaam);
+    return dbSelectOne("Leverancier", "BedrijfsNaam", $bedrijfsNaam);
 }
 
 /**
  * Find a Leverancier in the database by their Postcode.
  */
 function dbGetLeverancierByPostcode($postcode) {
-    dbSelectOne("Leverancier", "Postcode", $postcode);
+    return dbSelectOne("Leverancier", "Postcode", $postcode);
 }
 
 /**
@@ -171,21 +210,49 @@ function dbGetLeverancierByPostcode($postcode) {
  * (Representative = Contactspersoon)
  */
 function dbGetLeverancierByContactspersoon($contactPersoonNaam) {
-    dbSelectOne("Leverancier", "Contactspersoon", $contactPersoonNaam);
+    return dbSelectOne("Leverancier", "Contactspersoon", $contactPersoonNaam);
 }
 
 /**
  * Find a Leverancier in the database by their Email address.
  */
 function dbGetLeverancierByEmail($email) {
-    dbSelectOne("Leverancier", "Email", $email);
+    return dbSelectOne("Leverancier", "Email", $email);
 }
 
 /**
  * Find a Leverancier in the database by their Phone number.
  */
 function dbGetLeverancierByTelefoonnummer($telefoonnummer) {
-    dbSelectOne("Leverancier", "TelefoonNummer", $telefoonnummer);
+    return dbSelectOne("Leverancier", "TelefoonNummer", $telefoonnummer);
+}
+
+/**
+ * Update a Leverancier's email address in the database.
+ */
+function dbLeverancierUpdateEmail($idLeverancier, $email) {
+    dbUpdate("Leverancier", $idLeverancier, [
+        "Email" => $email
+    ]);
+}
+
+/**
+ * Update a Leverancier's representative name in the database.
+ * (Representative = contactspersoon)
+ */
+function dbLeverancierUpdateContactspersoon($idLeverancier, $contactPersoonNaam) {
+    dbUpdate("Leverancier", $idLeverancier, [
+        "ContactspersoonNaam" => $contactPersoonNaam
+    ]);
+}
+
+/**
+ * Update a Leverancier's phone number in the database.
+ */
+function dbLeverancierUpdateTelefoonnummer($idLeverancier, $telefoonnummer) {
+    dbUpdate("Leverancier", $idLeverancier, [
+        "TelefoonNummer" => $telefoonnummer
+    ]);
 }
 
 //////////////
@@ -292,6 +359,15 @@ function dbGetProductenByVoedselPakketId($idPakket) {
     return $stmt->fetchAll();
 }
 
+/**
+ * Update a Product's stock in the database.
+ */
+function dbProductUpdateAantal($idProduct, $aantal) {
+    dbUpdate("Product", $idProduct, [
+        "Aantal" => $aantal
+    ]);
+}
+
 /////////////////////////////////
 // GENERIC DATABASE OPERATIONS //
 /////////////////////////////////
@@ -344,6 +420,20 @@ function dbDelete($table, $key, $value) {
  */
 function dbUpdate($table, $id, $update) {
     global $pdo;
+
+    // Check for null values
+    if($table === null) {
+        echo "dbUpdate ERR: table cannot be null\n";
+        return;
+    }
+    if($id === null) {
+        echo "dbUpdate ERR: id cannot be null\n";
+        return;
+    }
+    if($update === null) {
+        echo "dbUpdate ERR: update cannot be null\n";
+        return;
+    }
 
     // Begin building SQL query
     $sql = "UPDATE " . $table . " SET ";
