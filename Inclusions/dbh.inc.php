@@ -167,6 +167,13 @@ function dbGetKlantByPostcode($postcode) {
 // LEVERANCIERS //
 //////////////////
 
+$lever = dbGetLeverancierByBedrijfsnaam("test");
+$leverId = $lever["idLeverancier"];
+
+dbLeverancierUpdateContactspersoon($leverId, "Jake");
+dbLeverancierUpdateEmail($leverId, "nieuweEmail");
+dbLeverancierUpdateTelefoonnummer($leverId, 696969696);
+
 /**
  * Insert a new Leverancier into the database.
  */
@@ -195,14 +202,14 @@ function dbRemoveLeverancier($idLeverancier) {
  * Find a Leverancier in the database by their Company Name.
  */
 function dbGetLeverancierByBedrijfsnaam($bedrijfsNaam) {
-    dbSelectOne("Leverancier", "BedrijfsNaam", $bedrijfsNaam);
+    return dbSelectOne("Leverancier", "BedrijfsNaam", $bedrijfsNaam);
 }
 
 /**
  * Find a Leverancier in the database by their Postcode.
  */
 function dbGetLeverancierByPostcode($postcode) {
-    dbSelectOne("Leverancier", "Postcode", $postcode);
+    return dbSelectOne("Leverancier", "Postcode", $postcode);
 }
 
 /**
@@ -210,21 +217,22 @@ function dbGetLeverancierByPostcode($postcode) {
  * (Representative = Contactspersoon)
  */
 function dbGetLeverancierByContactspersoon($contactPersoonNaam) {
-    dbSelectOne("Leverancier", "Contactspersoon", $contactPersoonNaam);
+    return dbSelectOne("Leverancier", "Contactspersoon", $contactPersoonNaam);
 }
 
 /**
  * Find a Leverancier in the database by their Email address.
  */
 function dbGetLeverancierByEmail($email) {
-    dbSelectOne("Leverancier", "Email", $email);
+    return dbSelectOne("Leverancier", "Email", $email);
 }
 
 /**
  * Find a Leverancier in the database by their Phone number.
  */
 function dbGetLeverancierByTelefoonnummer($telefoonnummer) {
-    dbSelectOne("Leverancier", "TelefoonNummer", $telefoonnummer);
+    return dbSelectOne("Leverancier", "TelefoonNummer", $telefoonnummer);
+}
 }
 
 //////////////
@@ -331,6 +339,15 @@ function dbGetProductenByVoedselPakketId($idPakket) {
     return $stmt->fetchAll();
 }
 
+/**
+ * Update a Product's stock in the database.
+ */
+function dbProductUpdateAantal($idProduct, $aantal) {
+    dbUpdate("Product", $idProduct, [
+        "Aantal" => $aantal
+    ]);
+}
+
 /////////////////////////////////
 // GENERIC DATABASE OPERATIONS //
 /////////////////////////////////
@@ -383,6 +400,20 @@ function dbDelete($table, $key, $value) {
  */
 function dbUpdate($table, $id, $update) {
     global $pdo;
+
+    // Check for null values
+    if($table === null) {
+        echo "dbUpdate ERR: table cannot be null\n";
+        return;
+    }
+    if($id === null) {
+        echo "dbUpdate ERR: id cannot be null\n";
+        return;
+    }
+    if($update === null) {
+        echo "dbUpdate ERR: update cannot be null\n";
+        return;
+    }
 
     // Begin building SQL query
     $sql = "UPDATE " . $table . " SET ";
