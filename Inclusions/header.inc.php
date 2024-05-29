@@ -20,5 +20,4 @@
         echo "<li><a href='Klanten.php'>Klanten</a></li>";
         echo "</ul>";
     }
-?>
 
