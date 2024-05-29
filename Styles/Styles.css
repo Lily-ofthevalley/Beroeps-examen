@@ -2,18 +2,25 @@
   --white: #f5f5f5;
   --black: #424242;
   --light-green: #b9e937;
+  --light-green-2: #d7ff68;
   --green: #02a907;
   --dark-green: #039708;
 }
 
+* {
+  box-sizing: border-box;
+  color: var(--black);
+}
+
 body {
+  height: 100vh;
   background-color: var(--white);
   overflow: hidden;
   margin: 0;
   padding: 0;
 }
 
-Header {
+header {
   background-color: var(--green);
   position: fixed;
   top: 0%;
@@ -36,7 +43,112 @@ header a:hover {
   background-color: var(--dark-green);
 }
 
-.loginContainer, .addGebruikersContainer {
+.page-content {
+  margin-top: 100px;
+  margin-inline: auto;
+  width: 90%;
+  height: calc(100vh - 140px);
+}
+
+/* ITEM LIST */
+
+.item-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr;
+
+  padding: 0;
+  width: 100%;
+  height: 90%;
+  border-radius: 10px;
+  background-color: var(--light-green);
+}
+
+.item-list__label-row {
+  display: grid;
+  grid-template-columns: repeat(2, 150px) 250px 100px 1fr;
+
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 3px solid var(--white);
+}
+
+.item-list__items {
+  display: grid;
+  grid-auto-rows: 40px;
+
+  overflow-y: scroll;
+}
+
+.item-list__item-row {
+  display: grid;
+  grid-template-columns: repeat(2, 150px) 250px 100px 1fr;
+  border-bottom: 1px solid var(--white);
+}
+
+.item-list__item-row:hover {
+  background-color: var(--light-green-2);
+}
+
+.item-list p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0;
+  padding-inline: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+.item-list__edit-buttons-cell {
+  justify-self: flex-end;
+  align-self: center;
+
+  padding-inline: 10px;
+}
+
+.item-list__edit-button {
+  height: 25px;
+  background-color: var(--light-green);
+  border: 1px solid var(--black);
+  border-radius: 4px;
+}
+
+.item-list__edit-button:hover {
+  background-color: var(--light-green-2);
+  cursor: pointer;
+}
+
+.item-list__edit-button--unavailable {
+  background-color: var(--black);
+}
+
+.item-list__edit-button--unavailable:hover {
+  background-color: var(--black);
+  cursor: default;
+}
+
+.add-product-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-product-button {
+  margin: 10px 20px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 20px;
+  background-color: var(--green);
+}
+
+.add-product-button:hover {
+  background-color: var(--light-green);
+}
+
+.loginContainer,
+.addGebruikersContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,7 +171,9 @@ header a:hover {
   padding-bottom: 2.5em;
 }
 
-.login input, .addGebruikers input, .addGebruikers select {
+.login input,
+.addGebruikers input,
+.addGebruikers select {
   margin-bottom: 1em;
 }
 
@@ -81,7 +195,7 @@ header a:hover {
   align-self: flex-start;
 }
 
-#terugNaarGebruikers a{
+#terugNaarGebruikers a {
   text-decoration: none;
   font-size: 2em;
   color: var(--black);

@@ -1,21 +1,21 @@
 <?php
-    if ($_SESSION["user"]["rol"] == "Administrator"){
-        echo "<ul class='header'>";
-        echo "<li><a href='Vooraad.php'>Vooraad</a></li>";
-        echo "<li><a href='Leveranciers.php'>Leveranciers</a></li>";
-        echo "<li><a href='Voedselpakketten.php'>Voedselpakketten</a></li>";
-        echo "<li><a href='Klanten.php'>Klanten</a></li>";
-        echo "<li><a href='Gebruikers.php'>Gebruikers</a></li>";
-        echo "</ul>";
-    }else if($_SESSION["user"]["rol"] == "MagezijnMedewerker"){
-        echo "<ul class='header'>";
-        echo "<li><a href='Vooraad.php'>Vooraad</a></li>";
-        echo "<li><a href='Leveranciers.php'>Leveranciers</a></li>";
-        echo "</ul>";
-    }else if($_SESSION["user"]["rol"] == "Vrijwilliger"){
-        echo "<ul class='header'>";
-        echo "<li><a href='Vooraad.php'>Vooraad</a></li>";
-        echo "<li><a href='Voedselpakketten.php'>Voedselpakketten</a></li>";
-        echo "<li><a href='Klanten.php'>Klanten</a></li>";
-        echo "</ul>";
-    }
+if ($_SESSION["user"]["rol"] == "Administrator") {
+    echo "<ul class='header'>";
+    echo "<li><a href='Vooraad.php'>Vooraad</a></li>";
+    echo "<li><a href='Leveranciers.php'>Leveranciers</a></li>";
+    echo "<li><a href='Voedselpakketten.php'>Voedselpakketten</a></li>";
+    echo "<li><a href='Klanten.php'>Klanten</a></li>";
+    echo "<li><a href='Gebruikers.php'>Gebruikers</a></li>";
+    echo "</ul>";
+} else if ($_SESSION["user"]["rol"] == "MagezijnMedewerker") {
+    echo "<ul class='header'>";
+    echo "<li><a href='Vooraad.php'>Vooraad</a></li>";
+    echo "<li><a href='Leveranciers.php'>Leveranciers</a></li>";
+    echo "</ul>";
+} else if ($_SESSION["user"]["rol"] == "Vrijwilliger") {
+    echo "<ul class='header'>";
+    echo "<li><a href='Vooraad.php'>Vooraad</a></li>";
+    echo "<li><a href='Voedselpakketten.php'>Voedselpakketten</a></li>";
+    echo "<li><a href='Klanten.php'>Klanten</a></li>";
+    echo "</ul>";
+}
