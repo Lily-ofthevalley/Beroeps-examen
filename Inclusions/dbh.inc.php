@@ -65,6 +65,45 @@ function dbGetMedewerkerByTelefoonnummer($telefoonnummer) {
     return dbSelectOne("Medewerker", "TelefoonNummer", $telefoonnummer);
 }
 
+/**
+ * Update a Medewerker's password in the database.
+ */
+function dbMedewerkerUpdateWachtwoord($idMedewerker, $wachtwoord) {
+    $hashed_pw = password_hash($wachtwoord, 0);
+
+    // Commit to database
+    dbUpdate("Medewerker", $idMedewerker, [
+        "Wachtwoord" => $hashed_pw
+    ]);
+}
+
+/**
+ * Update a Medewerker's Email address in the database.
+ */
+function dbMedewerkerUpdateEmail($idMedewerker, $email) {
+    dbUpdate("Medewerker", $idMedewerker, [
+        "Email" => $email
+    ]);
+}
+
+/**
+ * Update a Medewerker's Phone number in the database.
+ */
+function dbMedewerkerUpdateTelefoonnummer($idMedewerker, $telefoonnummer) {
+    dbUpdate("Medewerker", $idMedewerker, [
+        "TelefoonNummer" => $telefoonnummer
+    ]);
+}
+
+/**
+ * Update a Medewerker's role in the database.
+ */
+function dbMedewerkerUpdateRol($idMedewerker, $rol) {
+    dbUpdate("Medewerker", $idMedewerker, [
+        "Rol" => $rol
+    ]);
+}
+
 /////////////
 // KLANTEN //
 /////////////
