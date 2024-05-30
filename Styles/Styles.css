@@ -44,14 +44,19 @@ header a:hover {
   background-color: var(--dark-green);
 }
 
+.userbtn {
+  margin-left: auto;
+  margin-right: 2.5em;
+}
+
+/* /////ITEM LIST///// */
+
 .page-content {
   margin-top: 100px;
   margin-inline: auto;
   width: 90%;
   height: calc(100vh - 140px);
 }
-
-/* ITEM LIST */
 
 .item-list {
   display: grid;
@@ -167,7 +172,7 @@ header a:hover {
   position: relative;
   margin: auto;
   width: 10em;
-  padding: 3.5em;
+  padding: 7.5em;
   padding-top: 0.75em;
   padding-bottom: 2.5em;
 }
