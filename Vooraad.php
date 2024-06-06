@@ -24,7 +24,7 @@ session_start();
         <p>Naam</p>
         <p>Categorie</p>
         <p>Aantal</p>
-        <p></p>
+        <p class="item-list__final-column-width"></p>
       </div>
       <div class="item-list__items">
         <div class="item-list__item-row">
@@ -32,7 +32,7 @@ session_start();
           <p>Tomaat</p>
           <p>Aardappelen, groente, fruit</p>
           <p>37</p>
-          <div class="item-list__edit-buttons-cell">
+          <div class="item-list__edit-buttons-cell item-list__final-column-width">
             <button class="item-list__edit-button">Bewerken</button>
             <button class="item-list__edit-button">Verwijderen</button>
           </div>
@@ -42,7 +42,7 @@ session_start();
           <p>Tomaat</p>
           <p>Aardappelen, groente, fruit</p>
           <p>37</p>
-          <div class="item-list__edit-buttons-cell">
+          <div class="item-list__edit-buttons-cell item-list__final-column-width">
             <button class="item-list__edit-button">Bewerken</button>
             <button class="item-list__edit-button">Verwijderen</button>
           </div>
@@ -52,7 +52,7 @@ session_start();
           <p>Tomaat</p>
           <p>Aardappelen, groente, fruit</p>
           <p>37</p>
-          <div class="item-list__edit-buttons-cell">
+          <div class="item-list__edit-buttons-cell item-list__final-column-width">
             <button class="item-list__edit-button">Bewerken</button>
             <button class="item-list__edit-button">Verwijderen</button>
           </div>
@@ -62,7 +62,7 @@ session_start();
           <p>Tomaat</p>
           <p>Aardappelen, groente, fruit</p>
           <p>37</p>
-          <div class="item-list__edit-buttons-cell">
+          <div class="item-list__edit-buttons-cell item-list__final-column-width">
             <button class="item-list__edit-button">Bewerken</button>
             <button class="item-list__edit-button">Verwijderen</button>
           </div>

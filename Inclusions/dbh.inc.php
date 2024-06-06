@@ -1,17 +1,18 @@
-<?php 
+<?php
 $pdo = dbConnect();
 
-function dbConnect() {
+function dbConnect()
+{
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "root";
     $dbname = "VoedselbankMaaskantje";
 
     try {
         // create connection
         $dsn = "mysql:host=$servername;dbname=$dbname;port=3306";
         $pdo = new PDO($dsn, $username, $password);
-        
+
         // set the PDO error mode to exception
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
@@ -28,7 +29,8 @@ function dbConnect() {
 /**
  * Insert a new Medewerker into the database.
  */
-function dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, $wachtwoord) {
+function dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, $wachtwoord)
+{
     global $pdo;
 
     $hashed_pw = password_hash($wachtwoord, 0);
@@ -47,28 +49,32 @@ function dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, 
 /**
  * Remove a Medewerker from the database by ID.
  */
-function dbRemoveMedewerker($idMedewerker) {
+function dbRemoveMedewerker($idMedewerker)
+{
     dbDelete("Medewerker", "idMedewerker", $idMedewerker);
 }
 
 /**
  * Find a Medewerker in the database by their Email address.
  */
-function dbGetMedewerkerByEmail($email) {
+function dbGetMedewerkerByEmail($email)
+{
     return dbSelectOne("Medewerker", "Email", $email);
 }
 
 /**
  * Find a Medewerker in the database by their Phone Number.
  */
-function dbGetMedewerkerByTelefoonnummer($telefoonnummer) {
+function dbGetMedewerkerByTelefoonnummer($telefoonnummer)
+{
     return dbSelectOne("Medewerker", "TelefoonNummer", $telefoonnummer);
 }
 
 /**
  * Update a Medewerker's password in the database.
  */
-function dbMedewerkerUpdateWachtwoord($idMedewerker, $wachtwoord) {
+function dbMedewerkerUpdateWachtwoord($idMedewerker, $wachtwoord)
+{
     $hashed_pw = password_hash($wachtwoord, 0);
 
     // Commit to database
@@ -80,7 +86,8 @@ function dbMedewerkerUpdateWachtwoord($idMedewerker, $wachtwoord) {
 /**
  * Update a Medewerker's Email address in the database.
  */
-function dbMedewerkerUpdateEmail($idMedewerker, $email) {
+function dbMedewerkerUpdateEmail($idMedewerker, $email)
+{
     dbUpdate("Medewerker", $idMedewerker, [
         "Email" => $email
     ]);
@@ -89,7 +96,8 @@ function dbMedewerkerUpdateEmail($idMedewerker, $email) {
 /**
  * Update a Medewerker's Phone number in the database.
  */
-function dbMedewerkerUpdateTelefoonnummer($idMedewerker, $telefoonnummer) {
+function dbMedewerkerUpdateTelefoonnummer($idMedewerker, $telefoonnummer)
+{
     dbUpdate("Medewerker", $idMedewerker, [
         "TelefoonNummer" => $telefoonnummer
     ]);
@@ -98,7 +106,8 @@ function dbMedewerkerUpdateTelefoonnummer($idMedewerker, $telefoonnummer) {
 /**
  * Update a Medewerker's role in the database.
  */
-function dbMedewerkerUpdateRol($idMedewerker, $rol) {
+function dbMedewerkerUpdateRol($idMedewerker, $rol)
+{
     dbUpdate("Medewerker", $idMedewerker, [
         "Rol" => $rol
     ]);
@@ -111,7 +120,8 @@ function dbMedewerkerUpdateRol($idMedewerker, $rol) {
 /**
  * Insert a new Klant into the database.
  */
-function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aantalVolwassenen, $aantalKinderen, $aantalBabys, $commentaar) {
+function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aantalVolwassenen, $aantalKinderen, $aantalBabys, $commentaar)
+{
     global $pdo;
 
     // Commit to database
@@ -131,35 +141,40 @@ function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aa
 /**
  * Remove a Klant from the database by ID.
  */
-function dbRemoveKlant($idKlant) {
+function dbRemoveKlant($idKlant)
+{
     dbDelete("Klant", "idKlant", $idKlant);
 }
 
 /**
  * Find a Klant in the database by their Family Name.
  */
-function dbGetKlantByGezinsNaam($gezinsNaam) {
+function dbGetKlantByGezinsNaam($gezinsNaam)
+{
     return dbSelectOne("Klant", "GezinsNaam", $gezinsNaam);
 }
 
 /**
  * Find a Klant in the database by their Telefoon nummer.
  */
-function dbGetKlantByTelefoonnummer($telefoonnummer) {
+function dbGetKlantByTelefoonnummer($telefoonnummer)
+{
     return dbSelectOne("Klant", "TelefoonNummer", $telefoonnummer);
 }
 
 /**
  * Find a Klant in the database by their Email address.
  */
-function dbGetKlantByEmail($email) {
+function dbGetKlantByEmail($email)
+{
     return dbSelectOne("Klant", "Email", $email);
 }
 
 /**
  * Find a Klant in the database by their Postcode.
  */
-function dbGetKlantByPostcode($postcode) {
+function dbGetKlantByPostcode($postcode)
+{
     return dbSelectOne("Klant", "Postcode", $postcode);
 }
 
@@ -170,7 +185,8 @@ function dbGetKlantByPostcode($postcode) {
 /**
  * Insert a new Leverancier into the database.
  */
-function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam, $email, $telefoonnummer) {
+function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam, $email, $telefoonnummer)
+{
     global $pdo;
 
     // Commit to database
@@ -187,21 +203,24 @@ function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam,
 /**
  * Remove a Leverancier from the database by ID.
  */
-function dbRemoveLeverancier($idLeverancier) {
+function dbRemoveLeverancier($idLeverancier)
+{
     dbDelete("Leverancier", "idLeverancier", $idLeverancier);
 }
 
 /**
  * Find a Leverancier in the database by their Company Name.
  */
-function dbGetLeverancierByBedrijfsnaam($bedrijfsNaam) {
+function dbGetLeverancierByBedrijfsnaam($bedrijfsNaam)
+{
     return dbSelectOne("Leverancier", "BedrijfsNaam", $bedrijfsNaam);
 }
 
 /**
  * Find a Leverancier in the database by their Postcode.
  */
-function dbGetLeverancierByPostcode($postcode) {
+function dbGetLeverancierByPostcode($postcode)
+{
     return dbSelectOne("Leverancier", "Postcode", $postcode);
 }
 
@@ -209,28 +228,32 @@ function dbGetLeverancierByPostcode($postcode) {
  * Find a Leverancier in the database by their Representative's name.
  * (Representative = Contactspersoon)
  */
-function dbGetLeverancierByContactspersoon($contactPersoonNaam) {
+function dbGetLeverancierByContactspersoon($contactPersoonNaam)
+{
     return dbSelectOne("Leverancier", "Contactspersoon", $contactPersoonNaam);
 }
 
 /**
  * Find a Leverancier in the database by their Email address.
  */
-function dbGetLeverancierByEmail($email) {
+function dbGetLeverancierByEmail($email)
+{
     return dbSelectOne("Leverancier", "Email", $email);
 }
 
 /**
  * Find a Leverancier in the database by their Phone number.
  */
-function dbGetLeverancierByTelefoonnummer($telefoonnummer) {
+function dbGetLeverancierByTelefoonnummer($telefoonnummer)
+{
     return dbSelectOne("Leverancier", "TelefoonNummer", $telefoonnummer);
 }
 
 /**
  * Update a Leverancier's email address in the database.
  */
-function dbLeverancierUpdateEmail($idLeverancier, $email) {
+function dbLeverancierUpdateEmail($idLeverancier, $email)
+{
     dbUpdate("Leverancier", $idLeverancier, [
         "Email" => $email
     ]);
@@ -240,7 +263,8 @@ function dbLeverancierUpdateEmail($idLeverancier, $email) {
  * Update a Leverancier's representative name in the database.
  * (Representative = contactspersoon)
  */
-function dbLeverancierUpdateContactspersoon($idLeverancier, $contactPersoonNaam) {
+function dbLeverancierUpdateContactspersoon($idLeverancier, $contactPersoonNaam)
+{
     dbUpdate("Leverancier", $idLeverancier, [
         "ContactspersoonNaam" => $contactPersoonNaam
     ]);
@@ -249,7 +273,8 @@ function dbLeverancierUpdateContactspersoon($idLeverancier, $contactPersoonNaam)
 /**
  * Update a Leverancier's phone number in the database.
  */
-function dbLeverancierUpdateTelefoonnummer($idLeverancier, $telefoonnummer) {
+function dbLeverancierUpdateTelefoonnummer($idLeverancier, $telefoonnummer)
+{
     dbUpdate("Leverancier", $idLeverancier, [
         "TelefoonNummer" => $telefoonnummer
     ]);
@@ -262,7 +287,8 @@ function dbLeverancierUpdateTelefoonnummer($idLeverancier, $telefoonnummer) {
 /**
  * Insert a new Product into the database.
  */
-function dbAddProduct($barcode, $naam, $idCategorie, $aantal) {
+function dbAddProduct($barcode, $naam, $idCategorie, $aantal)
+{
     global $pdo;
 
     // Commit to database
@@ -277,14 +303,16 @@ function dbAddProduct($barcode, $naam, $idCategorie, $aantal) {
 /**
  * Remove a Product from the database by ID.
  */
-function dbRemoveProduct($idProduct) {
+function dbRemoveProduct($idProduct)
+{
     dbDelete("Product", "idProduct", $idProduct);
 }
 
 /**
  * Find a Product in the database by its Barcode.
  */
-function dbGetProductByBarcode($barcode) {
+function dbGetProductByBarcode($barcode)
+{
     return dbSelectOne("Product", "Barcode", $barcode);
 }
 
@@ -295,7 +323,8 @@ function dbGetProductByBarcode($barcode) {
 /**
  * Insert a new Voedselpakket into the database.
  */
-function dbAddVoedselPakket($idKlant, $uitgeefDatum) {
+function dbAddVoedselPakket($idKlant, $uitgeefDatum)
+{
     global $pdo;
     $now = date('Y-m-d');
 
@@ -310,21 +339,24 @@ function dbAddVoedselPakket($idKlant, $uitgeefDatum) {
 /**
  * Remove a Voedselpakket from the database by ID.
  */
-function dbRemoveVoedselPakket($idPakket) {
+function dbRemoveVoedselPakket($idPakket)
+{
     dbDelete("VoedselPakket", "idVoedselPakket", $idPakket);
 }
 
 /**
  * Find a Voedselpakket in the database by its Customer ID.
  */
-function dbGetVoedselPakkettenByKlantId($idKlant) {
+function dbGetVoedselPakkettenByKlantId($idKlant)
+{
     return dbSelect("VoedselPakket", "idKlant", $idKlant);
 }
 
 /**
  * Add a Product to a Voedselpakket in the database.
  */
-function dbVoedselPakketAddProduct($idPakket, $idProduct) {
+function dbVoedselPakketAddProduct($idPakket, $idProduct)
+{
     global $pdo;
 
     // Commit to database
@@ -337,7 +369,8 @@ function dbVoedselPakketAddProduct($idPakket, $idProduct) {
 /**
  * Remove a Product from a Voedselpakket in the database.
  */
-function dbVoedselPakketRemoveProduct($idPakket, $idProduct) {
+function dbVoedselPakketRemoveProduct($idPakket, $idProduct)
+{
     global $pdo;
 
     // Commit to database
@@ -350,7 +383,8 @@ function dbVoedselPakketRemoveProduct($idPakket, $idProduct) {
 /**
  * Find all Producten in a Voedselpakket in the database.
  */
-function dbGetProductenByVoedselPakketId($idPakket) {
+function dbGetProductenByVoedselPakketId($idPakket)
+{
     global $pdo;
 
     $stmt = $pdo->prepare("SELECT product.* FROM voedselpakket_has_product INNER JOIN product ON product.idProduct = voedselpakket_has_product.Product_idProduct WHERE VoedselPakket_idVoedselPakket = ?");
@@ -362,7 +396,8 @@ function dbGetProductenByVoedselPakketId($idPakket) {
 /**
  * Update a Product's stock in the database.
  */
-function dbProductUpdateAantal($idProduct, $aantal) {
+function dbProductUpdateAantal($idProduct, $aantal)
+{
     dbUpdate("Product", $idProduct, [
         "Aantal" => $aantal
     ]);
@@ -375,9 +410,10 @@ function dbProductUpdateAantal($idProduct, $aantal) {
 /**
  * SELECT a single row from the database.
  */
-function dbSelectOne($table, $key, $value) {
+function dbSelectOne($table, $key, $value)
+{
     $data = dbSelect($table, $key, $value);
-    if(count($data) > 0) {
+    if (count($data) > 0) {
         return $data[0];
     }
 
@@ -388,7 +424,8 @@ function dbSelectOne($table, $key, $value) {
 /**
  * SELECT multiple rows from the database.
  */
-function dbSelect($table, $key, $value) {
+function dbSelect($table, $key, $value)
+{
     global $pdo;
 
     $stmt = $pdo->prepare("SELECT * FROM " . $table . " WHERE " . $key . "= ?");
@@ -400,7 +437,8 @@ function dbSelect($table, $key, $value) {
 /**
  * DELETE multiple rows from the database.
  */
-function dbDelete($table, $key, $value) {
+function dbDelete($table, $key, $value)
+{
     global $pdo;
 
     $stmt = $pdo->prepare("DELETE FROM " . $table . " WHERE " . $key . "= ?");
@@ -418,19 +456,20 @@ function dbDelete($table, $key, $value) {
  *     "TelefoonNummer" => 1234567890
  * ]);
  */
-function dbUpdate($table, $id, $update) {
+function dbUpdate($table, $id, $update)
+{
     global $pdo;
 
     // Check for null values
-    if($table === null) {
+    if ($table === null) {
         echo "dbUpdate ERR: table cannot be null\n";
         return;
     }
-    if($id === null) {
+    if ($id === null) {
         echo "dbUpdate ERR: id cannot be null\n";
         return;
     }
-    if($update === null) {
+    if ($update === null) {
         echo "dbUpdate ERR: update cannot be null\n";
         return;
     }
@@ -438,9 +477,9 @@ function dbUpdate($table, $id, $update) {
     // Begin building SQL query
     $sql = "UPDATE " . $table . " SET ";
     $keys = array_keys($update);
-    
+
     // Add the keys we'll be updating to the query
-    foreach($keys as $key) {
+    foreach ($keys as $key) {
         // sql += "[KEY] = :[KEY]"
         $sql = $sql . $key . "=:" . $key . ",";
     }
@@ -452,7 +491,7 @@ function dbUpdate($table, $id, $update) {
 
     // Now prepare a statement and map all of the values to the keys
     $stmt = $pdo->prepare($sql);
-    foreach($keys as $key) {
+    foreach ($keys as $key) {
         $param = ":" . $key;
         $value = $update[$key];
         $stmt->bindValue($param, $value);
