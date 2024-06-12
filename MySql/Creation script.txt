@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Klant` (
   `Postcode` VARCHAR(45) NOT NULL,
   `AantalVolwassenen` INT NOT NULL,
   `AantalKinderen` INT NOT NULL,
-  `AantalBaby's` INT NOT NULL,
+  `AantalBabys` INT NOT NULL,
   `Comentaar` TEXT NULL,
   PRIMARY KEY (`idKlant`))
 ENGINE = InnoDB;
@@ -139,12 +139,12 @@ CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`VoedselPakket_has_Product` (
   CONSTRAINT `fk_VoedselPakket_has_Product_VoedselPakket1`
     FOREIGN KEY (`VoedselPakket_idVoedselPakket`)
     REFERENCES `VoedselbankMaaskantje`.`VoedselPakket` (`idVoedselPakket`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_VoedselPakket_has_Product_Product1`
     FOREIGN KEY (`Product_idProduct`)
     REFERENCES `VoedselbankMaaskantje`.`Product` (`idProduct`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -162,12 +162,12 @@ CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Product_has_Levering` (
   CONSTRAINT `fk_Product_has_Levering_Product1`
     FOREIGN KEY (`Product_idProduct`)
     REFERENCES `VoedselbankMaaskantje`.`Product` (`idProduct`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Product_has_Levering_Levering1`
     FOREIGN KEY (`Levering_idLevering`)
     REFERENCES `VoedselbankMaaskantje`.`Levering` (`idLevering`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
