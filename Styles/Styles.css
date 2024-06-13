@@ -208,13 +208,19 @@ header a:hover {
 .form-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   margin-inline: auto;
   padding: 10px;
   width: 50%;
+  min-width: 450px;
   height: 90%;
   border-radius: 10px;
   background-color: var(--light-green);
+}
+
+.form__header {
+  margin: 10px auto;
 }
 
 .form {
@@ -223,11 +229,14 @@ header a:hover {
   align-items: center;
 
   margin-bottom: 10px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: calc(100% - 30px);
   height: 100%;
   overflow-y: auto;
+  border-top: 1px solid var(--black);
+  border-bottom: 1px solid var(--black);
+  border-radius: 10px;
 }
 
 .form__fieldset {
@@ -254,7 +263,7 @@ header a:hover {
 }
 
 .form__label {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .form__input {
@@ -293,6 +302,55 @@ header a:hover {
 
 .form__submit:hover {
   background-color: var(--light-green-2);
+}
+
+/* USER PAGE */
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0 auto 20px;
+  padding: 25px;
+  width: 50%;
+  min-width: 450px;
+  height: min-content;
+  border-radius: 10px;
+  background-color: var(--light-green);
+}
+
+.profile-container * {
+  margin: 0;
+}
+
+.profile__name {
+  margin: 0 0 5px 0;
+}
+
+.profile__role {
+  margin: 0;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.profile__info-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 10px;
+  justify-items: center;
+  align-items: center;
+
+  margin-top: 20px;
+  padding-top: 10px;
+  width: calc(100% - 50px);
+  height: 75px;
+  border-top: 2px solid var(--black);
+}
+
+.profile__password-container {
+  height: min-content;
 }
 
 .loginContainer,

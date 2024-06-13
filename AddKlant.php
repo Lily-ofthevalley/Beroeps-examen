@@ -22,6 +22,7 @@ session_start();
   </header>
   <div class="page-content">
     <form class="form-container">
+      <h2 class="profile__password-header">Klant toevoegen</h2>
       <div class="form">
         <label class="form__label" for="name">Naam*</label>
         <input class="form__input" type="text" id="name" name="name" required>
