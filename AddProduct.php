@@ -23,11 +23,13 @@ session_start();
   <div class="page-content">
     <form class="form-container">
       <div class="form">
-        <label class="form__label" for="barcode">Barcode</label>
+        <label class="form__label" for="barcode">Barcode*</label>
         <input class="form__input" type="text" id="barcode" name="barcode" required>
-        <label class="form__label" for="name">Naam product</label>
+
+        <label class="form__label" for="name">Naam product*</label>
         <input class="form__input" type="text" id="name" name="name" required>
-        <label class="form__label" for="category">Categorie</label>
+
+        <label class="form__label" for="category">Categorie*</label>
         <select class="form__input" id="category" name="category" required>
           <option value="" hidden disabled selected>(Kies categorie)</option>
           <option value="1">Aardappelen, groente, fruit</option>

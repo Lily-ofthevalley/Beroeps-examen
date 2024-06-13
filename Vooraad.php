@@ -19,7 +19,7 @@ session_start();
   <div class="page-content">
     <div class="item-list">
       <!-- Column labels -->
-      <div class="item-list__label-row">
+      <div class="item-list__label-row item-list__row--products">
         <p>Barcode</p>
         <p>Naam</p>
         <p>Categorie</p>
@@ -27,50 +27,20 @@ session_start();
         <p class="item-list__final-column-width"></p>
       </div>
       <div class="item-list__items">
-        <div class="item-list__item-row">
+        <div class="item-list__item-row item-list__row--products">
           <p>123456789012345</p>
           <p>Tomaat</p>
           <p>Aardappelen, groente, fruit</p>
           <p>37</p>
-          <div class="item-list__edit-buttons-cell item-list__final-column-width">
-            <button class="item-list__edit-button">Bewerken</button>
-            <button class="item-list__edit-button">Verwijderen</button>
-          </div>
-        </div>
-        <div class="item-list__item-row">
-          <p>123456789012345</p>
-          <p>Tomaat</p>
-          <p>Aardappelen, groente, fruit</p>
-          <p>37</p>
-          <div class="item-list__edit-buttons-cell item-list__final-column-width">
-            <button class="item-list__edit-button">Bewerken</button>
-            <button class="item-list__edit-button">Verwijderen</button>
-          </div>
-        </div>
-        <div class="item-list__item-row">
-          <p>123456789012345</p>
-          <p>Tomaat</p>
-          <p>Aardappelen, groente, fruit</p>
-          <p>37</p>
-          <div class="item-list__edit-buttons-cell item-list__final-column-width">
-            <button class="item-list__edit-button">Bewerken</button>
-            <button class="item-list__edit-button">Verwijderen</button>
-          </div>
-        </div>
-        <div class="item-list__item-row">
-          <p>123456789012345</p>
-          <p>Tomaat</p>
-          <p>Aardappelen, groente, fruit</p>
-          <p>37</p>
-          <div class="item-list__edit-buttons-cell item-list__final-column-width">
+          <div class="item-list__edit-buttons-cell">
             <button class="item-list__edit-button">Bewerken</button>
             <button class="item-list__edit-button">Verwijderen</button>
           </div>
         </div>
       </div>
     </div>
-    <div class="add-product-container">
-      <a class="add-product-button" href="./AddProduct.php">Voeg product toe</a>
+    <div class="add-link-container">
+      <a class="add-link-button" href="./AddProduct.php">Voeg product toe</a>
     </div>
   </div>
   <script>

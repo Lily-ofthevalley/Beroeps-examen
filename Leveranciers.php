@@ -20,8 +20,37 @@ session_start();
   <header>
     <?php require_once "Inclusions/header.inc.php" ?>
   </header>
-  <h1>Hello, World!</h1>
-  <p>This is a basic HTML file.</p>
+  <div class="page-content">
+    <div class="item-list">
+      <!-- Column labels -->
+      <div class="item-list__label-row item-list__row--suppliers">
+        <p>Volgende levering</p>
+        <p>Bedrijf</p>
+        <p>Adres</p>
+        <p>Contactpersoon</p>
+        <p>E-mail</p>
+        <p>Telefoon</p>
+        <p class="item-list__final-column-width"></p>
+      </div>
+      <div class="item-list__items">
+        <div class="item-list__item-row item-list__row--suppliers">
+          <p>30 jan 2024</p>
+          <p>De Leverancier</p>
+          <p>Voorbeeldstraat 3, Almere</p>
+          <p>Jacob de Boer</p>
+          <p>j.deboer@leverancier.nl</p>
+          <p>0612345678</p>
+          <div class="item-list__edit-buttons-cell">
+            <button class="item-list__edit-button">Bewerken</button>
+            <button class="item-list__edit-button">Verwijderen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="add-link-container">
+      <a class="add-link-button" href="./AddLeverancier.php">Voeg leverancier toe</a>
+    </div>
+  </div>
 </body>
 
 </html>
