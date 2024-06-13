@@ -20,7 +20,8 @@ USE `VoedselbankMaaskantje` ;
 CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Medewerker` (
   `idMedewerker` INT NOT NULL AUTO_INCREMENT,
   `Voornaam` VARCHAR(45) NOT NULL,
-  `Achternaam` VARCHAR(90) NOT NULL,
+  `Tussenvoegsels` VARCHAR(45) NULL,
+  `Achternaam` VARCHAR(45) NOT NULL,
   `Rol` VARCHAR(45) NOT NULL,
   `TelefoonNummer` INT(10) NULL,
   `Email` VARCHAR(45) NULL,
@@ -143,6 +144,29 @@ CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`VoedselPakket_has_Product` (
   CONSTRAINT `fk_VoedselPakket_has_Product_Product1`
     FOREIGN KEY (`Product_idProduct`)
     REFERENCES `VoedselbankMaaskantje`.`Product` (`idProduct`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `VoedselbankMaaskantje`.`Product_has_Levering`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Product_has_Levering` (
+  `Product_idProduct` INT NOT NULL,
+  `Levering_idLevering` INT NOT NULL,
+  `Aantal` INT NOT NULL,
+  PRIMARY KEY (`Product_idProduct`, `Levering_idLevering`),
+  INDEX `fk_Product_has_Levering_Levering1_idx` (`Levering_idLevering` ASC) VISIBLE,
+  INDEX `fk_Product_has_Levering_Product1_idx` (`Product_idProduct` ASC) VISIBLE,
+  CONSTRAINT `fk_Product_has_Levering_Product1`
+    FOREIGN KEY (`Product_idProduct`)
+    REFERENCES `VoedselbankMaaskantje`.`Product` (`idProduct`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Product_has_Levering_Levering1`
+    FOREIGN KEY (`Levering_idLevering`)
+    REFERENCES `VoedselbankMaaskantje`.`Levering` (`idLevering`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

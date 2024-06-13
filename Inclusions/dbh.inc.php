@@ -51,7 +51,7 @@ function dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, 
  */
 function dbRemoveMedewerker($idMedewerker)
 {
-    dbDelete("Medewerker", "idMedewerker", $idMedewerker);
+    dbDeleteById("Medewerker", "idMedewerker", $idMedewerker);
 }
 
 /**
@@ -78,7 +78,7 @@ function dbMedewerkerUpdateWachtwoord($idMedewerker, $wachtwoord)
     $hashed_pw = password_hash($wachtwoord, 0);
 
     // Commit to database
-    dbUpdate("Medewerker", $idMedewerker, [
+    dbUpdateById("Medewerker", $idMedewerker, [
         "Wachtwoord" => $hashed_pw
     ]);
 }
@@ -88,7 +88,7 @@ function dbMedewerkerUpdateWachtwoord($idMedewerker, $wachtwoord)
  */
 function dbMedewerkerUpdateEmail($idMedewerker, $email)
 {
-    dbUpdate("Medewerker", $idMedewerker, [
+    dbUpdateById("Medewerker", $idMedewerker, [
         "Email" => $email
     ]);
 }
@@ -98,7 +98,7 @@ function dbMedewerkerUpdateEmail($idMedewerker, $email)
  */
 function dbMedewerkerUpdateTelefoonnummer($idMedewerker, $telefoonnummer)
 {
-    dbUpdate("Medewerker", $idMedewerker, [
+    dbUpdateById("Medewerker", $idMedewerker, [
         "TelefoonNummer" => $telefoonnummer
     ]);
 }
@@ -108,7 +108,7 @@ function dbMedewerkerUpdateTelefoonnummer($idMedewerker, $telefoonnummer)
  */
 function dbMedewerkerUpdateRol($idMedewerker, $rol)
 {
-    dbUpdate("Medewerker", $idMedewerker, [
+    dbUpdateById("Medewerker", $idMedewerker, [
         "Rol" => $rol
     ]);
 }
@@ -143,7 +143,7 @@ function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aa
  */
 function dbRemoveKlant($idKlant)
 {
-    dbDelete("Klant", "idKlant", $idKlant);
+    dbDeleteById("Klant", "idKlant", $idKlant);
 }
 
 /**
@@ -205,7 +205,7 @@ function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam,
  */
 function dbRemoveLeverancier($idLeverancier)
 {
-    dbDelete("Leverancier", "idLeverancier", $idLeverancier);
+    dbDeleteById("Leverancier", "idLeverancier", $idLeverancier);
 }
 
 /**
@@ -254,7 +254,7 @@ function dbGetLeverancierByTelefoonnummer($telefoonnummer)
  */
 function dbLeverancierUpdateEmail($idLeverancier, $email)
 {
-    dbUpdate("Leverancier", $idLeverancier, [
+    dbUpdateById("Leverancier", $idLeverancier, [
         "Email" => $email
     ]);
 }
@@ -265,7 +265,7 @@ function dbLeverancierUpdateEmail($idLeverancier, $email)
  */
 function dbLeverancierUpdateContactspersoon($idLeverancier, $contactPersoonNaam)
 {
-    dbUpdate("Leverancier", $idLeverancier, [
+    dbUpdateById("Leverancier", $idLeverancier, [
         "ContactspersoonNaam" => $contactPersoonNaam
     ]);
 }
@@ -275,9 +275,63 @@ function dbLeverancierUpdateContactspersoon($idLeverancier, $contactPersoonNaam)
  */
 function dbLeverancierUpdateTelefoonnummer($idLeverancier, $telefoonnummer)
 {
-    dbUpdate("Leverancier", $idLeverancier, [
+    dbUpdateById("Leverancier", $idLeverancier, [
         "TelefoonNummer" => $telefoonnummer
     ]);
+}
+
+
+////////////////
+// LEVERINGEN //
+////////////////
+
+function dbAddLevering($leverDatum, $leverTijd)
+{
+    global $pdo;
+
+    // Commit to database
+    $stmt = $pdo->prepare("INSERT INTO Levering(LeveringsDatum, LeveringsTijd) VALUES (?, ?)");
+    $stmt->bindParam(1, $leverDatum);
+    $stmt->bindParam(2, $leverTijd);
+    $stmt->execute();
+}
+
+function dbRemoveLevering($idLevering)
+{
+    dbDeleteById("Levering", "idLevering", $idLevering);
+}
+
+function dbLeveringAddProduct($idLevering, $idProduct, $aantal)
+{
+    global $pdo;
+
+    // Commit to database
+    $stmt = $pdo->prepare("INSERT INTO Product_has_Levering(Product_idProduct, Levering_idLevering, Aantal) VALUES (?, ?, ?)");
+    $stmt->bindParam(1, $idProduct);
+    $stmt->bindParam(2, $idLevering);
+    $stmt->bindParam(3, $aantal);
+    $stmt->execute();
+}
+
+function dbLeveringRemoveProduct($idLevering, $idProduct)
+{
+    global $pdo;
+
+    $stmt = $pdo->prepare("DELETE FROM Product_has_Levering WHERE Product_idProduct = ? AND Levering_idLevering = ?");
+    $stmt->bindParam(1, $idProduct);
+    $stmt->bindParam(2, $idLevering);
+    $stmt->execute();
+}
+
+function dbLeveringSetProductAantal($idLevering, $idProduct, $aantal)
+{
+    global $pdo;
+
+    $stmt = $pdo->prepare("UPDATE Product_has_Levering SET Aantal = ? WHERE Product_idProduct = ? AND Levering_idLevering = ?");
+    $stmt->bindParam(1, $aantal);
+    $stmt->bindParam(2, $idProduct);
+    $stmt->bindParam(3, $idLevering);
+    $stmt->execute();
 }
 
 //////////////
@@ -305,7 +359,7 @@ function dbAddProduct($barcode, $naam, $idCategorie, $aantal)
  */
 function dbRemoveProduct($idProduct)
 {
-    dbDelete("Product", "idProduct", $idProduct);
+    dbDeleteById("Product", "idProduct", $idProduct);
 }
 
 /**
@@ -341,7 +395,7 @@ function dbAddVoedselPakket($idKlant, $uitgeefDatum)
  */
 function dbRemoveVoedselPakket($idPakket)
 {
-    dbDelete("VoedselPakket", "idVoedselPakket", $idPakket);
+    dbDeleteById("VoedselPakket", "idVoedselPakket", $idPakket);
 }
 
 /**
@@ -398,7 +452,7 @@ function dbGetProductenByVoedselPakketId($idPakket)
  */
 function dbProductUpdateAantal($idProduct, $aantal)
 {
-    dbUpdate("Product", $idProduct, [
+    dbUpdateById("Product", $idProduct, [
         "Aantal" => $aantal
     ]);
 }
@@ -437,7 +491,7 @@ function dbSelect($table, $key, $value)
 /**
  * DELETE multiple rows from the database.
  */
-function dbDelete($table, $key, $value)
+function dbDeleteById($table, $key, $value)
 {
     global $pdo;
 
@@ -451,26 +505,26 @@ function dbDelete($table, $key, $value)
  * UPDATE a row in the database.
  * 
  * Example usage:
- * dbUpdate("Medewerkers", 1, [
+ * dbUpdateById("Medewerkers", 1, [
  *     "Rol" => "Nieuwe rol",
  *     "TelefoonNummer" => 1234567890
  * ]);
  */
-function dbUpdate($table, $id, $update)
+function dbUpdateById($table, $id, $update)
 {
     global $pdo;
 
     // Check for null values
     if ($table === null) {
-        echo "dbUpdate ERR: table cannot be null\n";
+        echo "dbUpdateById ERR: table cannot be null\n";
         return;
     }
     if ($id === null) {
-        echo "dbUpdate ERR: id cannot be null\n";
+        echo "dbUpdateById ERR: id cannot be null\n";
         return;
     }
     if ($update === null) {
-        echo "dbUpdate ERR: update cannot be null\n";
+        echo "dbUpdateById ERR: update cannot be null\n";
         return;
     }
 
