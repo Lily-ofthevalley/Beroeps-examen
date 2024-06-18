@@ -27,7 +27,8 @@ session_start();
         <p class="item-list__final-column-width"></p>
       </div>
       <div class="item-list__items">
-        <div class="item-list__item-row item-list__row--products">
+        <?php require_once "Inclusions/vooraad.inc.php"?>
+        <!-- <div class="item-list__item-row item-list__row--products">
           <p>123456789012345</p>
           <p>Tomaat</p>
           <p>Aardappelen, groente, fruit</p>
@@ -36,7 +37,7 @@ session_start();
             <button class="item-list__edit-button">Bewerken</button>
             <button class="item-list__edit-button">Verwijderen</button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="add-link-container">

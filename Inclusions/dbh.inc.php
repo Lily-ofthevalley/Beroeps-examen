@@ -5,7 +5,7 @@ function dbConnect()
 {
     $servername = "localhost";
     $username = "root";
-    $password = "root";
+    $password = "";
     $dbname = "VoedselbankMaaskantje";
 
     try {

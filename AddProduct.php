@@ -21,7 +21,7 @@ session_start();
     <?php require_once "Inclusions/header.inc.php" ?>
   </header>
   <div class="page-content">
-    <form class="form-container">
+    <form class="form-container" action="Responses/addProductResponse.php" method="POST">
       <h2 class="profile__password-header">Product toevoegen</h2>
       <div class="form">
         <label class="form__label" for="barcode">Barcode*</label>
