@@ -18,7 +18,8 @@ session_start();
   </header>
   <div class="page-content">
     <div class="profile-container">
-      <h1 class="profile__name">Walter White</h1>
+      <?php require_once "Inclusions/user.inc.php"?>
+      <!-- <h1 class="profile__name">Walter White</h1>
       <h3 class="profile__role">Administrator</h3>
 
       <div class="profile__info-container">
@@ -26,7 +27,7 @@ session_start();
         <h4>E-mail</h4>
         <p>0612345678</p>
         <p>voorbeeld@gmail.com</p>
-      </div>
+      </div> -->
     </div>
 
     <form class="form-container profile__password-container">

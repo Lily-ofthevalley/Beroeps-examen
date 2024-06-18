@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     require_once "../Inclusions/dbh.inc.php"; // Connect to the database
 
-    $loginQuery = "SELECT Voornaam, Achternaam, Rol, Wachtwoord FROM medewerker WHERE Voornaam = :Voornaam AND Achternaam = :Achternaam";
+    $loginQuery = "SELECT idMedewerker, Voornaam, Achternaam, Rol, Wachtwoord FROM medewerker WHERE Voornaam = :Voornaam AND Achternaam = :Achternaam";
     $loginStmt = $pdo->prepare($loginQuery);
     $loginStmt->execute([':Voornaam' => $voornaam, ':Achternaam' => $achternaam]);
 
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         var_dump($row);
         // Verify the entered password against the stored hashed password
         if (password_verify($pwd, $row["Wachtwoord"])) {
-            $_SESSION["user"] = array("username" => $row["Voornaam"] . " " . $row["Achternaam"], "rol" => $row["Rol"]);
+            $_SESSION["user"] = array("username" => $row["Voornaam"] . " " . $row["Achternaam"], "rol" => $row["Rol"], "id" => $row["idMedewerker"]);
             header("Location: ../Vooraad.php");
             exit();
         } else {
