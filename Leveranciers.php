@@ -33,18 +33,7 @@ session_start();
         <p class="item-list__final-column-width"></p>
       </div>
       <div class="item-list__items">
-        <div class="item-list__item-row item-list__row--suppliers">
-          <p>30 jan 2024</p>
-          <p>De Leverancier</p>
-          <p>Voorbeeldstraat 3, Almere</p>
-          <p>Jacob de Boer</p>
-          <p>j.deboer@leverancier.nl</p>
-          <p>0612345678</p>
-          <div class="item-list__edit-buttons-cell">
-            <button class="item-list__edit-button">Bewerken</button>
-            <button class="item-list__edit-button">Verwijderen</button>
-          </div>
-        </div>
+        <?php require_once "Inclusions/leveranciers.inc.php" ?>
       </div>
     </div>
     <div class="add-link-container">
