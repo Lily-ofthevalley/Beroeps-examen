@@ -25,10 +25,10 @@ session_start();
       <h2 class="profile__password-header">Product toevoegen</h2>
       <div class="form">
         <label class="form__label" for="barcode">Barcode*</label>
-        <input class="form__input" type="text" id="barcode" name="barcode" required>
+        <input class="form__input" type="text" id="barcode" name="barcode" maxlength="45" required>
 
         <label class="form__label" for="name">Naam product*</label>
-        <input class="form__input" type="text" id="name" name="name" required>
+        <input class="form__input" type="text" id="name" name="name" maxlength="45" required>
 
         <label class="form__label" for="category">Categorie*</label>
         <select class="form__input" id="category" name="category" required>
@@ -43,6 +43,9 @@ session_start();
           <option value="8">Snoep, koek, chips en chocolade</option>
           <option value="9">Baby, verzorging en hygiëne</option>
         </select>
+
+        <label class="form__label" for="quantity">Aantal*</label>
+        <input class="form__input" type="number" id="quantity" name="quantity" min="0" maxlength="10" required>
       </div>
       <button class="form__submit" type="submit">Voeg toe</button>
     </form>

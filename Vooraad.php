@@ -27,7 +27,7 @@ session_start();
         <p class="item-list__final-column-width"></p>
       </div>
       <div class="item-list__items">
-        <?php require_once "Inclusions/vooraad.inc.php"?>
+        <?php require_once "Inclusions/vooraad.inc.php" ?>
         <!-- <div class="item-list__item-row item-list__row--products">
           <p>123456789012345</p>
           <p>Tomaat</p>
@@ -44,6 +44,7 @@ session_start();
       <a class="add-link-button" href="./AddProduct.php">Voeg product toe</a>
     </div>
   </div>
+
   <script>
     const buttons = document.querySelectorAll('.item-list__edit-button--unavailable');
     buttons.forEach(function(button) {
@@ -52,6 +53,7 @@ session_start();
       })
     })
   </script>
+  <script src='Javascript/edit.js'></script>
 </body>
 
 </html>

@@ -19,20 +19,20 @@ try {
 }
 
 if ($resultProduct->rowCount() > 0) { //goes through the data and place it in the right place
-    while ($row = $resultProduct->fetch(PDO::FETCH_ASSOC))
-    {
+    while ($row = $resultProduct->fetch(PDO::FETCH_ASSOC)) {
 
-    echo "<div class='item-list__item-row item-list__row--products'>";
-    echo     "<p>".$row["Barcode"]."</p>";
-    echo     "<p>".$row["Naam"]."</p>";
-    $stmtCategorie->execute([':idCategorie' => $row['idCategorie']]); // Fetch category name based on product's category ID
-    $categorieRow = $stmtCategorie->fetch(PDO::FETCH_ASSOC);
-    echo     "<p>".$categorieRow["Naam"]."</p>";
-    echo     "<p>".$row["Aantal"]."</p>";
-    echo     "<div class='item-list__edit-buttons-cell'>";
-    echo         "<button class='item-list__edit-button'>Bewerken</button>";
-    echo         "<button class='item-list__edit-button'>Verwijderen</button>";
-    echo     "</div>";
-    echo "</div>";
+        echo "<div class='item-list__item-row item-list__row--products'>";
+        echo     "<p class='field product-field--barcode'>" . $row["Barcode"] . "</p>";
+        echo     "<p class='field product-field--name'>" . $row["Naam"] . "</p>";
+        $stmtCategorie->execute([':idCategorie' => $row['idCategorie']]); // Fetch category name based on product's category ID
+        $categorieRow = $stmtCategorie->fetch(PDO::FETCH_ASSOC);
+        echo     "<p class='field product-field--category'>" . $categorieRow["Naam"] . "</p>";
+        echo     "<p class='field product-field--quantity'>" . $row["Aantal"] . "</p>";
+        echo     "<div class='item-list__edit-buttons-cell'>";
+        echo         "<button class='item-list__edit-button item-list__edit-button--edit'>Bewerken</button>";
+        echo         "<button class='item-list__edit-button item-list__edit-button--save hidden'>Opslaan</button>";
+        echo         "<button class='item-list__edit-button item-list__edit-button--delete'>Verwijderen</button>";
+        echo     "</div>";
+        echo "</div>";
     }
 }

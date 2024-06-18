@@ -40,6 +40,8 @@ session_start();
       <a class="add-link-button" href="./AddLeverancier.php">Voeg leverancier toe</a>
     </div>
   </div>
+
+  <script src='Javascript/edit.js'></script>
 </body>
 
 </html>

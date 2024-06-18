@@ -21,6 +21,10 @@ body {
   padding: 0;
 }
 
+.hidden {
+  display: none;
+}
+
 /* /////HEADER///// */
 header {
   background-color: var(--green);
@@ -102,7 +106,7 @@ header a:hover {
 }
 
 .item-list__row--products {
-  grid-template-columns: repeat(2, 150px) 250px 100px minmax(200px, 1fr);
+  grid-template-columns: 150px repeat(2, 250px) 100px minmax(200px, 1fr);
 }
 
 .item-list__row--suppliers {
@@ -267,7 +271,7 @@ header a:hover {
 }
 
 .form__input {
-  min-width: 200px;
+  margin: 5px 5%;
   width: 90%;
   font-size: 1.2rem;
   background-color: var(--light-green-2);
@@ -275,13 +279,13 @@ header a:hover {
   border-radius: 4px;
 }
 
+.item-list__item-row .form__input {
+  text-align: center;
+}
+
 .form__input--small {
   min-width: 100px;
   width: 50%;
-}
-
-.form__input:not(:last-child) {
-  margin-bottom: 10px;
 }
 
 .form__checkbox-container {

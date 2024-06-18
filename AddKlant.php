@@ -25,16 +25,16 @@ session_start();
       <h2 class="profile__password-header">Klant toevoegen</h2>
       <div class="form">
         <label class="form__label" for="name">Naam*</label>
-        <input class="form__input" type="text" id="name" name="name" required>
+        <input class="form__input" type="text" id="name" name="name" maxlength="45" required>
 
         <label class="form__label" for="address">Adres*</label>
-        <input class="form__input" type="text" id="address" name="address" required>
+        <input class="form__input" type="text" id="address" name="address" maxlength="45" required>
 
         <label class="form__label" for="phone">Telefoon*</label>
-        <input class="form__input" type="text" id="phone" name="phone" required>
+        <input class="form__input" type="text" id="phone" name="phone" maxlength="10" required>
 
         <label class="form__label" for="email">E-mail*</label>
-        <input class="form__input" type="email" id="email" name="email" required>
+        <input class="form__input" type="email" id="email" name="email" maxlength="45" required>
 
         <fieldset class="form__fieldset form__fieldset--center">
           <legend class="form__label">Gezinsamenstelling</legend>
@@ -88,7 +88,7 @@ session_start();
           <div class="form__checkbox-container">
             <input type="checkbox" id="customAllergyCheckbox" name="allergies" value="custom">
             <label for="customAllergyCheckbox">Anders:</label>
-            <input class="form__input form__input--small" type="text" id="customAllergyInput" name="customAllergy">
+            <input class="form__input form__input--small" type="text" id="customAllergyInput" name="customAllergy" maxlength="45">
           </div>
         </fieldset>
       </div>

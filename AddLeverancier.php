@@ -28,19 +28,19 @@ session_start();
         <input class="form__input" type="date" id="next" name="next">
 
         <label class="form__label" for="company">Bedrijf*</label>
-        <input class="form__input" type="text" id="company" name="company" required>
+        <input class="form__input" type="text" id="company" name="company" maxlength="45" required>
 
         <label class="form__label" for="address">Adres*</label>
-        <input class="form__input" type="text" id="address" name="address" required>
+        <input class="form__input" type="text" id="address" name="address" maxlength="45" required>
 
         <label class="form__label" for="contact">Contactpersoon*</label>
-        <input class="form__input" type="text" id="contact" name="contact" required>
+        <input class="form__input" type="text" id="contact" name="contact" maxlength="45" required>
 
         <label class="form__label" for="email">E-mail*</label>
-        <input class="form__input" type="email" id="email" name="email" required>
+        <input class="form__input" type="email" id="email" name="email" maxlength="45" required>
 
         <label class="form__label" for="phone">Telefoon*</label>
-        <input class="form__input" type="text" id="phone" name="phone" required>
+        <input class="form__input" type="text" id="phone" name="phone" maxlength="10" required>
       </div>
       <button class="form__submit" type="submit">Voeg toe</button>
     </form>
