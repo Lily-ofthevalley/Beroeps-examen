@@ -87,7 +87,7 @@ header a:hover {
 
 .item-list__items {
   display: grid;
-  grid-auto-rows: 40px;
+  grid-auto-rows: minmax(40px, min-content);
 
   overflow-y: scroll;
   overflow-x: hidden;

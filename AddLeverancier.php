@@ -40,7 +40,7 @@ session_start();
         <input class="form__input" type="email" id="email" name="email" maxlength="45" required>
 
         <label class="form__label" for="phone">Telefoon*</label>
-        <input class="form__input" type="text" id="phone" name="phone" maxlength="10" required>
+        <input class="form__input" type="text" id="phone" name="phone" maxlength="15" required>
       </div>
       <button class="form__submit" type="submit">Voeg toe</button>
     </form>

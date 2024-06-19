@@ -31,7 +31,7 @@ session_start();
         <input class="form__input" type="text" id="address" name="address" maxlength="45" required>
 
         <label class="form__label" for="phone">Telefoon*</label>
-        <input class="form__input" type="text" id="phone" name="phone" maxlength="10" required>
+        <input class="form__input" type="text" id="phone" name="phone" maxlength="15" required>
 
         <label class="form__label" for="email">E-mail*</label>
         <input class="form__input" type="email" id="email" name="email" maxlength="45" required>

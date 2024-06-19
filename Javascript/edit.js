@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
         input.type = "text";
         input.id = "phone";
         input.name = "phone";
-        input.maxLength = 10;
+        input.maxLength = 15;
         input.required = true;
         input.value = field.textContent;
       }
