@@ -31,16 +31,7 @@ session_start();
         <p class="item-list__final-column-width"></p>
       </div>
       <div class="item-list__items">
-        <div class="item-list__item-row item-list__row--users">
-          <p>Roy Stam</p>
-          <p>Administrator</p>
-          <p>0612345678</p>
-          <p>voorbeeld@gmail.com</p>
-          <div class="item-list__edit-buttons-cell">
-            <button class="item-list__edit-button">Bewerken</button>
-            <button class="item-list__edit-button">Verwijderen</button>
-          </div>
-        </div>
+      <?php require_once "Inclusions/gebruiker.inc.php" ?>
       </div>
     </div>
     <div class="add-link-container">
