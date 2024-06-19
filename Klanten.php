@@ -34,19 +34,7 @@ session_start();
         <p class="item-list__final-column-width"></p>
       </div>
       <div class="item-list__items">
-        <div class="item-list__item-row item-list__row--customers">
-          <p>De Wit</p>
-          <p>Voorbeeldstraat 7, Lelystad</p>
-          <p>0612345678</p>
-          <p>voorbeeld@gmail.com</p>
-          <p>2 volwassenen, 2 kinderen</p>
-          <p>Vegetarisch</p>
-          <p>Hazelnoten</p>
-          <div class="item-list__edit-buttons-cell">
-            <button class="item-list__edit-button">Bewerken</button>
-            <button class="item-list__edit-button">Verwijderen</button>
-          </div>
-        </div>
+        <?php require_once "Inclusions/klant.inc.php"?>
       </div>
     </div>
     <div class="add-link-container">

@@ -42,8 +42,9 @@ CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Klant` (
   `Postcode` VARCHAR(45) NOT NULL,
   `AantalVolwassenen` INT NOT NULL,
   `AantalKinderen` INT NOT NULL,
-  `AantalBaby's` INT NOT NULL,
-  `Comentaar` TEXT NULL,
+  `AantalBabys` INT NOT NULL,
+  `Wensen` VARCHAR(45) NULL,
+  `Allergiën` VARCHAR(45) NULL,
   PRIMARY KEY (`idKlant`))
 ENGINE = InnoDB;
 

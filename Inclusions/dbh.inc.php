@@ -120,12 +120,12 @@ function dbMedewerkerUpdateRol($idMedewerker, $rol)
 /**
  * Insert a new Klant into the database.
  */
-function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aantalVolwassenen, $aantalKinderen, $aantalBabys, $commentaar)
+function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aantalVolwassenen, $aantalKinderen, $aantalBabys, $wensen, $allergiën)
 {
     global $pdo;
 
     // Commit to database
-    $stmt = $pdo->prepare("INSERT INTO Klant(GezinsNaam, TelefoonNummer, Email, Adres, Postcode, AantalVolwassenen, AantalKinderen, AantalBabys, Comentaar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO Klant(GezinsNaam, TelefoonNummer, Email, Adres, Postcode, AantalVolwassenen, AantalKinderen, AantalBabys, Wensen, Allergiën) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $gezinsnaam);
     $stmt->bindParam(2, $telefoonnummer);
     $stmt->bindParam(3, $email);
@@ -134,7 +134,8 @@ function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aa
     $stmt->bindParam(6, $aantalVolwassenen);
     $stmt->bindParam(7, $aantalKinderen);
     $stmt->bindParam(8, $aantalBabys);
-    $stmt->bindParam(9, $commentaar);
+    $stmt->bindParam(9, $wensen);
+    $stmt->bindParam(10, $allergiën);
     $stmt->execute();
 }
 

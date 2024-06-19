@@ -21,7 +21,7 @@ session_start();
     <?php require_once "Inclusions/header.inc.php" ?>
   </header>
   <div class="page-content">
-    <form class="form-container">
+    <form class="form-container" action="Responses/addKlantResponse.php" method="POST">
       <h2 class="profile__password-header">Klant toevoegen</h2>
       <div class="form">
         <label class="form__label" for="name">Naam*</label>
@@ -50,7 +50,7 @@ session_start();
         </fieldset>
 
         <label class="form__label" for="wishes">Wensen*</label>
-        <select class="form__input" id="wishes" name="wishes" required>
+        <select class="form__input" id="wishes" name="wishes">
           <option value="" selected>-</option>
           <option value="noPork">Geen varkensvlees</option>
           <option value="vegetarian">Vegetarisch</option>
@@ -88,13 +88,20 @@ session_start();
           <div class="form__checkbox-container">
             <input type="checkbox" id="customAllergyCheckbox" name="allergies" value="custom">
             <label for="customAllergyCheckbox">Anders:</label>
-            <input class="form__input form__input--small" type="text" id="customAllergyInput" name="customAllergy" maxlength="45">
+            <input class="form__input form__input--small" type="text" id="customAllergyInput" name="customAllergy" maxlength="45" oninput="updateCheckboxValue()">
           </div>
         </fieldset>
       </div>
       <button class="form__submit" type="submit">Voeg toe</button>
     </form>
   </div>
+  <script>
+    function updateCheckboxValue() {
+        const inputBox = document.getElementById('customAllergyInput');
+        const checkbox = document.getElementById('customAllergyCheckbox');
+        checkbox.value = inputBox.value;
+    }
+  </script>
 </body>
 
 </html>
