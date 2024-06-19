@@ -37,7 +37,7 @@ session_start();
           <option value="Vrijwilliger">Vrijwilliger</option>
         </select><br>
 
-        <input type="text" name="TelefoonNummer" value="" placeholder="TelefoonNummer" maxlength="10" required><br>
+        <input type="text" name="TelefoonNummer" value="" placeholder="TelefoonNummer" maxlength="15" required><br>
         <input type="text" name="Email" value="" placeholder="Email" maxlength="45" required><br>
 
         <input type="text" name="Wachtwoord" value="" placeholder="Wachtwoord" maxlength="64" required><br>
