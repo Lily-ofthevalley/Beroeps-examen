@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Klant` (
   `Postcode` VARCHAR(45) NOT NULL,
   `AantalVolwassenen` INT NOT NULL,
   `AantalKinderen` INT NOT NULL,
-  `AantalBabys` INT NOT NULL,
+  `AantalBaby's` INT NOT NULL,
   `Comentaar` TEXT NULL,
   PRIMARY KEY (`idKlant`))
 ENGINE = InnoDB;
@@ -106,24 +106,9 @@ CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Leverancier` (
   `Postcode` VARCHAR(6) NOT NULL,
   `ContactspersoonNaam` VARCHAR(45) NOT NULL,
   `Email` VARCHAR(45) NOT NULL,
-  `TelefoonNummer` INT(10) NOT NULL,
+  `TelefoonNummer` VARCHAR(15) NOT NULL,
+  `Levering` DATE NULL,
   PRIMARY KEY (`idLeverancier`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `VoedselbankMaaskantje`.`Levering`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Levering` (
-  `idLevering` INT NOT NULL AUTO_INCREMENT,
-  `LeveringsDatum` DATE NOT NULL,
-  `LeveringsTijd` TIME NOT NULL,
-  PRIMARY KEY (`idLevering`),
-  CONSTRAINT `fk_Levering_Leverancier1`
-    FOREIGN KEY (`idLevering`)
-    REFERENCES `VoedselbankMaaskantje`.`Leverancier` (`idLeverancier`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -139,35 +124,12 @@ CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`VoedselPakket_has_Product` (
   CONSTRAINT `fk_VoedselPakket_has_Product_VoedselPakket1`
     FOREIGN KEY (`VoedselPakket_idVoedselPakket`)
     REFERENCES `VoedselbankMaaskantje`.`VoedselPakket` (`idVoedselPakket`)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_VoedselPakket_has_Product_Product1`
     FOREIGN KEY (`Product_idProduct`)
     REFERENCES `VoedselbankMaaskantje`.`Product` (`idProduct`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `VoedselbankMaaskantje`.`Product_has_Levering`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Product_has_Levering` (
-  `Product_idProduct` INT NOT NULL,
-  `Levering_idLevering` INT NOT NULL,
-  `Aantal` INT NOT NULL,
-  PRIMARY KEY (`Product_idProduct`, `Levering_idLevering`),
-  INDEX `fk_Product_has_Levering_Levering1_idx` (`Levering_idLevering` ASC) VISIBLE,
-  INDEX `fk_Product_has_Levering_Product1_idx` (`Product_idProduct` ASC) VISIBLE,
-  CONSTRAINT `fk_Product_has_Levering_Product1`
-    FOREIGN KEY (`Product_idProduct`)
-    REFERENCES `VoedselbankMaaskantje`.`Product` (`idProduct`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Product_has_Levering_Levering1`
-    FOREIGN KEY (`Levering_idLevering`)
-    REFERENCES `VoedselbankMaaskantje`.`Levering` (`idLevering`)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -175,6 +137,16 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `VoedselbankMaaskantje`.`Medewerker`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `VoedselbankMaaskantje`;
+INSERT INTO `VoedselbankMaaskantje`.`Medewerker` (`idMedewerker`, `Voornaam`, `Tussenvoegsels`, `Achternaam`, `Rol`, `TelefoonNummer`, `Email`, `Wachtwoord`) VALUES (0, 'admin', NULL, 'admin', 'Administrator', 111111111111111, 'admin@admin.admin', '$2y$10$hEy2iekEHGhZoQeOTOpONOcBKgoBchSZXQQsp4G9FsfKlzYDt1p0G');
+
+COMMIT;
+
 
 -- -----------------------------------------------------
 -- Data for table `VoedselbankMaaskantje`.`Categorie`
