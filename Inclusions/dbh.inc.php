@@ -185,18 +185,19 @@ function dbGetKlantByPostcode($postcode)
 /**
  * Insert a new Leverancier into the database.
  */
-function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam, $email, $telefoonnummer)
+function dbAddLeverancier($bedrijfsNaam, $adres, $postcode, $contactPersoonNaam, $email, $telefoonnummer, $levering)
 {
     global $pdo;
 
     // Commit to database
-    $stmt = $pdo->prepare("INSERT INTO Leverancier(BedrijfsNaam, Adres, Postcode, ContactspersoonNaam, Email, TelefoonNummer) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO Leverancier(BedrijfsNaam, Adres, Postcode, ContactspersoonNaam, Email, TelefoonNummer, Levering) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $bedrijfsNaam);
     $stmt->bindParam(2, $adres);
     $stmt->bindParam(3, $postcode);
     $stmt->bindParam(4, $contactPersoonNaam);
     $stmt->bindParam(5, $email);
     $stmt->bindParam(6, $telefoonnummer);
+    $stmt->bindParam(7, $levering);
     $stmt->execute();
 }
 
