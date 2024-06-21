@@ -25,22 +25,25 @@ session_start();
       <!-- Column labels -->
       <div class="item-list__label-row item-list__row--customers">
         <p>Naam</p>
-        <p>Adres</p>
         <p>Telefoon</p>
         <p>E-mail</p>
+        <p>Adres</p>
+        <p>Postcode</p>
         <p>Gezinsamenstelling</p>
         <p>Wensen</p>
         <p>Allergiën</p>
         <p class="item-list__final-column-width"></p>
       </div>
       <div class="item-list__items">
-        <?php require_once "Inclusions/klant.inc.php"?>
+        <?php require_once "Inclusions/klant.inc.php" ?>
       </div>
     </div>
     <div class="add-link-container">
       <a class="add-link-button" href="./AddKlant.php">Voeg klant toe</a>
     </div>
   </div>
+
+  <script src='Javascript/edit.js'></script>
 </body>
 
 </html>

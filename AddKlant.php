@@ -30,6 +30,9 @@ session_start();
         <label class="form__label" for="address">Adres*</label>
         <input class="form__input" type="text" id="address" name="address" maxlength="45" required>
 
+        <label class="form__label" for="postalCode">Postcode*</label>
+        <input class="form__input" type="text" id="postalCode" name="postalCode" maxlength="6" required>
+
         <label class="form__label" for="phone">Telefoon*</label>
         <input class="form__input" type="text" id="phone" name="phone" maxlength="15" required>
 
@@ -52,36 +55,36 @@ session_start();
         <label class="form__label" for="wishes">Wensen*</label>
         <select class="form__input" id="wishes" name="wishes">
           <option value="" selected>-</option>
-          <option value="noPork">Geen varkensvlees</option>
-          <option value="vegetarian">Vegetarisch</option>
-          <option value="vegan">Veganistisch</option>
+          <option value="Geen varkensvlees">Geen varkensvlees</option>
+          <option value="Vegetarisch">Vegetarisch</option>
+          <option value="Veganistisch">Veganistisch</option>
         </select>
 
         <fieldset class="form__fieldset">
           <legend class="form__label">Allergiën</legend>
 
           <div class="form__checkbox-container">
-            <input type="checkbox" id="gluten" name="allergies" value="gluten">
+            <input type="checkbox" id="gluten" name="allergies" value="Gluten">
             <label for="gluten">Gluten</label>
           </div>
 
           <div class="form__checkbox-container">
-            <input type="checkbox" id="pindas" name="allergies" value="pindas">
+            <input type="checkbox" id="pindas" name="allergies" value="Pinda's">
             <label for="pindas">Pinda's</label>
           </div>
 
           <div class="form__checkbox-container">
-            <input type="checkbox" id="shellfish" name="allergies" value="shellfish">
+            <input type="checkbox" id="shellfish" name="allergies" value="Schaaldieren">
             <label for="shellfish">Schaaldieren</label>
           </div>
 
           <div class="form__checkbox-container">
-            <input type="checkbox" id="hazelnuts" name="allergies" value="hazelnuts">
+            <input type="checkbox" id="hazelnuts" name="allergies" value="Hazelnoten">
             <label for="hazelnuts">Hazelnoten</label>
           </div>
 
           <div class="form__checkbox-container">
-            <input type="checkbox" id="lactose" name="allergies" value="lactose">
+            <input type="checkbox" id="lactose" name="allergies" value="Lactose">
             <label for="lactose">Lactose</label>
           </div>
 
@@ -97,9 +100,9 @@ session_start();
   </div>
   <script>
     function updateCheckboxValue() {
-        const inputBox = document.getElementById('customAllergyInput');
-        const checkbox = document.getElementById('customAllergyCheckbox');
-        checkbox.value = inputBox.value;
+      const inputBox = document.getElementById('customAllergyInput');
+      const checkbox = document.getElementById('customAllergyCheckbox');
+      checkbox.value = inputBox.value;
     }
   </script>
 </body>

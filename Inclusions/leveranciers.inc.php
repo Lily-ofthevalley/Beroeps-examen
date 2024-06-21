@@ -16,6 +16,7 @@ if ($resultLeverancier->rowCount() > 0) { //goes through the data and place it i
         echo    "<p class='field supplier-field--next'>" . $row["Levering"] . "</p>"; //MOET NOG AANGEPAST WORDEN
         echo    "<p class='field supplier-field--company'>" . $row["BedrijfsNaam"] . "</p>";
         echo    "<p class='field supplier-field--address'>" . $row["Adres"] . "</p>";
+        echo    "<p class='field supplier-field--postalCode'>" . "!!!!!!" . "</p>";
         echo    "<p class='field supplier-field--contact'>" . $row["ContactspersoonNaam"] . "</p>";
         echo    "<p class='field supplier-field--email'>" . $row["Email"] . "</p>";
         echo    "<p class='field supplier-field--phone'>" . $row["Telefoonnummer"] . "</p>";

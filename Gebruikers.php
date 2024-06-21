@@ -24,20 +24,23 @@ session_start();
     <div class="item-list">
       <!-- Column labels -->
       <div class="item-list__label-row item-list__row--users">
-        <p>Naam</p>
+        <p>Voornaam</p>
+        <p>Achternaam</p>
         <p>Rol</p>
         <p>Telefoon</p>
         <p>E-mail</p>
         <p class="item-list__final-column-width"></p>
       </div>
       <div class="item-list__items">
-      <?php require_once "Inclusions/gebruiker.inc.php" ?>
+        <?php require_once "Inclusions/gebruiker.inc.php" ?>
       </div>
     </div>
     <div class="add-link-container">
       <a class="add-link-button" href="./AddGebruiker.php">Voeg gebruiker toe</a>
     </div>
   </div>
+
+  <script src='Javascript/edit.js'></script>
 </body>
 
 </html>

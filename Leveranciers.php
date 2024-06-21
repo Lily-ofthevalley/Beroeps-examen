@@ -27,6 +27,7 @@ session_start();
         <p>Volgende levering</p>
         <p>Bedrijf</p>
         <p>Adres</p>
+        <p>Postcode</p>
         <p>Contactpersoon</p>
         <p>E-mail</p>
         <p>Telefoon</p>

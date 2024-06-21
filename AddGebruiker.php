@@ -31,14 +31,14 @@ session_start();
         <input type="text" name="Achternaam" value="" placeholder="Achternaam" maxlength="90" required><br>
 
         <select name="Rol" required>
-          <option value="" disabled selected>Selecteer een optie</option>
+          <option value="" hidden disabled selected>Selecteer een optie</option>
           <option value="Administrator">Administrator</option>
-          <option value="MagezijnMedewerker">Magazijn medewerker</option>
+          <option value="Magazijn medewerker">Magazijn medewerker</option>
           <option value="Vrijwilliger">Vrijwilliger</option>
         </select><br>
 
         <input type="text" name="TelefoonNummer" value="" placeholder="TelefoonNummer" maxlength="15" required><br>
-        <input type="text" name="Email" value="" placeholder="Email" maxlength="45" required><br>
+        <input type="email" name="Email" value="" placeholder="Email" maxlength="45" required><br>
 
         <input type="text" name="Wachtwoord" value="" placeholder="Wachtwoord" maxlength="64" required><br>
         <input type="submit" name="submit" value="Voeg toe">

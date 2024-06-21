@@ -33,6 +33,9 @@ session_start();
         <label class="form__label" for="address">Adres*</label>
         <input class="form__input" type="text" id="address" name="address" maxlength="45" required>
 
+        <label class="form__label" for="postalCode">Postcode*</label>
+        <input class="form__input" type="text" id="postalCode" name="postalCode" maxlength="6" required>
+
         <label class="form__label" for="contact">Contactpersoon*</label>
         <input class="form__input" type="text" id="contact" name="contact" maxlength="45" required>
 

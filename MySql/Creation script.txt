@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Medewerker` (
   `Tussenvoegsels` VARCHAR(45) NULL,
   `Achternaam` VARCHAR(45) NOT NULL,
   `Rol` VARCHAR(45) NOT NULL,
-  `TelefoonNummer` INT(10) NULL,
+  `TelefoonNummer` VARCHAR(15) NULL,
   `Email` VARCHAR(45) NULL,
   `Wachtwoord` VARCHAR(64) NOT NULL,
   PRIMARY KEY (`idMedewerker`))
@@ -36,7 +36,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Klant` (
   `idKlant` INT NOT NULL AUTO_INCREMENT,
   `GezinsNaam` VARCHAR(45) NOT NULL,
-  `TelefoonNummer` INT(10) NOT NULL,
+  `TelefoonNummer` VARCHAR(15) NOT NULL,
   `Email` VARCHAR(45) NOT NULL,
   `Adres` VARCHAR(45) NOT NULL,
   `Postcode` VARCHAR(45) NOT NULL,
@@ -65,7 +65,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Product` (
   `idProduct` INT NOT NULL AUTO_INCREMENT,
-  `Barcode` INT NOT NULL,
+  `Barcode` VARCHAR(45) NOT NULL,
   `Naam` VARCHAR(45) NULL,
   `idCategorie` INT NOT NULL,
   `Aantal` INT NOT NULL,
