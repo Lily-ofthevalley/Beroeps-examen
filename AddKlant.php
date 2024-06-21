@@ -60,7 +60,10 @@ session_start();
           <option value="Veganistisch">Veganistisch</option>
         </select>
 
-        <fieldset class="form__fieldset">
+        <label class="form__label" for="allergies">Allergiën*</label>
+        <input class="form__input" type="text" id="allergies" name="allergies" maxlength="45">
+
+        <!-- <fieldset class="form__fieldset">
           <legend class="form__label">Allergiën</legend>
 
           <div class="form__checkbox-container">
@@ -93,7 +96,7 @@ session_start();
             <label for="customAllergyCheckbox">Anders:</label>
             <input class="form__input form__input--small" type="text" id="customAllergyInput" name="customAllergy" maxlength="45" oninput="updateCheckboxValue()">
           </div>
-        </fieldset>
+        </fieldset> -->
       </div>
       <button class="form__submit" type="submit">Voeg toe</button>
     </form>

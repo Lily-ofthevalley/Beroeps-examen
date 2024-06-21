@@ -125,7 +125,7 @@ function dbAddKlant($gezinsnaam, $telefoonnummer, $email, $adres, $postcode, $aa
     global $pdo;
 
     // Commit to database
-    $stmt = $pdo->prepare("INSERT INTO Klant(GezinsNaam, TelefoonNummer, Email, Adres, Postcode, AantalVolwassenen, AantalKinderen, AantalBabys, Wensen, Allergiën) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO Klant(GezinsNaam, TelefoonNummer, Email, Adres, Postcode, AantalVolwassenen, AantalKinderen, AantalBabys, Wensen, allergiën) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $gezinsnaam);
     $stmt->bindParam(2, $telefoonnummer);
     $stmt->bindParam(3, $email);

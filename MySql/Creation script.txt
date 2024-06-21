@@ -20,10 +20,9 @@ USE `VoedselbankMaaskantje` ;
 CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Medewerker` (
   `idMedewerker` INT NOT NULL AUTO_INCREMENT,
   `Voornaam` VARCHAR(45) NOT NULL,
-  `Tussenvoegsels` VARCHAR(45) NULL,
   `Achternaam` VARCHAR(45) NOT NULL,
   `Rol` VARCHAR(45) NOT NULL,
-  `TelefoonNummer` VARCHAR(15) NULL,
+  `TelefoonNummer` INT(10) NULL,
   `Email` VARCHAR(45) NULL,
   `Wachtwoord` VARCHAR(64) NOT NULL,
   PRIMARY KEY (`idMedewerker`))
@@ -36,7 +35,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Klant` (
   `idKlant` INT NOT NULL AUTO_INCREMENT,
   `GezinsNaam` VARCHAR(45) NOT NULL,
-  `TelefoonNummer` VARCHAR(15) NOT NULL,
+  `TelefoonNummer` INT(10) NOT NULL,
   `Email` VARCHAR(45) NOT NULL,
   `Adres` VARCHAR(45) NOT NULL,
   `Postcode` VARCHAR(45) NOT NULL,
@@ -65,7 +64,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Product` (
   `idProduct` INT NOT NULL AUTO_INCREMENT,
-  `Barcode` VARCHAR(45) NOT NULL,
+  `Barcode` INT NOT NULL,
   `Naam` VARCHAR(45) NULL,
   `idCategorie` INT NOT NULL,
   `Aantal` INT NOT NULL,
@@ -135,6 +134,16 @@ CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`VoedselPakket_has_Product` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `VoedselbankMaaskantje`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`user` (
+  `username` VARCHAR(16) NOT NULL,
+  `email` VARCHAR(255) NULL,
+  `password` VARCHAR(32) NOT NULL,
+  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP);
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -144,7 +153,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VoedselbankMaaskantje`;
-INSERT INTO `VoedselbankMaaskantje`.`Medewerker` (`idMedewerker`, `Voornaam`, `Tussenvoegsels`, `Achternaam`, `Rol`, `TelefoonNummer`, `Email`, `Wachtwoord`) VALUES (0, 'admin', NULL, 'admin', 'Administrator', 111111111111111, 'admin@admin.admin', '$2y$10$hEy2iekEHGhZoQeOTOpONOcBKgoBchSZXQQsp4G9FsfKlzYDt1p0G');
+INSERT INTO `VoedselbankMaaskantje`.`Medewerker` (`idMedewerker`, `Voornaam`, `Achternaam`, `Rol`, `TelefoonNummer`, `Email`, `Wachtwoord`) VALUES (0, 'admin', 'admin', 'Administrator', 111111111111111, 'admin@admin.admin', '$2y$10$hEy2iekEHGhZoQeOTOpONOcBKgoBchSZXQQsp4G9FsfKlzYDt1p0G');
 
 COMMIT;
 
@@ -165,4 +174,5 @@ INSERT INTO `VoedselbankMaaskantje`.`Categorie` (`idCategorie`, `Naam`, `Omschri
 INSERT INTO `VoedselbankMaaskantje`.`Categorie` (`idCategorie`, `Naam`, `Omschrijving`) VALUES (9, 'Baby, verzorging en hygiëne', NULL);
 
 COMMIT;
+
 
