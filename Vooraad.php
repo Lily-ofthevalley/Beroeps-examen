@@ -43,7 +43,13 @@ session_start();
       })
     })
   </script>
-  <script src='Javascript/edit.js'></script>
+  <?php
+    if ($_SESSION["user"]["rol"] == "Vrijwilliger"){
+      echo "<script src='Javascript/vrijwilligerVoorraadEdit.js'></script>";
+    } else {
+      echo "<script src='Javascript/edit.js'></script>";
+    }
+  ?>
 </body>
 
 </html>

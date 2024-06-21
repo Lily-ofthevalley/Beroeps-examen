@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-// if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "MagezijnMedewerker"){
-//   header('location: Vooraad.php');
-// }
+if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "MagezijnMedewerker"){
+  header('location: Vooraad.php');
+}
 ?>
 
 <!DOCTYPE html>
