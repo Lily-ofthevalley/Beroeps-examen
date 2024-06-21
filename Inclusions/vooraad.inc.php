@@ -3,7 +3,7 @@
 require_once "dbh.inc.php"; //connects to the database
 
 try {
-    $sqlProduct = "SELECT Barcode, Naam, idCategorie, Aantal FROM product"; //Selects the product data
+    $sqlProduct = "SELECT idProduct, Barcode, Naam, idCategorie, Aantal FROM product"; //Selects the product data
     $resultProduct = $pdo->query($sqlProduct);
 } catch (PDOException $e) { //checks and gives errors
     echo "Error: " . $e->getMessage();
