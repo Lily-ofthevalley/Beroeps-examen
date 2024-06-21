@@ -21,6 +21,7 @@ try {
 if ($resultProduct->rowCount() > 0) { //goes through the data and place it in the right place
     while ($row = $resultProduct->fetch(PDO::FETCH_ASSOC)) {
 
+        echo "<form action='Responses/editVooraadResponse.php' method='POST'>";
         echo "<div class='item-list__item-row item-list__row--products'>";
         echo     "<p class='field product-field--barcode'>" . $row["Barcode"] . "</p>";
         echo     "<p class='field product-field--name'>" . $row["Naam"] . "</p>";
@@ -29,10 +30,11 @@ if ($resultProduct->rowCount() > 0) { //goes through the data and place it in th
         echo     "<p class='field product-field--category'>" . $categorieRow["Naam"] . "</p>";
         echo     "<p class='field product-field--quantity'>" . $row["Aantal"] . "</p>";
         echo     "<div class='item-list__edit-buttons-cell'>";
-        echo         "<button class='item-list__edit-button item-list__edit-button--edit'>Bewerken</button>";
-        echo         "<button class='item-list__edit-button item-list__edit-button--save hidden'>Opslaan</button>";
-        echo         "<button class='item-list__edit-button item-list__edit-button--delete'>Verwijderen</button>";
+        echo         "<button class='item-list__edit-button item-list__edit-button--edit' type='button'>Bewerken</button>";
+        echo         "<button class='item-list__edit-button item-list__edit-button--save hidden' type='submit'>Opslaan</button>";
+        echo         "<button class='item-list__edit-button item-list__edit-button--delete' type='button'>Verwijderen</button>";
         echo     "</div>";
         echo "</div>";
+        echo "</form>";
     }
 }

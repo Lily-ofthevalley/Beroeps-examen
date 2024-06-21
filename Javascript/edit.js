@@ -373,54 +373,54 @@ document.addEventListener("DOMContentLoaded", () => {
         p.textContent = input.value;
       }
 
-      // Reset classes
-      p.classList.add("field");
-      if (input.classList.contains("product-field--barcode")) {
-        p.classList.add("product-field--barcode");
-      } else if (input.classList.contains("product-field--name")) {
-        p.classList.add("product-field--name");
-      } else if (input.classList.contains("product-field--quantity")) {
-        p.classList.add("product-field--quantity");
-      } else if (input.classList.contains("product-field--category")) {
-        p.classList.add("product-field--category");
-      } else if (input.classList.contains("supplier-field--next")) {
-        p.classList.add("supplier-field--next");
-      } else if (input.classList.contains("supplier-field--company")) {
-        p.classList.add("supplier-field--company");
-      } else if (input.classList.contains("supplier-field--address")) {
-        p.classList.add("supplier-field--address");
-      } else if (input.classList.contains("supplier-field--postalCode")) {
-        p.classList.add("supplier-field--postalCode");
-      } else if (input.classList.contains("supplier-field--contact")) {
-        p.classList.add("supplier-field--contact");
-      } else if (input.classList.contains("supplier-field--email")) {
-        p.classList.add("supplier-field--email");
-      } else if (input.classList.contains("supplier-field--phone")) {
-        p.classList.add("supplier-field--phone");
-      } else if (input.classList.contains("customer-field--name")) {
-        p.classList.add("customer-field--name");
-      } else if (input.classList.contains("customer-field--phone")) {
-        p.classList.add("customer-field--phone");
-      } else if (input.classList.contains("customer-field--email")) {
-        p.classList.add("customer-field--email");
-      } else if (input.classList.contains("customer-field--address")) {
-        p.classList.add("customer-field--address");
-      } else if (input.classList.contains("customer-field--postalCode")) {
-        p.classList.add("customer-field--postalCode");
-      } else if (input.classList.contains("customer-field--wishes")) {
-        p.classList.add("customer-field--wishes");
-      } else if (input.classList.contains("user-field--firstName")) {
-        p.classList.add("user-field--firstName");
-      } else if (input.classList.contains("user-field--lastName")) {
-        p.classList.add("user-field--lastName");
-      } else if (input.classList.contains("user-field--phone")) {
-        p.classList.add("user-field--phone");
-      } else if (input.classList.contains("user-field--email")) {
-        p.classList.add("user-field--email");
-      } else if (input.classList.contains("user-field--role")) {
-        p.classList.add("user-field--role");
-      }
-      input.replaceWith(p);
+      // // Reset classes
+      // p.classList.add("field");
+      // if (input.classList.contains("product-field--barcode")) {
+      //   p.classList.add("product-field--barcode");
+      // } else if (input.classList.contains("product-field--name")) {
+      //   p.classList.add("product-field--name");
+      // } else if (input.classList.contains("product-field--quantity")) {
+      //   p.classList.add("product-field--quantity");
+      // } else if (input.classList.contains("product-field--category")) {
+      //   p.classList.add("product-field--category");
+      // } else if (input.classList.contains("supplier-field--next")) {
+      //   p.classList.add("supplier-field--next");
+      // } else if (input.classList.contains("supplier-field--company")) {
+      //   p.classList.add("supplier-field--company");
+      // } else if (input.classList.contains("supplier-field--address")) {
+      //   p.classList.add("supplier-field--address");
+      // } else if (input.classList.contains("supplier-field--postalCode")) {
+      //   p.classList.add("supplier-field--postalCode");
+      // } else if (input.classList.contains("supplier-field--contact")) {
+      //   p.classList.add("supplier-field--contact");
+      // } else if (input.classList.contains("supplier-field--email")) {
+      //   p.classList.add("supplier-field--email");
+      // } else if (input.classList.contains("supplier-field--phone")) {
+      //   p.classList.add("supplier-field--phone");
+      // } else if (input.classList.contains("customer-field--name")) {
+      //   p.classList.add("customer-field--name");
+      // } else if (input.classList.contains("customer-field--phone")) {
+      //   p.classList.add("customer-field--phone");
+      // } else if (input.classList.contains("customer-field--email")) {
+      //   p.classList.add("customer-field--email");
+      // } else if (input.classList.contains("customer-field--address")) {
+      //   p.classList.add("customer-field--address");
+      // } else if (input.classList.contains("customer-field--postalCode")) {
+      //   p.classList.add("customer-field--postalCode");
+      // } else if (input.classList.contains("customer-field--wishes")) {
+      //   p.classList.add("customer-field--wishes");
+      // } else if (input.classList.contains("user-field--firstName")) {
+      //   p.classList.add("user-field--firstName");
+      // } else if (input.classList.contains("user-field--lastName")) {
+      //   p.classList.add("user-field--lastName");
+      // } else if (input.classList.contains("user-field--phone")) {
+      //   p.classList.add("user-field--phone");
+      // } else if (input.classList.contains("user-field--email")) {
+      //   p.classList.add("user-field--email");
+      // } else if (input.classList.contains("user-field--role")) {
+      //   p.classList.add("user-field--role");
+      // }
+      // input.replaceWith(p);
     });
 
     // Reset Customer - Members classes
