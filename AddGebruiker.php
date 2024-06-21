@@ -66,7 +66,7 @@ session_start();
           <option value="Vrijwilliger">Vrijwilliger</option>
         </select>
 
-        <label class="form__label" for="TelefoonNummer">Aantal*</label>
+        <label class="form__label" for="TelefoonNummer">Telefoon*</label>
         <input class="form__input" type="number" id="TelefoonNummer" name="TelefoonNummer" maxlength="15" required>
 
         <label class="form__label" for="Email">E-mail*</label>
