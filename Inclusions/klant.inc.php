@@ -3,7 +3,7 @@
 require_once "dbh.inc.php"; //connects to the database
 
 try {
-    $sqlKlant = "SELECT GezinsNaam, TelefoonNummer, Email, Adres, AantalVolwassenen, AantalKinderen, Aantalbabys, Wensen, Allergiën FROM klant"; //Selects the customers data
+    $sqlKlant = "SELECT GezinsNaam, TelefoonNummer, Email, Adres, Postcode, AantalVolwassenen, AantalKinderen, Aantalbabys, Wensen, Allergiën FROM klant"; //Selects the customers data
     $resultKlant = $pdo->query($sqlKlant);
 } catch (PDOException $e) { //checks and gives errors
     echo "Error: " . $e->getMessage();
@@ -17,7 +17,7 @@ if ($resultKlant->rowCount() > 0) { //goes through the data and place it in the 
         echo   "<p class='field customer-field--phone'>" . $row["TelefoonNummer"] . "</p>";
         echo   "<p class='field customer-field--email'>" . $row["Email"] . "</p>";
         echo   "<p class='field customer-field--address'>" . $row["Adres"] . "</p>";
-        echo   "<p class='field customer-field--postalCode'>" . "!!!!!!" . "</p>";
+        echo   "<p class='field customer-field--postalCode'>" . $row["Postcode"] . "</p>";
         echo   "<div class='field customer-field--members'>";
         echo     "<p>" . $row["AantalVolwassenen"] . "</p>";
         echo     "<p>" . " Volwassenen, " . "</p>";
