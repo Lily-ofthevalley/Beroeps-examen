@@ -3,7 +3,7 @@
 require_once "dbh.inc.php"; //connects to the database
 
 try {
-    $sqlKlant = "SELECT GezinsNaam, TelefoonNummer, Email, Adres, Postcode, AantalVolwassenen, AantalKinderen, Aantalbabys, Wensen, Allergiën FROM klant"; //Selects the customers data
+    $sqlKlant = "SELECT idKlant, GezinsNaam, TelefoonNummer, Email, Adres, Postcode, AantalVolwassenen, AantalKinderen, Aantalbabys, Wensen, Allergiën FROM klant"; //Selects the customers data
     $resultKlant = $pdo->query($sqlKlant);
 } catch (PDOException $e) { //checks and gives errors
     echo "Error: " . $e->getMessage();
