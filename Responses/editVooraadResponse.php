@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-print_r($_POST);
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
     $barcode = $_POST["barcode"]; //conferts form data to variables
     $naam = $_POST["name"];
