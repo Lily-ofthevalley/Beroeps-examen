@@ -117,7 +117,7 @@ header a:hover {
 }
 
 .item-list__row--packages {
-  grid-template-columns: 75px repeat(3, 150px) 400px minmax(400px, 1fr);
+  grid-template-columns: 75px repeat(3, 150px) 400px minmax(330px, 1fr);
 }
 
 .item-list__row--customers {
@@ -154,6 +154,10 @@ div.customer-field--members {
 div.customer-field--members p {
   display: inline;
   margin: 0;
+}
+
+.item-list__grid-container {
+  position: relative;
 }
 
 .item-list__grid {
@@ -213,6 +217,16 @@ div.customer-field--members p {
 .item-list__button--unavailable:hover {
   background-color: var(--black);
   cursor: default;
+}
+
+.item-list__button--show-more,
+.item-list__button--show-less {
+  position: absolute;
+  right: -25px;
+  bottom: 0;
+  margin: 0;
+  width: 25px;
+  font-weight: bold;
 }
 
 .add-link-container {
