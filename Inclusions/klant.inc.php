@@ -12,6 +12,7 @@ try {
 
 if ($resultKlant->rowCount() > 0) { //goes through the data and place it in the right place
     while ($row = $resultKlant->fetch(PDO::FETCH_ASSOC)) {
+        echo "<form action='Responses/editKlantResponse.php' method='POST'>";
         echo "<div class='item-list__item-row item-list__row--customers'>";
         echo   "<p class='field customer-field--name'>" . $row["GezinsNaam"] . "</p>";
         echo   "<p class='field customer-field--phone'>" . $row["TelefoonNummer"] . "</p>";
@@ -41,5 +42,6 @@ if ($resultKlant->rowCount() > 0) { //goes through the data and place it in the 
         echo     "</div>";
         echo   "</div>";
         echo "</div>";
+        echo "</form>";
     }
 }
