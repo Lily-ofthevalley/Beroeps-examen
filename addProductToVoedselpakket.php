@@ -5,6 +5,9 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
     header('location: Vooraad.php');
     exit();
 }
+
+$idPakket = $_GET['id'];
+$id = $idPakket;
 ?>
 
 <!DOCTYPE html>
@@ -22,18 +25,20 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
         <?php require_once "Inclusions/header.inc.php"; ?>
     </header>
     <div class="page-content">
-        <form class="form-container" action="Responses/addVoedselpakketResponse.php" method="POST">
+        <form class="form-container" action="Responses/addProductToVoedselpakketResponse.php?id=<?php echo $id; ?>" method="POST">
             <h2 class="profile__password-header">Voedselpakket toevoegen</h2>
             <div class="form">
-                <label class="form__label" for="customer">Klant*</label>
-                <select class="form__input" id="customer" name="customer" required>
-                    <option value="" hidden disabled selected>(Kies klant)</option>
-                    <?php require_once "Inclusions/customerList.inc.php"; ?>
+                <label class="form__label" for="options">Product:</label>
+                <select class="form__input" id="options" name="product" required>
+                    <option value="disabled" hidden disabled selected>Selecteer een product</option>
+                    <?php require_once "Inclusions/ProductList.inc.php"; ?>
                 </select>
+                <label class="form__label" for="aantal">Aantal*</label>
+                <input class="form__input" type="number" id="aantal" name="aantal" min="1" required>
+            </div>
             <button class="form__submit" type="submit">Voeg toe</button>
         </form>
     </div>
-    <script src='Javascript/package.js'></script>
 </body>
 
 </html>
