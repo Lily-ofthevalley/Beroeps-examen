@@ -32,34 +32,7 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
         <p class="item-list__final-column-width"></p>
       </div>
       <div class="item-list__items">
-        <!-- VOORBEELD -->
-        <div class="item-list__item-row item-list__row--packages">
-          <p>0</p>
-          <p>Stam</p>
-          <p>7 jun 2024</p>
-          <p>-</p>
-          <div class="item-list__grid">
-            <p>4x</p>
-            <p>Tomaat</p>
-            <p>2x</p>
-            <p>Grote tomaat</p>
-            <p>1x</p>
-            <p>Nog grotere tomaat</p>
-          </div>
-          <div class="item-list__buttons-cell">
-            <div class="item-list__buttons-cell--edit">
-              <button class="item-list__button item-list__button--edit" type="button">Bewerken</button>
-              <button class="item-list__button item-list__button--save hidden" type="submit">Opslaan</button>
-              <button class="item-list__button item-list__button--delete" type="button">Verwijderen</button>
-            </div>
-            <div class="item-list__buttons-cell--delete hidden">
-              <p>Verwijderen?</p>
-              <button class="item-list__button item-list__button--cancel" type="button">Nee</button>
-              <button class="item-list__button item-list__button--confirm" type="button">Ja</button>
-            </div>
-          </div>
-        </div>
-        <!-- EINDE VOORBEELD -->
+        <?php require_once "Inclusions/voedselpakket.inc.php" ?>
       </div>
     </div>
     <div class="add-link-container">

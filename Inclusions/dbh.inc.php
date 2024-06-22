@@ -380,16 +380,15 @@ function dbGetProductByBarcode($barcode)
 /**
  * Insert a new Voedselpakket into the database.
  */
-function dbAddVoedselPakket($idKlant, $uitgeefDatum)
+function dbAddVoedselPakket($idKlant)
 {
     global $pdo;
     $now = date('Y-m-d');
 
     // Commit to database
-    $stmt = $pdo->prepare("INSERT INTO VoedselPakket(AanmaakDatum, UitgeefDatum, idKlant) VALUES (?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO VoedselPakket(AanmaakDatum, idKlant) VALUES (?, ?)");
     $stmt->bindParam(1, $now);
-    $stmt->bindParam(2, $uitgeefDatum);
-    $stmt->bindParam(3, $idKlant);
+    $stmt->bindParam(2, $idKlant);
     $stmt->execute();
 }
 
