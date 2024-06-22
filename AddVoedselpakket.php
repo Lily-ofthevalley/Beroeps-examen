@@ -28,7 +28,7 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
                 <label class="form__label" for="customer">Klant*</label>
                 <select class="form__input" id="customer" name="customer" required>
                     <option value="" hidden disabled selected>(Kies klant)</option>
-                    <?php require_once "Responses/customerListResponse.php"; ?>
+                    <?php require_once "Inclusions/customerList.inc.php"; ?>
                 </select>
                 <div class="form__package-content-container" id="output">
                     <!-- THIS IS WHERE THE ITEMS END UP -->
@@ -38,8 +38,7 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
                 <select class="form__input" id="options" required>
                     <option value="disabled" hidden disabled selected>Selecteer een product</option>
                     <!-- Zet ID/Barcode (zolang het uniek is) van product in de value, en naam van het product als text. Lijst van producten moet uit database gehaald worden -->
-                    <option value="1">Tomaat</option>
-                    <option value="2">Snoep</option>
+                    <?php require_once "Inclusions/ProductList.inc.php"; ?>
                 </select>
                 <button type="button" class="item-list__button" onclick="addOption()" formnovalidate>Voeg toe</button>
             </div>

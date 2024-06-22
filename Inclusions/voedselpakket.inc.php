@@ -29,18 +29,8 @@ if ($resultVoedselpakket->rowCount() > 0) { //goes through the data and place it
         echo   "<p class='field'>" . $row["UitgeefDatum"] . "</p>";
         echo   "<div class='item-list__grid-container'>";
         echo     "<div class='item-list__grid item-list__grid--max-height'>"; //WORDT VERANDERT MET PRODUCTEN
-        echo       "<p>4x</p>";
-        echo       "<p>Tomaat</p>";
-        echo       "<p>2x</p>";
-        echo       "<p>Grote tomaat</p>";
-        echo       "<p>1x</p>";
-        echo       "<p>Nog grotere tomaat</p>";
-        echo       "<p>4x</p>";
-        echo       "<p>Tomaat</p>";
-        echo       "<p>2x</p>";
-        echo       "<p>Grote tomaat</p>";
-        echo       "<p>1x</p>";
-        echo       "<p>Nog grotere tomaat</p>";
+                 $tempIdVoedselPakket = $row["idVoedselPakket"]; 
+        include "Inclusions/productInVoedselpakket.inc.php"; 
         echo     "</div>";
         echo     "<button class='item-list__button item-list__button--show-more' type='button' onclick='showMore(this)'>\/</button>";
         echo     "<button class='item-list__button item-list__button--show-less hidden' type='button' onclick='showLess(this)'>/\</button>";

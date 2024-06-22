@@ -1,5 +1,5 @@
 <?php
-require_once "Inclusions/dbh.inc.php";
+require_once "dbh.inc.php";
 
 try {
     $sqlKlant = "SELECT idKlant, GezinsNaam FROM klant";
