@@ -26,12 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
         // Product - Barcode
         input = document.createElement("input");
         input.className = "form__input product-field--barcode";
-        input.type = "text";
         input.id = "barcode";
         input.name = "barcode";
-        input.maxLength = 45;
-        input.required = true;
         input.value = field.textContent;
+        input.readOnly = true;
+
+        input.style.border = 'none';
+        input.style.background = 'transparent';
+        input.style.color = 'inherit';
+        input.style.fontSize = 'inherit';
+
+        field.replaceWith(input);
       } else if (field.classList.contains("product-field--name")) {
         // Product - Name
         input = document.createElement("input");
@@ -198,16 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
         input.maxLength = 45;
         input.required = true;
         input.value = field.textContent;
-      } else if (field.classList.contains("customer-field--address")) {
-        // Customer - Address
-        input = document.createElement("input");
-        input.className = "form__input customer-field--address";
-        input.type = "text";
-        input.id = "address";
-        input.name = "address";
-        input.maxLength = 45;
-        input.required = true;
-        input.value = field.textContent;
       } else if (field.classList.contains("customer-field--members")) {
         // Customer - Members
 
@@ -272,7 +267,6 @@ document.addEventListener("DOMContentLoaded", () => {
         input.className = "form__input customer-field--wishes";
         input.id = "wishes";
         input.name = "wishes";
-        input.required = true;
 
         const options = [
           { value: "", text: "---" },

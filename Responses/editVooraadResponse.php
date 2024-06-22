@@ -33,7 +33,7 @@ if ($_SESSION["user"]["rol"] == "Vrijwilliger"){
         try{
             require_once "../Inclusions/dbh.inc.php"; //connects to database
     
-            $sqlEditVooraad = "UPDATE product SET Barcode = :barcode, Naam = :naam, idCategorie = :idCategorie, Aantal = :aantal WHERE Barcode = :barcode OR Naam = :naam";
+            $sqlEditVooraad = "UPDATE product SET Naam = :naam, idCategorie = :idCategorie, Aantal = :aantal WHERE Barcode = :barcode OR Naam = :naam";
             $editStmt = $pdo->prepare($sqlEditVooraad);
             $editStmt->execute(['barcode' => $barcode, 'naam' => $naam, 'idCategorie' => $idCategorie, 'aantal' => $aantal]);
     
