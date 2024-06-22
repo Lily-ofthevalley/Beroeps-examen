@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     $idKlant = $idKlantToDelete;
 
     try{
-        dbRemoveMedewerker($idKlant);
+        dbRemoveKlant($idKlant);
     
         header("Location: ../Klanten.php"); //sends user back
     }catch (Exception $e) { //checks and gives errors

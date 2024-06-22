@@ -7,12 +7,12 @@ if (isset($_GET['id'])) {
     $idLeverancier = $idLeverancierToDelete;
 
     try{
-        dbRemoveMedewerker($idLeverancier);
+        dbRemoveLeverancier($idLeverancier);
     
-        header("Location: ../Leverancier.php"); //sends user back
+        header("Location: ../Leveranciers.php"); //sends user back
     }catch (Exception $e) { //checks and gives errors
-        header("Location: ../Leverancier.php"); //sends user back
+        header("Location: ../Leveranciers.php"); //sends user back
         die("Query failed". $e->getMessage());
     }
-    header("Location: ../Leverancier.php"); //sends user back
+    header("Location: ../Leveranciers.php"); //sends user back
 }

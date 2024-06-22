@@ -28,7 +28,7 @@ if ($resultGebruiker->rowCount() > 0) { //goes through the data and place it in 
         echo       "<div class='item-list__buttons-cell--delete hidden'>";
         echo         "<p>Verwijderen?</p>";
         echo         "<button class='item-list__button item-list__button--cancel' type='button'>Nee</button>";
-        echo         "<button class='item-list__button item-list__button--confirm' type='button'>Ja</button>";
+        echo         '<button class="item-list__button item-list__button--confirm" type="button" onclick="location.href=\'Responses/deleteUserResponse.php?id=' . $row['idMedewerker'] . '\'">Ja</button>';
         echo       "</div>";
         echo     "</div>";
         echo   "</div>";

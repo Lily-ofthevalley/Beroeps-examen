@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
 
         dbAddMedewerker($voornaam, $achternaam, $rol, $telefoonnummer, $email, $wachtwoord); // Call the function
 
-        header("Location: ../AddGebruiker.php"); //sends user back
+        header("Location: ../Gebruikers.php"); //sends user back
         exit();
     } catch (Exception $e) { //checks and gives errors
         die("Query failed". $e->getMessage());
@@ -21,5 +21,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
 }
 
 else {
-    header("location: ../AddGebruiker.php"); //sends user back
+    header("location: ../Gebruikers.php"); //sends user back
 }

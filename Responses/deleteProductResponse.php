@@ -7,12 +7,11 @@ if (isset($_GET['id'])) {
     $idProduct = $idProductToDelete;
 
     try{
-        dbRemoveMedewerker($idProduct);
+        dbRemoveProduct($idProduct);
     
         header("Location: ../Vooraad.php"); //sends user back
     }catch (Exception $e) { //checks and gives errors
         header("Location: ../Vooraad.php"); //sends user back
         die("Query failed". $e->getMessage());
     }
-    header("Location: ../Vooraad.php"); //sends user back
 }
