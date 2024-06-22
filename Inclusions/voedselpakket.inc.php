@@ -20,8 +20,10 @@ try {
 
 if ($resultVoedselpakket->rowCount() > 0) { //goes through the data and place it in the right place
     while ($row = $resultVoedselpakket->fetch(PDO::FETCH_ASSOC)) {
+        $tempIdVoedselPakket = $row["idVoedselPakket"];
+
         echo "<div class='item-list__item-row item-list__row--packages'>";
-        echo   "<p class='field'>" . $row["idVoedselPakket"] . "</p>";
+        echo   "<p class='field'>" . $tempIdVoedselPakket . "</p>";
         $stmtKlant->execute([':idKlant' => $row['idKlant']]); // Fetch klant name
         $klantRow = $stmtKlant->fetch(PDO::FETCH_ASSOC);
         echo   "<p class='field'>" . $klantRow["GezinsNaam"] . "</p>";
@@ -38,14 +40,15 @@ if ($resultVoedselpakket->rowCount() > 0) { //goes through the data and place it
         echo   "<div class='item-list__buttons-cell'>";
         echo     "<div class='item-list__buttons-cell--edit'>";
         echo       "<button class='item-list__button item-list__button--issue' type='button'>Afgeven</button>";
-        echo       "<a href='AddVoedselpakket.php'><button class='item-list__button item-list__button--edit' type='button'>Bewerken</button></a>";
+        echo       '<button class="item-list__button item-list__button--edit" type="button" onclick="location.href=\'addProductToVoedselpakket.php?id=' . $tempIdVoedselPakket . '\'">Add Product</button>';
+        echo       "<button class='item-list__button item-list__button--edit' type='button'>Bewerken</button>";
         echo       "<button class='item-list__button item-list__button--save hidden' type='submit'>Opslaan</button>";
         echo       "<button class='item-list__button item-list__button--delete' type='button'>Verwijderen</button>";
         echo     "</div>";
         echo     "<div class='item-list__buttons-cell--delete hidden'>";
         echo     "<p>Verwijderen?</p>";
         echo       "<button class='item-list__button item-list__button--cancel' type='button'>Nee</button>";
-        echo         '<button class="item-list__button item-list__button--confirm" type="button" onclick="location.href=\'Responses/deleteVoedselpakketResponse.php?id=' . $row['idVoedselPakket'] . '\'">Ja</button>';
+        echo         '<button class="item-list__button item-list__button--confirm" type="button" onclick="location.href=\'Responses/deleteVoedselpakketResponse.php?id=' . $tempIdVoedselPakket . '\'">Ja</button>';
         echo     "</div>";
         echo   "</div>";
         echo "</div>";

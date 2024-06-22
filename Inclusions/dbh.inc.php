@@ -411,14 +411,15 @@ function dbGetVoedselPakkettenByKlantId($idKlant)
 /**
  * Add a Product to a Voedselpakket in the database.
  */
-function dbVoedselPakketAddProduct($idPakket, $idProduct)
+function dbVoedselPakketAddProduct($idPakket, $idProduct, $aantal)
 {
     global $pdo;
 
     // Commit to database
-    $stmt = $pdo->prepare("INSERT INTO VoedselPakket_has_Product(VoedselPakket_idVoedselPakket, Product_idProduct) VALUES (?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO VoedselPakket_has_Product(VoedselPakket_idVoedselPakket, Product_idProduct, Aantal) VALUES (?, ?, ?)");
     $stmt->bindParam(1, $idPakket);
     $stmt->bindParam(2, $idProduct);
+    $stmt->bindParam(3, $aantal);
     $stmt->execute();
 }
 
