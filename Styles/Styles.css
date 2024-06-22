@@ -117,7 +117,7 @@ header a:hover {
 }
 
 .item-list__row--packages {
-  grid-template-columns: 75px repeat(3, 150px) 400px minmax(225px, 1fr);
+  grid-template-columns: 75px repeat(3, 150px) 400px minmax(275px, 1fr);
 }
 
 .item-list__row--customers {
@@ -189,6 +189,7 @@ div.customer-field--members p {
 
 .item-list__button {
   margin: 2px 3px;
+  width: max-content;
   height: 25px;
   background-color: var(--light-green);
   border: 1px solid var(--black);
@@ -310,10 +311,49 @@ div.customer-field--members p {
 
 .form__input--mini {
   display: inline;
-  width: 50px;
+  width: 60px;
 }
 
 .form__checkbox-container {
+  width: 100%;
+}
+
+.form__package-content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+
+  margin: 10px 0;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.form__package-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 30px;
+  gap: 1px;
+
+  width: 100%;
+}
+
+.form__package-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  background-color: var(--light-green-2);
+}
+
+.form__package-content-container p {
+  margin: 5px 0;
+}
+
+.form__package-add-container {
+  display: flex;
+
   width: 100%;
 }
 

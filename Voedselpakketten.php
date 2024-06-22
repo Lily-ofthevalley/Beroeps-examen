@@ -40,7 +40,7 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
     </div>
   </div>
 
-  <script src='Javascript/edit.js'></script>
+  <script src='Javascript/delete.js'></script>
 </body>
 
 </html>

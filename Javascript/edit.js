@@ -6,10 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
       handleEdit(event.target);
     } else if (event.target.classList.contains("item-list__button--save")) {
       handleSave(event.target);
-    } else if (event.target.classList.contains("item-list__button--delete")) {
-      handleDelete(event.target);
-    } else if (event.target.classList.contains("item-list__button--cancel")) {
-      handleCancel(event.target);
     }
   });
 
@@ -31,10 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
         input.value = field.textContent;
         input.readOnly = true;
 
-        input.style.border = 'none';
-        input.style.background = 'transparent';
-        input.style.color = 'inherit';
-        input.style.fontSize = 'inherit';
+        input.style.border = "none";
+        input.style.background = "transparent";
+        input.style.color = "inherit";
+        input.style.fontSize = "inherit";
 
         field.replaceWith(input);
       } else if (field.classList.contains("product-field--name")) {
@@ -439,21 +435,3 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteButton.classList.remove("hidden");
   }
 });
-
-function handleDelete(deleteButton) {
-  const item = deleteButton.closest(".item-list__item-row");
-  const editButtons = item.querySelector(".item-list__buttons-cell--edit");
-  const deleteButtons = item.querySelector(".item-list__buttons-cell--delete");
-
-  editButtons.classList.add("hidden");
-  deleteButtons.classList.remove("hidden");
-}
-
-function handleCancel(cancelButton) {
-  const item = cancelButton.closest(".item-list__item-row");
-  const editButtons = item.querySelector(".item-list__buttons-cell--edit");
-  const deleteButtons = item.querySelector(".item-list__buttons-cell--delete");
-
-  editButtons.classList.remove("hidden");
-  deleteButtons.classList.add("hidden");
-}

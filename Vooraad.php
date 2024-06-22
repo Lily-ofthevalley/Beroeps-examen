@@ -44,12 +44,13 @@ session_start();
     })
   </script>
   <?php
-    if ($_SESSION["user"]["rol"] == "Vrijwilliger"){
-      echo "<script src='Javascript/vrijwilligerVoorraadEdit.js'></script>";
-    } else {
-      echo "<script src='Javascript/edit.js'></script>";
-    }
+  if ($_SESSION["user"]["rol"] == "Vrijwilliger") {
+    echo "<script src='Javascript/vrijwilligerVoorraadEdit.js'></script>";
+  } else {
+    echo "<script src='Javascript/edit.js'></script>";
+  }
   ?>
+  <script src='Javascript/delete.js'></script>
 </body>
 
 </html>
