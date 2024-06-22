@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Medewerker` (
   `Voornaam` VARCHAR(45) NOT NULL,
   `Achternaam` VARCHAR(45) NOT NULL,
   `Rol` VARCHAR(45) NOT NULL,
-  `TelefoonNummer` INT(10) NULL,
+  `TelefoonNummer` VARCHAR(15) NULL,
   `Email` VARCHAR(45) NULL,
   `Wachtwoord` VARCHAR(64) NOT NULL,
   PRIMARY KEY (`idMedewerker`))
@@ -35,7 +35,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Klant` (
   `idKlant` INT NOT NULL AUTO_INCREMENT,
   `GezinsNaam` VARCHAR(45) NOT NULL,
-  `TelefoonNummer` INT(10) NOT NULL,
+  `TelefoonNummer` VARCHAR(15) NOT NULL,
   `Email` VARCHAR(45) NOT NULL,
   `Adres` VARCHAR(45) NOT NULL,
   `Postcode` VARCHAR(45) NOT NULL,
@@ -118,6 +118,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`VoedselPakket_has_Product` (
   `VoedselPakket_idVoedselPakket` INT NOT NULL,
   `Product_idProduct` INT NOT NULL,
+  `Aantal` INT NOT NULL,
   PRIMARY KEY (`VoedselPakket_idVoedselPakket`, `Product_idProduct`),
   INDEX `fk_VoedselPakket_has_Product_Product1_idx` (`Product_idProduct` ASC) VISIBLE,
   INDEX `fk_VoedselPakket_has_Product_VoedselPakket1_idx` (`VoedselPakket_idVoedselPakket` ASC) VISIBLE,
@@ -153,7 +154,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VoedselbankMaaskantje`;
-INSERT INTO `VoedselbankMaaskantje`.`Medewerker` (`idMedewerker`, `Voornaam`, `Achternaam`, `Rol`, `TelefoonNummer`, `Email`, `Wachtwoord`) VALUES (0, 'admin', 'admin', 'Administrator', 111111111111111, 'admin@admin.admin', '$2y$10$hEy2iekEHGhZoQeOTOpONOcBKgoBchSZXQQsp4G9FsfKlzYDt1p0G');
+INSERT INTO `VoedselbankMaaskantje`.`Medewerker` (`idMedewerker`, `Voornaam`, `Achternaam`, `Rol`, `TelefoonNummer`, `Email`, `Wachtwoord`) VALUES (0, 'admin', 'admin', 'Administrator', '111111111111111', 'admin@admin.admin', '$2y$10$hEy2iekEHGhZoQeOTOpONOcBKgoBchSZXQQsp4G9FsfKlzYDt1p0G');
 
 COMMIT;
 
@@ -174,5 +175,4 @@ INSERT INTO `VoedselbankMaaskantje`.`Categorie` (`idCategorie`, `Naam`, `Omschri
 INSERT INTO `VoedselbankMaaskantje`.`Categorie` (`idCategorie`, `Naam`, `Omschrijving`) VALUES (9, 'Baby, verzorging en hygiëne', NULL);
 
 COMMIT;
-
 
