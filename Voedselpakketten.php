@@ -41,6 +41,7 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
   </div>
 
   <script src='Javascript/delete.js'></script>
+  <script src='Javascript/showMore.js'></script>
 </body>
 
 </html>

@@ -27,7 +27,7 @@ if ($resultVoedselpakket->rowCount() > 0) { //goes through the data and place it
         echo   "<p class='field'>" . $klantRow["GezinsNaam"] . "</p>";
         echo   "<p class='field'>" . $row["AanmaakDatum"] . "</p>";
         echo   "<p class='field'>" . $row["UitgeefDatum"] . "</p>";
-        echo   "<div class='item-list__grid'>"; //WORDT VERANDERT MET PRODUCTEN
+        echo   "<div class='item-list__grid item-list__grid--max-height'>"; //WORDT VERANDERT MET PRODUCTEN
         echo     "<p>4x</p>";
         echo     "<p>Tomaat</p>";
         echo     "<p>2x</p>";
@@ -37,7 +37,9 @@ if ($resultVoedselpakket->rowCount() > 0) { //goes through the data and place it
         echo   "</div>";
         echo   "<div class='item-list__buttons-cell'>";
         echo     "<div class='item-list__buttons-cell--edit'>";
-        echo       "<button class='item-list__button' type='button'>Afgeven</button>";
+        echo       "<button class='item-list__button item-list__button--show-more' type='button' onclick='showMore(this)'>Laat meer zien</button>";
+        echo       "<button class='item-list__button item-list__button--show-less hidden' type='button' onclick='showLess(this)'>Laat minder zien</button>";
+        echo       "<button class='item-list__button item-list__button--issue' type='button'>Afgeven</button>";
         echo       "<a href='AddVoedselpakket.php'><button class='item-list__button item-list__button--edit' type='button'>Bewerken</button></a>";
         echo       "<button class='item-list__button item-list__button--save hidden' type='submit'>Opslaan</button>";
         echo       "<button class='item-list__button item-list__button--delete' type='button'>Verwijderen</button>";

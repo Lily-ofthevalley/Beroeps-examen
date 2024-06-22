@@ -117,7 +117,7 @@ header a:hover {
 }
 
 .item-list__row--packages {
-  grid-template-columns: 75px repeat(3, 150px) 400px minmax(275px, 1fr);
+  grid-template-columns: 75px repeat(3, 150px) 400px minmax(400px, 1fr);
 }
 
 .item-list__row--customers {
@@ -160,6 +160,11 @@ div.customer-field--members p {
   display: grid;
   grid-template-columns: 50px 1fr;
   gap: 1px;
+}
+
+.item-list__grid--max-height {
+  max-height: 75px;
+  overflow-y: scroll;
 }
 
 .item-list__grid p {
