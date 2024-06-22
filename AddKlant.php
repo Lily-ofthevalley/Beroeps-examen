@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "Vrijwilliger"){
+if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "Vrijwilliger") {
   header('location: Vooraad.php');
 }
 ?>
@@ -60,7 +60,7 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
           <option value="Veganistisch">Veganistisch</option>
         </select>
 
-        <label class="form__label" for="allergies">Allergiën*</label>
+        <label class="form__label" for="allergies">Allergiën</label>
         <input class="form__input" type="text" id="allergies" name="allergies" maxlength="45">
 
         <!-- <fieldset class="form__fieldset">

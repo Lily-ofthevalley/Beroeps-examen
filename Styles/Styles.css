@@ -106,28 +106,28 @@ header a:hover {
 }
 
 .item-list__row--products {
-  grid-template-columns: 150px repeat(2, 250px) 100px minmax(200px, 1fr);
+  grid-template-columns: 150px repeat(2, 250px) 100px minmax(225px, 1fr);
 }
 
 .item-list__row--suppliers {
   grid-template-columns: 250px 200px 250px 125px repeat(2, 250px) 150px minmax(
-      200px,
+      225px,
       1fr
     );
 }
 
 .item-list__row--packages {
-  grid-template-columns: 75px repeat(3, 150px) 400px minmax(200px, 1fr);
+  grid-template-columns: 75px repeat(3, 150px) 400px minmax(225px, 1fr);
 }
 
 .item-list__row--customers {
   grid-template-columns:
     repeat(2, 250px) 200px 250px 125px 250px repeat(2, 150px)
-    minmax(200px, 1fr);
+    minmax(225px, 1fr);
 }
 
 .item-list__row--users {
-  grid-template-columns: repeat(3, 150px) 200px 250px minmax(200px, 1fr);
+  grid-template-columns: repeat(3, 150px) 200px 250px minmax(225px, 1fr);
 }
 
 .item-list p.field,
@@ -174,33 +174,37 @@ div.customer-field--members p {
   background-color: var(--light-green);
 }
 
-.item-list__edit-buttons-cell {
+.item-list__buttons-cell {
   justify-self: flex-end;
   align-self: center;
 
   margin-right: 15px;
   padding-inline: 10px;
+  width: max-content;
 }
 
-.item-list__edit-button {
-  margin-top: 2px;
-  margin-bottom: 2px;
+.item-list__buttons-cell p {
+  display: inline;
+}
+
+.item-list__button {
+  margin: 2px 3px;
   height: 25px;
   background-color: var(--light-green);
   border: 1px solid var(--black);
   border-radius: 4px;
 }
 
-.item-list__edit-button:hover {
+.item-list__button:hover {
   background-color: var(--light-green-2);
   cursor: pointer;
 }
 
-.item-list__edit-button--unavailable {
+.item-list__button--unavailable {
   background-color: var(--black);
 }
 
-.item-list__edit-button--unavailable:hover {
+.item-list__button--unavailable:hover {
   background-color: var(--black);
   cursor: default;
 }

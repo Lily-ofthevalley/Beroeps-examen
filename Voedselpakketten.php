@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "Vrijwilliger"){
+if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "Vrijwilliger") {
   header('location: Vooraad.php');
 }
 ?>
@@ -32,6 +32,7 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
         <p class="item-list__final-column-width"></p>
       </div>
       <div class="item-list__items">
+        <!-- VOORBEELD -->
         <div class="item-list__item-row item-list__row--packages">
           <p>0</p>
           <p>Stam</p>
@@ -45,18 +46,28 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
             <p>1x</p>
             <p>Nog grotere tomaat</p>
           </div>
-          <div class="item-list__edit-buttons-cell">
-            <button class="item-list__edit-button">Bewerken</button>
-            <button class="item-list__edit-button">Verwijderen</button>
-            <button class="item-list__edit-button">Afgeven</button>
+          <div class="item-list__buttons-cell">
+            <div class="item-list__buttons-cell--edit">
+              <button class="item-list__button item-list__button--edit" type="button">Bewerken</button>
+              <button class="item-list__button item-list__button--save hidden" type="submit">Opslaan</button>
+              <button class="item-list__button item-list__button--delete" type="button">Verwijderen</button>
+            </div>
+            <div class="item-list__buttons-cell--delete hidden">
+              <p>Verwijderen?</p>
+              <button class="item-list__button item-list__button--cancel" type="button">Nee</button>
+              <button class="item-list__button item-list__button--confirm" type="button">Ja</button>
+            </div>
           </div>
         </div>
+        <!-- EINDE VOORBEELD -->
       </div>
     </div>
     <div class="add-link-container">
       <a class="add-link-button" href="./AddVoedselpakket.php">Voeg voedselpakket toe</a>
     </div>
   </div>
+
+  <script src='Javascript/edit.js'></script>
 </body>
 
 </html>

@@ -2,20 +2,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const itemList = document.querySelector(".item-list__items");
 
   itemList.addEventListener("click", (event) => {
-    if (event.target.classList.contains("item-list__edit-button--edit")) {
+    if (event.target.classList.contains("item-list__button--edit")) {
       handleEdit(event.target);
-    } else if (
-      event.target.classList.contains("item-list__edit-button--save")
-    ) {
+    } else if (event.target.classList.contains("item-list__button--save")) {
       handleSave(event.target);
+    } else if (event.target.classList.contains("item-list__button--delete")) {
+      handleDelete(event.target);
+    } else if (event.target.classList.contains("item-list__button--cancel")) {
+      handleCancel(event.target);
     }
   });
 
   function handleEdit(editButton) {
     const item = editButton.closest(".item-list__item-row");
     const fields = item.querySelectorAll(".field");
-    const saveButton = item.querySelector(".item-list__edit-button--save");
-    const deleteButton = item.querySelector(".item-list__edit-button--delete");
+    const saveButton = item.querySelector(".item-list__button--save");
+    const deleteButton = item.querySelector(".item-list__button--delete");
 
     fields.forEach((field) => {
       let input;
@@ -273,6 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
         input.required = true;
 
         const options = [
+          { value: "", text: "---" },
           { value: "Geen varkensvlees", text: "Geen varkensvlees" },
           { value: "Vegetarisch", text: "Vegetarisch" },
           { value: "Veganistisch", text: "Veganistisch" },
@@ -287,10 +290,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       } else if (field.classList.contains("customer-field--allergies")) {
         // Customer - Allergies
-        // !!! NEEDS TO BE ADDED AFTER FIXES !!!
-        console.warn(
-          "Let op! Javascript voor Allergies moet nog gemaakt worden na bug fixes."
-        );
+        input = document.createElement("input");
+        input.className = "form__input customer-field--allergies";
+        input.type = "text";
+        input.id = "allergies";
+        input.name = "allergies";
+        input.maxLength = 45;
+        input.value = field.textContent;
       } else if (field.classList.contains("user-field--firstName")) {
         // User - First name
         input = document.createElement("input");
@@ -360,8 +366,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleSave(saveButton) {
     const item = saveButton.closest(".item-list__item-row");
     const inputs = item.querySelectorAll(".form__input");
-    const editButton = item.querySelector(".item-list__edit-button--edit");
-    const deleteButton = item.querySelector(".item-list__edit-button--delete");
+    const editButton = item.querySelector(".item-list__button--edit");
+    const deleteButton = item.querySelector(".item-list__button--delete");
     const customerFieldMembers = item.querySelector(".customer-field--members");
 
     inputs.forEach((input) => {
@@ -424,18 +430,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Reset Customer - Members classes
-    if (customerFieldMembers) {
-      customerFieldMembers.classList.add("field");
-      customerFieldMembers.classList.add("customer-field--members");
-      const customerFieldMembersChildren =
-        customerFieldMembers.querySelectorAll(".field");
-      customerFieldMembersChildren.forEach((child) => {
-        child.classList.remove("field");
-      });
-    }
+    // if (customerFieldMembers) {
+    //   customerFieldMembers.classList.add("field");
+    //   customerFieldMembers.classList.add("customer-field--members");
+    //   const customerFieldMembersChildren =
+    //     customerFieldMembers.querySelectorAll(".field");
+    //   customerFieldMembersChildren.forEach((child) => {
+    //     child.classList.remove("field");
+    //   });
+    // }
 
     editButton.classList.remove("hidden");
     saveButton.classList.add("hidden");
     deleteButton.classList.remove("hidden");
   }
 });
+
+function handleDelete(deleteButton) {
+  const item = deleteButton.closest(".item-list__item-row");
+  const editButtons = item.querySelector(".item-list__buttons-cell--edit");
+  const deleteButtons = item.querySelector(".item-list__buttons-cell--delete");
+
+  editButtons.classList.add("hidden");
+  deleteButtons.classList.remove("hidden");
+}
+
+function handleCancel(cancelButton) {
+  const item = cancelButton.closest(".item-list__item-row");
+  const editButtons = item.querySelector(".item-list__buttons-cell--edit");
+  const deleteButtons = item.querySelector(".item-list__buttons-cell--delete");
+
+  editButtons.classList.remove("hidden");
+  deleteButtons.classList.add("hidden");
+}
