@@ -26,9 +26,10 @@ if ($resultVoedselpakket->rowCount() > 0) { //goes through the data and place it
         echo   "<p class='field'>" . $tempIdVoedselPakket . "</p>";
         $stmtKlant->execute([':idKlant' => $row['idKlant']]); // Fetch klant name
         $klantRow = $stmtKlant->fetch(PDO::FETCH_ASSOC);
+        $uitgeefdatumt = $row["UitgeefDatum"];
         echo   "<p class='field'>" . $klantRow["GezinsNaam"] . "</p>";
         echo   "<p class='field'>" . $row["AanmaakDatum"] . "</p>";
-        echo   "<p class='field'>" . $row["UitgeefDatum"] . "</p>";
+        echo   "<p class='field'>$uitgeefdatumt</p>";
         echo   "<div class='item-list__grid-container'>";
         echo     "<div class='item-list__grid item-list__grid--max-height'>"; //WORDT VERANDERT MET PRODUCTEN
                  $tempIdVoedselPakket = $row["idVoedselPakket"]; 
@@ -39,9 +40,12 @@ if ($resultVoedselpakket->rowCount() > 0) { //goes through the data and place it
         echo   "</div>";
         echo   "<div class='item-list__buttons-cell'>";
         echo     "<div class='item-list__buttons-cell--edit'>";
-        echo       "<button class='item-list__button item-list__button--issue' type='button'>Afgeven</button>";
+        if (empty($uitgeefdatumt)){
+        echo       '<button class="item-list__button item-list__button--issue" type="button" onclick="location.href=\'Responses/afgevenResponse.php?id=' . $tempIdVoedselPakket . '\'">Afgeven</button>';
         echo       '<button class="item-list__button item-list__button--edit" type="button" onclick="location.href=\'addProductToVoedselpakket.php?id=' . $tempIdVoedselPakket . '\'">Add Product</button>';
         echo       "<button class='item-list__button item-list__button--edit' type='button'>Bewerken</button>";
+        } else {
+        }
         echo       "<button class='item-list__button item-list__button--save hidden' type='submit'>Opslaan</button>";
         echo       "<button class='item-list__button item-list__button--delete' type='button'>Verwijderen</button>";
         echo     "</div>";
