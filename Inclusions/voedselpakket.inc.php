@@ -43,7 +43,7 @@ if ($resultVoedselpakket->rowCount() > 0) { //goes through the data and place it
         if (empty($uitgeefdatumt)){
         echo       '<button class="item-list__button item-list__button--issue" type="button" onclick="location.href=\'Responses/afgevenResponse.php?id=' . $tempIdVoedselPakket . '\'">Afgeven</button>';
         echo       '<button class="item-list__button item-list__button--edit" type="button" onclick="location.href=\'addProductToVoedselpakket.php?id=' . $tempIdVoedselPakket . '\'">Add Product</button>';
-        echo       "<button class='item-list__button item-list__button--edit' type='button'>Bewerken</button>";
+        echo       '<button class="item-list__button item-list__button--edit" type="button" onclick="location.href=\'deleteProductFromVoedselpakket.php?id=' . $tempIdVoedselPakket . '\'">Delete product</button>';
         } else {
         }
         echo       "<button class='item-list__button item-list__button--save hidden' type='submit'>Opslaan</button>";
