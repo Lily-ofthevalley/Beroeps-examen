@@ -22,39 +22,39 @@ if ($resultVoedselpakket->rowCount() > 0) { //goes through the data and place it
     while ($row = $resultVoedselpakket->fetch(PDO::FETCH_ASSOC)) {
         $tempIdVoedselPakket = $row["idVoedselPakket"];
 
-        echo "<div class='item-list__item-row item-list__row--packages'>";
-        echo   "<p class='field'>" . $tempIdVoedselPakket . "</p>";
+    echo "<div class='item-list__item-row item-list__row--packages'>
+           <p class='field'>" . $tempIdVoedselPakket . "</p>";
         $stmtKlant->execute([':idKlant' => $row['idKlant']]); // Fetch klant name
         $klantRow = $stmtKlant->fetch(PDO::FETCH_ASSOC);
         $uitgeefdatumt = $row["UitgeefDatum"];
-        echo   "<p class='field'>" . $klantRow["GezinsNaam"] . "</p>";
-        echo   "<p class='field'>" . $row["AanmaakDatum"] . "</p>";
-        echo   "<p class='field'>$uitgeefdatumt</p>";
-        echo   "<div class='item-list__grid-container'>";
-        echo     "<div class='item-list__grid item-list__grid--max-height'>"; //WORDT VERANDERT MET PRODUCTEN
+    echo   "<p class='field'>" . $klantRow["GezinsNaam"] . "</p>
+           <p class='field'>" . $row["AanmaakDatum"] . "</p>
+           <p class='field'>$uitgeefdatumt</p>
+           <div class='item-list__grid-container'>
+             <div class='item-list__grid item-list__grid--max-height'>"; //WORDT VERANDERT MET PRODUCTEN
                  $tempIdVoedselPakket = $row["idVoedselPakket"]; 
         include "Inclusions/productInVoedselpakket.inc.php"; 
-        echo     "</div>";
-        echo     "<button class='item-list__button item-list__button--show-more' type='button' onclick='showMore(this)'>\/</button>";
-        echo     "<button class='item-list__button item-list__button--show-less hidden' type='button' onclick='showLess(this)'>/\</button>";
-        echo   "</div>";
-        echo   "<div class='item-list__buttons-cell'>";
-        echo     "<div class='item-list__buttons-cell--edit'>";
+    echo     "</div>
+             <button class='item-list__button item-list__button--show-more' type='button' onclick='showMore(this)'>\/</button>
+             <button class='item-list__button item-list__button--show-less hidden' type='button' onclick='showLess(this)'>/\</button>
+           </div>
+           <div class='item-list__buttons-cell'>
+             <div class='item-list__buttons-cell--edit'>";
         if (empty($uitgeefdatumt)){
-        echo       '<button class="item-list__button item-list__button--issue" type="button" onclick="location.href=\'Responses/afgevenResponse.php?id=' . $tempIdVoedselPakket . '\'">Afgeven</button>';
-        echo       '<button class="item-list__button item-list__button--edit" type="button" onclick="location.href=\'addProductToVoedselpakket.php?id=' . $tempIdVoedselPakket . '\'">Add Product</button>';
-        echo       '<button class="item-list__button item-list__button--edit" type="button" onclick="location.href=\'deleteProductFromVoedselpakket.php?id=' . $tempIdVoedselPakket . '\'">Delete product</button>';
+    echo       '<button class="item-list__button item-list__button--issue" type="button" onclick="location.href=\'Responses/afgevenResponse.php?id=' . $tempIdVoedselPakket . '\'">Afgeven</button>
+               <button class="item-list__button item-list__button--edit" type="button" onclick="location.href=\'addProductToVoedselpakket.php?id=' . $tempIdVoedselPakket . '\'">Add Product</button>
+               <button class="item-list__button item-list__button--edit" type="button" onclick="location.href=\'deleteProductFromVoedselpakket.php?id=' . $tempIdVoedselPakket . '\'">Delete product</button>';
         } else {
         }
-        echo       "<button class='item-list__button item-list__button--save hidden' type='submit'>Opslaan</button>";
-        echo       "<button class='item-list__button item-list__button--delete' type='button'>Verwijderen</button>";
-        echo     "</div>";
-        echo     "<div class='item-list__buttons-cell--delete hidden'>";
-        echo     "<p>Verwijderen?</p>";
-        echo       "<button class='item-list__button item-list__button--cancel' type='button'>Nee</button>";
-        echo         '<button class="item-list__button item-list__button--confirm" type="button" onclick="location.href=\'Responses/deleteVoedselpakketResponse.php?id=' . $tempIdVoedselPakket . '\'">Ja</button>';
-        echo     "</div>";
-        echo   "</div>";
-        echo "</div>";
+    echo       "<button class='item-list__button item-list__button--save hidden' type='submit'>Opslaan</button>
+               <button class='item-list__button item-list__button--delete' type='button'>Verwijderen</button>
+             </div>
+             <div class='item-list__buttons-cell--delete hidden'>
+             <p>Verwijderen?</p>
+               <button class='item-list__button item-list__button--cancel' type='button'>Nee</button>
+                 <button class='item-list__button item-list__button--confirm' type='button' onclick='location.href=\'Responses/deleteResponses/deleteVoedselpakketResponse.php?id=' . $tempIdVoedselPakket . '\'>Ja</button>
+             </div>
+           </div>
+         </div>";
     }
 }

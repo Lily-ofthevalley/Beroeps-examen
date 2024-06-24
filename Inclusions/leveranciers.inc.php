@@ -12,28 +12,28 @@ try {
 
 if ($resultLeverancier->rowCount() > 0) { //goes through the data and place it in the right place
     while ($row = $resultLeverancier->fetch(PDO::FETCH_ASSOC)) {
-        echo "<form action='Responses/editLeverancierResponse.php' method='POST'>";
-        echo   "<div class='item-list__item-row item-list__row--suppliers'>";
-        echo     "<p class='field supplier-field--next'>" . $row["Levering"] . "</p>"; //MOET NOG AANGEPAST WORDEN
-        echo     "<p class='field supplier-field--company'>" . $row["BedrijfsNaam"] . "</p>";
-        echo     "<p class='field supplier-field--address'>" . $row["Adres"] . "</p>";
-        echo     "<p class='field supplier-field--postalCode'>" . $row["Postcode"] . "</p>";
-        echo     "<p class='field supplier-field--contact'>" . $row["ContactspersoonNaam"] . "</p>";
-        echo     "<p class='field supplier-field--email'>" . $row["Email"] . "</p>";
-        echo     "<p class='field supplier-field--phone'>" . $row["Telefoonnummer"] . "</p>";
-        echo     "<div class='item-list__buttons-cell'>";
-        echo       "<div class='item-list__buttons-cell--edit'>";
-        echo         "<button class='item-list__button item-list__button--edit' type='button'>Bewerken</button>";
-        echo         "<button class='item-list__button item-list__button--save hidden' type='submit'>Opslaan</button>";
-        echo         "<button class='item-list__button item-list__button--delete' type='button'>Verwijderen</button>";
-        echo       "</div>";
-        echo       "<div class='item-list__buttons-cell--delete hidden'>";
-        echo         "<p>Verwijderen?</p>";
-        echo         "<button class='item-list__button item-list__button--cancel' type='button'>Nee</button>";
-        echo         '<button class="item-list__button item-list__button--confirm" type="button" onclick="location.href=\'Responses/deleteLeverancierResponse.php?id=' . $row['idLeverancier'] . '\'">Ja</button>';
-        echo       "</div>";
-        echo     "</div>";
-        echo   "</div>";
-        echo "</form>";
+        echo "<form action='Responses/editLeverancierResponse.php' method='POST'>
+           <div class='item-list__item-row item-list__row--suppliers'>
+             <p class='field supplier-field--next'>" . $row["Levering"] . "</p>
+             <p class='field supplier-field--company'>" . $row["BedrijfsNaam"] . "</p>
+             <p class='field supplier-field--address'>" . $row["Adres"] . "</p>
+             <p class='field supplier-field--postalCode'>" . $row["Postcode"] . "</p>
+             <p class='field supplier-field--contact'>" . $row["ContactspersoonNaam"] . "</p>
+             <p class='field supplier-field--email'>" . $row["Email"] . "</p>
+             <p class='field supplier-field--phone'>" . $row["Telefoonnummer"] . "</p>
+             <div class='item-list__buttons-cell'>
+               <div class='item-list__buttons-cell--edit'>
+                 <button class='item-list__button item-list__button--edit' type='button'>Bewerken</button>
+                 <button class='item-list__button item-list__button--save hidden' type='submit'>Opslaan</button>
+                 <button class='item-list__button item-list__button--delete' type='button'>Verwijderen</button>
+               </div>
+               <div class='item-list__buttons-cell--delete hidden'>
+                 <p>Verwijderen?</p>
+                 <button class='item-list__button item-list__button--cancel' type='button'>Nee</button>
+                 <button class='item-list__button item-list__button--confirm' type='button' onclick='location.href=\'Responses/deleteResponses/deleteLeverancierResponse.php?id=" . $row["idLeverancier"] . "\'>Ja</button>
+               </div>
+             </div>
+           </div>
+         </form>";
     }
 }

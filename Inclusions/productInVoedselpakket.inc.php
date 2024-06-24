@@ -29,6 +29,6 @@ if ($Stmt->rowCount() > 0) {
         echo     "<p>" . $productRow['Naam'] . "</p>";
     }
 } else {
-    echo     "<p></p>";
-    echo     "<p>No products found</p>";
+echo     "<p></p>
+         <p>No products found</p>";
 }
