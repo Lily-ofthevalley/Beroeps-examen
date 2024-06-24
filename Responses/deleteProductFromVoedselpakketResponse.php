@@ -25,9 +25,9 @@ if (isset($_GET['id'])) {
     
     try{
 
-        $sql = "DELETE FROM VoedselPakket_Has_Product WHERE Product_idProduct = :idProduct"; //removes all the connections the packet has
+        $sql = "DELETE FROM VoedselPakket_Has_Product WHERE Product_idProduct = :idProduct AND VoedselPakket_idVoedselPakket = :idPakket"; //removes all the connections the packet has
         $stmt = $pdo ->prepare($sql);
-        $stmt -> execute(['idProduct' => $productId]);
+        $stmt -> execute(['idProduct' => $productId, 'idPakket' => $idVoedselpakket]);
     
         header("Location: ../Voedselpakketten.php"); //sends user back
     }catch (Exception $e) { //checks and gives errors
