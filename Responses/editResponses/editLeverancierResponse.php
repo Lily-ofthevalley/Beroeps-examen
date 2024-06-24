@@ -11,13 +11,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
     $phone = $_POST["phone"];
 
     try{
-        require_once "../Inclusions/dbh.inc.php"; //connects to database
+        require_once "../../Inclusions/dbh.inc.php"; //connects to database
 
         $sqlEditLeverancier = "UPDATE leverancier SET BedrijfsNaam = :company, Adres = :addres, Postcode = :postalCode, ContactspersoonNaam = :contact, Email = :email,  TelefoonNummer = :phone,  Levering = :volgende WHERE BedrijfsNaam = :company OR TelefoonNummer = :phone";
         $editStmt = $pdo->prepare($sqlEditLeverancier);
         $editStmt->execute(['volgende' => $next, 'company' => $company, 'addres' => $address, 'postalCode' => $postalCode, 'contact' => $contact, 'email' => $email, 'phone' => $phone]);
 
-        header("Location: ../Leveranciers.php"); //sends user back
+        header("Location: ../../Leveranciers.php"); //sends user back
         exit();
     } catch (Exception $e) { //checks and gives errors
         die("Query failed". $e->getMessage());
@@ -25,5 +25,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
 }
 
 else {
-    header("location: ../Leveranciers.php"); //sends user back
+    header("location: ../../Leveranciers.php"); //sends user back
 }

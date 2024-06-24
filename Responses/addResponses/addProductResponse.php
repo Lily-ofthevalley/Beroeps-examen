@@ -7,11 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
     $aantal = $_POST["quantity"];
 
     try{
-        require_once "../Inclusions/dbh.inc.php"; //connects to database
+        require_once "../../Inclusions/dbh.inc.php"; //connects to database
 
         dbAddProduct($barcode, $name, $categorie, $aantal); // Call the function
 
-        header("Location: ../Vooraad.php"); //sends user back
+        header("Location: ../../Vooraad.php"); //sends user back
         exit();
     } catch (Exception $e) { //checks and gives errors
         die("Query failed". $e->getMessage());
@@ -19,5 +19,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
 }
 
 else {
-    header("location: ../AddProductResponse.php"); //sends user back
+    header("location: ../../AddProductResponse.php"); //sends user back
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once "../Inclusions/dbh.inc.php"; //connects to the database
+require_once "../../Inclusions/dbh.inc.php"; //connects to the database
 
 if (isset($_GET['id'])) {
     $idVoedselpakket = $_GET['id'];
@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
         }
 
     }catch (Exception $e) { //checks and gives errors
-        header("Location: ../Voedselpakketten.php"); //sends user back
+        header("Location: ../../Voedselpakketten.php"); //sends user back
         die("Query failed". $e->getMessage());
     }
     
@@ -29,10 +29,10 @@ if (isset($_GET['id'])) {
         $stmt = $pdo ->prepare($sql);
         $stmt -> execute(['idProduct' => $productId, 'idPakket' => $idVoedselpakket]);
     
-        header("Location: ../Voedselpakketten.php"); //sends user back
+        header("Location: ../../Voedselpakketten.php"); //sends user back
     }catch (Exception $e) { //checks and gives errors
-        header("Location: ../Voedselpakketten.php"); //sends user back
+        header("Location: ../../Voedselpakketten.php"); //sends user back
         die("Query failed". $e->getMessage());
     }
-    header("Location: ../Voedselpakketten.php"); //sends user back
+    header("Location: ../../Voedselpakketten.php"); //sends user back
 }

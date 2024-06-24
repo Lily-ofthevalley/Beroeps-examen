@@ -21,7 +21,7 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
     <?php require_once "Inclusions/header.inc.php" ?>
   </header>
   <div class="page-content">
-    <form class="form-container" action="Responses/addProductResponse.php" method="POST">
+    <form class="form-container" action="Responses/addResponses/addProductResponse.php" method="POST">
       <h2 class="profile__password-header">Product toevoegen</h2>
       <div class="form">
         <label class="form__label" for="barcode">Barcode*</label>

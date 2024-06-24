@@ -12,7 +12,7 @@ try {
 
 if ($resultKlant->rowCount() > 0) { //goes through the data and place it in the right place
     while ($row = $resultKlant->fetch(PDO::FETCH_ASSOC)) {
-    echo "<form action='Responses/editKlantResponse.php' method='POST'>
+    echo "<form action='Responses/editResponses/editKlantResponse.php' method='POST'>
          <div class='item-list__item-row item-list__row--customers'>
            <p class='field customer-field--name'>" . $row["GezinsNaam"] . "</p>
            <p class='field customer-field--phone'>" . $row["TelefoonNummer"] . "</p>
@@ -38,7 +38,7 @@ if ($resultKlant->rowCount() > 0) { //goes through the data and place it in the 
              <div class='item-list__buttons-cell--delete hidden'>
                <p>Verwijderen?</p>
                <button class='item-list__button item-list__button--cancel' type='button'>Nee</button>
-                 <button class='item-list__button item-list__button--confirm' type='button' onclick'location.href=\'Responses/deleteResponses/deleteKlantResponse.php?id=" . $row["idKlant"] . "\'>Ja</button>
+               <button class='item-list__button item-list__button--confirm' type='button' onclick='location.href=\"Responses/deleteResponses/deleteKlantResponse.php?id=" . $row["idKlant"] . "\"'>Ja</button>
              </div>
            </div>
          </div>

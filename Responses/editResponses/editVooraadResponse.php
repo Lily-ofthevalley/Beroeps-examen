@@ -7,13 +7,13 @@ if ($_SESSION["user"]["rol"] == "Vrijwilliger"){
         $aantal = $_POST["quantity"];
     
         try{
-            require_once "../Inclusions/dbh.inc.php"; //connects to database
+            require_once "../../Inclusions/dbh.inc.php"; //connects to database
     
             $sqlEditVooraad = "UPDATE product SET Aantal = :aantal WHERE Barcode = :barcode";
             $editStmt = $pdo->prepare($sqlEditVooraad);
             $editStmt->execute(['barcode' => $barcode, 'aantal' => $aantal]);
     
-            header("Location: ../Vooraad.php"); //sends user back
+            header("Location: ../../Vooraad.php"); //sends user back
             exit();
         } catch (Exception $e) { //checks and gives errors
             die("Query failed". $e->getMessage());
@@ -21,7 +21,7 @@ if ($_SESSION["user"]["rol"] == "Vrijwilliger"){
     }
     
     else {
-        header("location: ../Vooraad.php"); //sends user back
+        header("location: ../../Vooraad.php"); //sends user back
     }
   } else {
     if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
@@ -31,13 +31,13 @@ if ($_SESSION["user"]["rol"] == "Vrijwilliger"){
         $aantal = $_POST["quantity"];
     
         try{
-            require_once "../Inclusions/dbh.inc.php"; //connects to database
+            require_once "../../Inclusions/dbh.inc.php"; //connects to database
     
             $sqlEditVooraad = "UPDATE product SET Naam = :naam, idCategorie = :idCategorie, Aantal = :aantal WHERE Barcode = :barcode OR Naam = :naam";
             $editStmt = $pdo->prepare($sqlEditVooraad);
             $editStmt->execute(['barcode' => $barcode, 'naam' => $naam, 'idCategorie' => $idCategorie, 'aantal' => $aantal]);
     
-            header("Location: ../Vooraad.php"); //sends user back
+            header("Location: ../../Vooraad.php"); //sends user back
             exit();
         } catch (Exception $e) { //checks and gives errors
             die("Query failed". $e->getMessage());
@@ -45,6 +45,6 @@ if ($_SESSION["user"]["rol"] == "Vrijwilliger"){
     }
     
     else {
-        header("location: ../Vooraad.php"); //sends user back
+        header("location: ../../Vooraad.php"); //sends user back
     }
   }

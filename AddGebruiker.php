@@ -21,7 +21,7 @@ if ($_SESSION["user"]["rol"] != "Administrator"){
     <?php require_once "Inclusions/header.inc.php" ?>
   </header>
   <div class="page-content">
-    <form class="form-container" action="Responses/addGebruikerResponse.php" method="POST">
+    <form class="form-container" action="Responses/addResponses/addGebruikerResponse.php" method="POST">
       <h2 class="profile__password-header">Gebruiker toevoegen</h2>
       <div class="form">
         <label class="form__label" for="Voornaam">Voornaam*</label>

@@ -25,7 +25,7 @@ $id = $idPakket;
         <?php require_once "Inclusions/header.inc.php"; ?>
     </header>
     <div class="page-content">
-        <form class="form-container" action="Responses/addProductToVoedselpakketResponse.php?id=<?php echo $id; ?>" method="POST">
+        <form class="form-container" action="Responses/addResponses/addProductToVoedselpakketResponse.php?id=<?php echo $id; ?>" method="POST">
             <h2 class="profile__password-header">Voedselpakket toevoegen</h2>
             <div class="form">
                 <label class="form__label" for="options">Product:</label>

@@ -6,11 +6,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
     $idMedewerker = $_SESSION["user"]["id"];
 
     try{
-        require_once "../Inclusions/dbh.inc.php"; //connects to database
+        require_once "../../Inclusions/dbh.inc.php"; //connects to database
 
         dbMedewerkerUpdateWachtwoord($idMedewerker, $wachtwoord); // Call the function
 
-        header("Location: ../User.php"); //sends user back
+        header("Location: ../../User.php"); //sends user back
         exit();
     } catch (Exception $e) { //checks and gives errors
         die("Query failed". $e->getMessage());
@@ -18,5 +18,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
 }
 
 else {
-    header("location: ../User.php"); //sends user back
+    header("location: ../../User.php"); //sends user back
 }

@@ -13,11 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
     $allergies = $_POST["allergies"];
 
     try{
-        require_once "../Inclusions/dbh.inc.php"; //connects to database
+        require_once "../../Inclusions/dbh.inc.php"; //connects to database
 
         dbAddKlant($name, $phone, $email, $address, $postcode, $adults, $children, $babies, $wishes, $allergies); // Call the function
 
-        header("Location: ../Klanten.php"); //sends user back
+        header("Location: ../../Klanten.php"); //sends user back
         exit();
     } catch (Exception $e) { //checks and gives errors
         die("Query failed". $e->getMessage());
@@ -25,5 +25,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
 }
 
 else {
-    header("location: ../AddKlantResponse.php"); //sends user back
+    header("location: ../../AddKlantResponse.php"); //sends user back
 }

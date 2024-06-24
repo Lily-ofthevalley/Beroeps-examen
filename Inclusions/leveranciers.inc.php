@@ -12,7 +12,7 @@ try {
 
 if ($resultLeverancier->rowCount() > 0) { //goes through the data and place it in the right place
     while ($row = $resultLeverancier->fetch(PDO::FETCH_ASSOC)) {
-        echo "<form action='Responses/editLeverancierResponse.php' method='POST'>
+        echo "<form action='Responses/editResponses/editLeverancierResponse.php' method='POST'>
            <div class='item-list__item-row item-list__row--suppliers'>
              <p class='field supplier-field--next'>" . $row["Levering"] . "</p>
              <p class='field supplier-field--company'>" . $row["BedrijfsNaam"] . "</p>
@@ -30,7 +30,7 @@ if ($resultLeverancier->rowCount() > 0) { //goes through the data and place it i
                <div class='item-list__buttons-cell--delete hidden'>
                  <p>Verwijderen?</p>
                  <button class='item-list__button item-list__button--cancel' type='button'>Nee</button>
-                 <button class='item-list__button item-list__button--confirm' type='button' onclick='location.href=\'Responses/deleteResponses/deleteLeverancierResponse.php?id=" . $row["idLeverancier"] . "\'>Ja</button>
+                 <button class='item-list__button item-list__button--confirm' type='button' onclick='location.href=\"Responses/deleteResponses/deleteLeverancierResponse.php?id=" . $row["idLeverancier"] . "\"'>Ja</button>
                </div>
              </div>
            </div>

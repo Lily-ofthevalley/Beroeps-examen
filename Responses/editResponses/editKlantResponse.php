@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $allergies = $_POST["allergies"];
 
     try {
-        require_once "../Inclusions/dbh.inc.php"; // Connects to the database
+        require_once "../../Inclusions/dbh.inc.php"; // Connects to the database
 
         // Prepare the SQL statement
         $sqlEditKlant = "UPDATE klant SET GezinsNaam = :naam, TelefoonNummer = :phone, Email = :mail, Adres = :adres, Postcode = :postcode, AantalVolwassenen = :volwassen, AantalKinderen = :kind, AantalBabys = :baby, Wensen = :wens, Allergiën = :allergie WHERE Adres = :adres OR TelefoonNummer = :phone";
@@ -26,14 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $editStmt->execute(['naam' => $name,'phone' => $phone,'mail' => $email,'adres' => $address,'postcode' => $postalCode,'volwassen' => $adults,'kind' => $children,'baby' => $babies,'wens' => $wishes,'allergie' => $allergies]);
 
         // Redirect user back to Klanten.php
-        header("Location: ../Klanten.php");
+        header("Location: ../../Klanten.php");
         exit();
     } catch (Exception $e) {
         die("Query failed: " . $e->getMessage());
     }
 } else {
     // Redirect user back to Klanten.php if not a POST request
-    header("Location: ../Klanten.php");
+    header("Location: ../../Klanten.php");
     exit();
 }
 ?>

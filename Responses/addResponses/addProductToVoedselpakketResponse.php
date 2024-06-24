@@ -1,6 +1,6 @@
 <?php
 
-require_once "../Inclusions/dbh.inc.php"; //connects to database
+require_once "../../Inclusions/dbh.inc.php"; //connects to database
 
 $idPakket = $_GET['id'];
 
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
         $stmt->execute();
 
     } catch (Exception $e) { //checks and gives errors
-        header("Location: ../Voedselpakketten.php"); //sends user back
+        header("Location: ../../Voedselpakketten.php"); //sends user back
         die("Query failed". $e->getMessage());
     }
 
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
                 $stmtEdit = $pdo->prepare($sqlEdit);
                 $stmtEdit->execute(['aantal' => $newAantal, 'id' => $idProduct]);
             }
-            header("location: ../Voedselpakketten.php"); //sends user back
+            header("location: ../../Voedselpakketten.php"); //sends user back
             exit();
         }
     } catch (Exception $e) { //checks and gives errors
@@ -60,5 +60,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
 }
 
 else {
-    header("location: ../Voedselpakketten.php"); //sends user back
+    header("location: ../../Voedselpakketten.php"); //sends user back
 }
