@@ -17,6 +17,7 @@ $id = $_GET['id'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Voedselpakket toevoegen - Voedselbank Maaskantje</title>
     <link rel="stylesheet" href="Styles/Styles.css" />
+    <link rel="icon" type="image/x-icon" href="Images/favicon.ico" />
 </head>
 
 <body>
