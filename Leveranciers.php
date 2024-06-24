@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "MagezijnMedewerker") {
+if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "Magazijn medewerker") {
   header('location: Vooraad.php');
 }
 ?>

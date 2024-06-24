@@ -8,7 +8,7 @@ if ($_SESSION["user"]["rol"] == "Administrator") {
     echo "<li><a href='Gebruikers.php'>Gebruikers</a></li>";
     echo "<li class='userbtn'><a href='User.php'>Welkom, " . ($_SESSION["user"]["username"]) . "</a></li>";
     echo "</ul>";
-} else if ($_SESSION["user"]["rol"] == "Magazijn Medewerker") {
+} else if ($_SESSION["user"]["rol"] == "Magazijn medewerker") {
     echo "<ul class='header'>";
     echo "<li><a href='Vooraad.php'>Vooraad</a></li>";
     echo "<li><a href='Leveranciers.php'>Leveranciers</a></li>";

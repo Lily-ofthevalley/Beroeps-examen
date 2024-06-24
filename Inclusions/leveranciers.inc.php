@@ -3,7 +3,7 @@
 require_once "dbh.inc.php"; //connects to the database
 
 try {
-    $sqlLeverancier = "SELECT idLeverancier, Levering, BedrijfsNaam, Adres, Postcode, ContactspersoonNaam, Email, Telefoonnummer FROM leverancier"; //Selects the product data
+    $sqlLeverancier = "SELECT idLeverancier, Levering, BedrijfsNaam, Adres, Postcode, ContactspersoonNaam, Email, Telefoonnummer FROM leverancier ORDER BY Levering"; //Selects the product data
     $resultLeverancier = $pdo->query($sqlLeverancier);
 } catch (PDOException $e) { //checks and gives errors
     echo "Error: " . $e->getMessage();
