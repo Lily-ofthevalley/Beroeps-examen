@@ -14,5 +14,5 @@ if ($resultKlant->rowCount() > 0) {
         echo '<option value="' . ($row["idKlant"]) . '">' . ($row["GezinsNaam"]) . '</option>';
     }
 } else {
-    echo '<option value="">No customers found</option>';
+    echo '<option value="" disabled>No customers found</option>';
 }

@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
         header("Location: ../../Voedselpakketten.php"); //sends user back
         exit();
     } catch (Exception $e) { //checks and gives errors
+        header("location: ../../addVoedselpakket.php"); //sends user back
         die("Query failed". $e->getMessage());
     }
 }

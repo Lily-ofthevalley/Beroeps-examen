@@ -17,6 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
         if ($productStmt->rowCount() > 0) { //goes through the data and place it in the right place
             while ($row = $productStmt->fetch(PDO::FETCH_ASSOC)) {
                 $idProduct = $row["idProduct"];
+
+                if ($row["idProduct"] > $aantal){
+                    header("location: ../../voedselpakketten.php");
+                    exit();
+                }
             }
         }
     } catch (Exception $e) { //checks and gives errors
@@ -32,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //checks if the user got here legit
         $stmt->execute();
 
     } catch (Exception $e) { //checks and gives errors
-        header("Location: ../../Voedselpakketten.php"); //sends user back
+        // header("Location: ../../Voedselpakketten.php"); //sends user back
         die("Query failed". $e->getMessage());
     }
 

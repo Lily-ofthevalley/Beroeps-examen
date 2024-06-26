@@ -34,7 +34,7 @@ $id = $_GET['id'];
                     <?php require_once "Inclusions/ProductList.inc.php"; ?>
                 </select>
             </div>
-            <button class="form__submit" type="submit">Voeg toe</button>
+            <button class="form__submit" type="submit">Verwijder</button>
         </form>
     </div>
 </body>
