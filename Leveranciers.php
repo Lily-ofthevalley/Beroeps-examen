@@ -22,20 +22,42 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
     <?php require_once "Inclusions/header.inc.php" ?>
   </header>
   <div class="page-content">
-    <form class="sort-filter-add__container">
+    <form class="sort-filter-add__container" action="Leveranciers.php" method="post">
       <div class="sort-filter__item-container">
         <label class="form__label" for="sort">Sorteer:</label>
         <select class="sort-filter-add sort-filter" id="sort" name="sort">
-          <option value="new">Nieuw - Oud</option>
-          <option value="old" selected>Oud - Nieuw</option>
-          <option value="nextEarly">Levering (eerder - later)</option>
-          <option value="nextLate">Levering (later - eerder)</option>
-          <option value="companyA">Bedrijf (A - Z)</option>
-          <option value="companyZ">Bedrijf (Z - A)</option>
+          <option value="idLeverancier DESC">Nieuw - Oud</option>
+          <option value="idLeverancier ASC" selected>Oud - Nieuw</option>
+          <option value="Levering ASC">Levering (eerder - later)</option>
+          <option value="Levering DESC">Levering (later - eerder)</option>
+          <option value="BedrijfsNaam ASC">Bedrijf (A - Z)</option>
+          <option value="BedrijfsNaam DESC">Bedrijf (Z - A)</option>
         </select>
       </div>
       <button type="submit" class="sort-filter-add sort-filter-add--button">Zoek</button>
     </form>
+
+    <?php
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $sort = $_POST["sort"];
+
+          try {
+            if (!isset($_SESSION['sortingLeverancier'])) {
+                $_SESSION['sortingLeverancier'] = array();
+            }
+
+            if (isset($_SESSION['sortingLeverancier']['sort'])) {
+                unset($_SESSION['sortingLeverancier']['sort']);
+            }
+
+            $_SESSION['sortingLeverancier']['sort'] = $sort;
+          } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            die();
+            }
+          }
+      ?>
+
     <div class="item-list">
       <!-- Column labels -->
       <div class="item-list__label-row item-list__row--suppliers">

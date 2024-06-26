@@ -2,8 +2,20 @@
 
 require_once "dbh.inc.php"; //connects to the database
 
+if(isset($_SESSION["sortingKlant"]["sort"])){
+  $sort = $_SESSION["sortingKlant"]["sort"];
+} else {
+  $sort = "idKlant ASC";
+}
+
+if (isset($_SESSION['sortingKlant']['filter']) && $_SESSION['sortingKlant']['filter'] != "") {
+  $filter = "WHERE Wensen = '" . $_SESSION['sortingKlant']['filter'] . "'";
+} else {
+  $filter = "";
+}
+
 try {
-    $sqlKlant = "SELECT idKlant, GezinsNaam, TelefoonNummer, Email, Adres, Postcode, AantalVolwassenen, AantalKinderen, Aantalbabys, Wensen, Allergiën FROM klant"; //Selects the customers data
+    $sqlKlant = "SELECT idKlant, GezinsNaam, TelefoonNummer, Email, Adres, Postcode, AantalVolwassenen, AantalKinderen, Aantalbabys, Wensen, Allergiën FROM klant $filter ORDER BY $sort"; //Selects the customers data
     $resultKlant = $pdo->query($sqlKlant);
 } catch (PDOException $e) { //checks and gives errors
     echo "Error: " . $e->getMessage();

@@ -22,22 +22,42 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
     <?php require_once "Inclusions/header.inc.php" ?>
   </header>
   <div class="page-content">
-    <form class="sort-filter-add__container">
+    <form class="sort-filter-add__container" action="Voedselpakketten.php" method="POST">
       <div class="sort-filter__item-container">
         <label class="form__label" for="sort">Sorteer:</label>
         <select class="sort-filter-add sort-filter" id="sort" name="sort">
-          <option value="new">Nieuw - Oud</option>
-          <option value="old" selected>Oud - Nieuw</option>
-          <option value="customerA">Klant (A - Z)</option>
-          <option value="customerZ">Klant (Z - A)</option>
-          <option value="creationEarly">Aanmaak (eerder - later)</option>
-          <option value="creationLate">Aanmaak (later - eerder)</option>
-          <option value="issueEarly">Afgifte (eerder - later)</option>
-          <option value="issueLate">Afgifte (later - eerder)</option>
+          <option value="idKlant DESC">Klant (Nieuw - Oud)</option>
+          <option value="idKlant ASC">Klant (Oud - Nieuw)</option>
+          <option value="AanmaakDatum ASC" selected>Aanmaak (eerder - later)</option>
+          <option value="AanmaakDatum DESC">Aanmaak (later - eerder)</option>
+          <option value="UitgeefDatum ASC">Afgifte (eerder - later)</option>
+          <option value="UitgeefDatum DESC">Afgifte (later - eerder)</option>
         </select>
       </div>
       <button type="submit" class="sort-filter-add sort-filter-add--button">Zoek</button>
     </form>
+
+    <?php
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $sort = $_POST["sort"];
+
+          try {
+            if (!isset($_SESSION['sortingVoedselpakket'])) {
+                $_SESSION['sortingVoedselpakket'] = array();
+            }
+
+            if (isset($_SESSION['sortingVoedselpakket']['sort'])) {
+                unset($_SESSION['sortingVoedselpakket']['sort']);
+            }
+
+            $_SESSION['sortingVoedselpakket']['sort'] = $sort;
+          } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            die();
+            }
+          }
+      ?>
+      
     <div class="item-list">
       <!-- Column labels -->
       <div class="item-list__label-row item-list__row--packages">

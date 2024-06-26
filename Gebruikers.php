@@ -22,16 +22,16 @@ if ($_SESSION["user"]["rol"] != "Administrator") {
     <?php require_once "Inclusions/header.inc.php" ?>
   </header>
   <div class="page-content">
-    <form class="sort-filter-add__container">
+    <form class="sort-filter-add__container" action="Gebruikers.php" method="POST">
       <div class="sort-filter__item-container">
         <label class="form__label" for="sort">Sorteer:</label>
         <select class="sort-filter-add sort-filter" id="sort" name="sort">
-          <option value="new">Nieuw - Oud</option>
-          <option value="old" selected>Oud - Nieuw</option>
-          <option value="firstNameA">Voornaam (A - Z)</option>
-          <option value="firstNameZ">Voornaam (Z - A)</option>
-          <option value="lastNameA">Achternaam (A - Z)</option>
-          <option value="lastNameZ">Achternaam (Z - A)</option>
+          <option value="idMedewerker DESC">Nieuw - Oud</option>
+          <option value="idMedewerker ASC" selected>Oud - Nieuw</option>
+          <option value="Voornaam ASC">Voornaam (A - Z)</option>
+          <option value="Voornaam DESC">Voornaam (Z - A)</option>
+          <option value="Achternaam ASC">Achternaam (A - Z)</option>
+          <option value="Achternaam DESC">Achternaam (Z - A)</option>
         </select>
       </div>
       <div class="sort-filter__item-container">
@@ -45,6 +45,33 @@ if ($_SESSION["user"]["rol"] != "Administrator") {
       </div>
       <button type="submit" class="sort-filter-add sort-filter-add--button">Zoek</button>
     </form>
+
+    <?php
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $sort = $_POST["sort"];
+          $filterRol = $_POST["filterRole"];
+
+          try {
+            if (!isset($_SESSION['sortingGebruiker'])) {
+                $_SESSION['sortingGebruiker'] = array();
+            }
+
+            if (isset($_SESSION['sortingGebruiker']['sort'])) {
+                unset($_SESSION['sortingGebruiker']['sort']);
+            }
+            if (isset($_SESSION['sortingGebruiker']['filter'])) {
+                unset($_SESSION['sortingGebruiker']['filter']);
+            }
+
+            $_SESSION['sortingGebruiker']['sort'] = $sort;
+            $_SESSION['sortingGebruiker']['filter'] = $filterRol;
+          } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            die();
+            }
+          }
+      ?>
+
     <div class="item-list">
       <!-- Column labels -->
       <div class="item-list__label-row item-list__row--users">

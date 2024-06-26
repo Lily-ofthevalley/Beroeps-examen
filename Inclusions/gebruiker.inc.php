@@ -2,8 +2,20 @@
 
 require_once "dbh.inc.php"; //connects to the database
 
+if(isset($_SESSION["sortingGebruiker"]["sort"])){
+  $sort = $_SESSION["sortingGebruiker"]["sort"];
+} else {
+  $sort = "idMedewerker ASC";
+}
+
+if (isset($_SESSION['sortingGebruiker']['filter']) && $_SESSION['sortingGebruiker']['filter'] != "") {
+  $filter = "WHERE Rol = '" . $_SESSION['sortingGebruiker']['filter'] . "'";
+} else {
+  $filter = "";
+}
+
 try {
-    $sqlGebruiker = "SELECT idMedewerker, Voornaam, Achternaam, Rol, TelefoonNummer, Email FROM medewerker"; //Selects the employee data
+    $sqlGebruiker = "SELECT idMedewerker, Voornaam, Achternaam, Rol, TelefoonNummer, Email FROM medewerker $filter ORDER BY $sort"; //Selects the employee data
     $resultGebruiker = $pdo->query($sqlGebruiker);
 } catch (PDOException $e) { //checks and gives errors
     echo "Error: " . $e->getMessage();

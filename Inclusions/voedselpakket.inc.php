@@ -2,8 +2,14 @@
 
 require_once "dbh.inc.php"; //connects to the database
 
+if(isset($_SESSION["sortingVoedselpakket"]["sort"])){
+    $sort = $_SESSION["sortingVoedselpakket"]["sort"];
+  } else {
+    $sort = "idVoedselPakket ASC";
+  }
+
 try {
-    $sqlVoedselpakket = "SELECT idVoedselPakket, AanmaakDatum, UitgeefDatum, idKlant FROM voedselpakket"; //Selects the voedselpakket data
+    $sqlVoedselpakket = "SELECT idVoedselPakket, AanmaakDatum, UitgeefDatum, idKlant FROM voedselpakket ORDER BY $sort"; //Selects the voedselpakket data
     $resultVoedselpakket = $pdo->query($sqlVoedselpakket);
 } catch (PDOException $e) { //checks and gives errors
     echo "Error: " . $e->getMessage();
