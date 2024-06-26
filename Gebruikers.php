@@ -22,6 +22,29 @@ if ($_SESSION["user"]["rol"] != "Administrator") {
     <?php require_once "Inclusions/header.inc.php" ?>
   </header>
   <div class="page-content">
+    <form class="sort-filter-add__container">
+      <div class="sort-filter__item-container">
+        <label class="form__label" for="sort">Sorteer:</label>
+        <select class="sort-filter-add sort-filter" id="sort" name="sort">
+          <option value="new">Nieuw - Oud</option>
+          <option value="old" selected>Oud - Nieuw</option>
+          <option value="firstNameA">Voornaam (A - Z)</option>
+          <option value="firstNameZ">Voornaam (Z - A)</option>
+          <option value="lastNameA">Achternaam (A - Z)</option>
+          <option value="lastNameZ">Achternaam (Z - A)</option>
+        </select>
+      </div>
+      <div class="sort-filter__item-container">
+        <label class="form__label" for="filterRole">Filter (rol):</label>
+        <select class="sort-filter-add sort-filter" id="filterRole" name="filterRole">
+          <option value="">---</option>
+          <option value="Administrator">Administrator</option>
+          <option value="Magazijn medewerker">Magazijn medewerker</option>
+          <option value="Vrijwilliger">Vrijwilliger</option>
+        </select>
+      </div>
+      <button type="submit" class="sort-filter-add sort-filter-add--button">Zoek</button>
+    </form>
     <div class="item-list">
       <!-- Column labels -->
       <div class="item-list__label-row item-list__row--users">
@@ -36,8 +59,8 @@ if ($_SESSION["user"]["rol"] != "Administrator") {
         <?php require_once "Inclusions/gebruiker.inc.php" ?>
       </div>
     </div>
-    <div class="add-link-container">
-      <a class="add-link-button" href="./AddGebruiker.php">Voeg gebruiker toe</a>
+    <div class="sort-filter-add__container">
+      <a class="sort-filter-add sort-filter-add--button" href="./AddGebruiker.php">Voeg gebruiker toe</a>
     </div>
   </div>
 

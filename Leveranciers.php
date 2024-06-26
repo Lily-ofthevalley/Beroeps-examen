@@ -22,6 +22,20 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
     <?php require_once "Inclusions/header.inc.php" ?>
   </header>
   <div class="page-content">
+    <form class="sort-filter-add__container">
+      <div class="sort-filter__item-container">
+        <label class="form__label" for="sort">Sorteer:</label>
+        <select class="sort-filter-add sort-filter" id="sort" name="sort">
+          <option value="new">Nieuw - Oud</option>
+          <option value="old" selected>Oud - Nieuw</option>
+          <option value="nextEarly">Levering (eerder - later)</option>
+          <option value="nextLate">Levering (later - eerder)</option>
+          <option value="companyA">Bedrijf (A - Z)</option>
+          <option value="companyZ">Bedrijf (Z - A)</option>
+        </select>
+      </div>
+      <button type="submit" class="sort-filter-add sort-filter-add--button">Zoek</button>
+    </form>
     <div class="item-list">
       <!-- Column labels -->
       <div class="item-list__label-row item-list__row--suppliers">
@@ -38,8 +52,8 @@ if ($_SESSION["user"]["rol"] != "Administrator" && $_SESSION["user"]["rol"] != "
         <?php require_once "Inclusions/leveranciers.inc.php" ?>
       </div>
     </div>
-    <div class="add-link-container">
-      <a class="add-link-button" href="./AddLeverancier.php">Voeg leverancier toe</a>
+    <div class="sort-filter-add__container">
+      <a class="sort-filter-add sort-filter-add--button" href="./AddLeverancier.php">Voeg leverancier toe</a>
     </div>
   </div>
 

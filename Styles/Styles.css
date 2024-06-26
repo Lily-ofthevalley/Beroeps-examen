@@ -71,7 +71,7 @@ header a:hover {
 
   padding: 0;
   width: 100%;
-  height: 90%;
+  height: calc(100% - 135px);
   border-radius: 10px;
   background-color: var(--light-green);
   overflow-x: auto;
@@ -229,21 +229,38 @@ div.customer-field--members p {
   font-weight: bold;
 }
 
-.add-link-container {
+.sort-filter-add__container {
   display: flex;
-  justify-content: flex-end;
+
+  height: max-content;
 }
 
-.add-link-button {
-  margin: 10px 20px;
+.sort-filter__item-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sort-filter-add {
+  margin: 10px 0;
   padding: 5px 10px;
+  height: 35px;
+  border: solid 1px var(--black);
   border-radius: 10px;
   text-decoration: none;
   font-size: 20px;
   background-color: var(--green);
 }
 
-.add-link-button:hover {
+.sort-filter {
+  margin-right: 15px;
+}
+
+.sort-filter-add--button {
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.sort-filter-add--button:hover {
   background-color: var(--light-green);
 }
 
