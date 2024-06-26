@@ -18,18 +18,18 @@ session_start();
     <?php require_once "Inclusions/header.inc.php" ?>
   </header>
   <div class="page-content">
-    <form class="sort-filter-add__container">
+    <form class="sort-filter-add__container" action="Vooraad.php" method="post">
       <div class="sort-filter__item-container">
         <label class="form__label" for="sort">Sorteer:</label>
         <select class="sort-filter-add sort-filter" id="sort" name="sort">
-          <option value="new">Nieuw - Oud</option>
-          <option value="old" selected>Oud - Nieuw</option>
-          <option value="barcodeLow">Barcode (laag - hoog)</option>
-          <option value="barcodeHigh">Barcode (hoog - laag)</option>
-          <option value="nameA">Naam (A - Z)</option>
-          <option value="nameZ">Naam (Z - A)</option>
-          <option vlaue="quantityLow">Aantal (laag - hoog)</option>
-          <option vlaue="quantityHigh">Aantal (hoog - laag)</option>
+          <option value="idProduct DESC">Nieuw - Oud</option>
+          <option value="idProduct ASC" selected>Oud - Nieuw</option>
+          <option value="Barcode ASC">Barcode (laag - hoog)</option>
+          <option value="Barcode DESC">Barcode (hoog - laag)</option>
+          <option value="Naam ASC">Naam (A - Z)</option>
+          <option value="Naam DESC">Naam (Z - A)</option>
+          <option vlaue="Aantal ASC">Aantal (laag - hoog)</option>
+          <option vlaue="Aantal DESC">Aantal (hoog - laag)</option>
         </select>
       </div>
       <div class="sort-filter__item-container">
@@ -49,6 +49,33 @@ session_start();
       </div>
       <button type="submit" class="sort-filter-add sort-filter-add--button">Zoek</button>
     </form>
+
+    <?php
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $sort = $_POST["sort"];
+          $filterCategory = $_POST["filterCategory"];
+
+          try {
+            if (!isset($_SESSION['sortingVooraad'])) {
+                $_SESSION['sortingVooraad'] = array();
+            }
+
+            if (isset($_SESSION['sortingVooraad']['sort'])) {
+                unset($_SESSION['sortingVooraad']['sort']);
+            }
+            if (isset($_SESSION['sortingVooraad']['filter'])) {
+                unset($_SESSION['sortingVooraad']['filter']);
+            }
+
+            $_SESSION['sortingVooraad']['sort'] = $sort;
+            $_SESSION['sortingVooraad']['filter'] = $filterCategory;
+          } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            die();
+            }
+          }
+      ?>
+
     <div class="item-list">
       <!-- Column labels -->
       <div class="item-list__label-row item-list__row--products">

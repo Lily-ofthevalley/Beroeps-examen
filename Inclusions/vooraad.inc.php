@@ -2,8 +2,20 @@
 
 require_once "dbh.inc.php"; //connects to the database
 
+if(isset($_SESSION["sortingVooraad"]["sort"])){
+  $sort = $_SESSION["sortingVooraad"]["sort"];
+} else {
+  $sort = "idProduct ASC";
+}
+
+if (isset($_SESSION['sortingVooraad']['filter']) && $_SESSION['sortingVooraad']['filter'] != "") {
+  $filter = "WHERE idCategorie = '" . $_SESSION['sortingVooraad']['filter'] . "'";
+} else {
+  $filter = "";
+}
+
 try {
-    $sqlProduct = "SELECT idProduct, Barcode, Naam, idCategorie, Aantal FROM product"; //Selects the product data
+    $sqlProduct = "SELECT idProduct, Barcode, Naam, idCategorie, Aantal FROM product $filter ORDER BY $sort"; //Selects the product data
     $resultProduct = $pdo->query($sqlProduct);
 } catch (PDOException $e) { //checks and gives errors
     echo "Error: " . $e->getMessage();
