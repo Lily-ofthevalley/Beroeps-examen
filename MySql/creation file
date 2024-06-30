@@ -64,7 +64,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`Product` (
   `idProduct` INT NOT NULL AUTO_INCREMENT,
-  `Barcode` INT NOT NULL,
+  `Barcode` VARCHAR(12) NOT NULL,
   `Naam` VARCHAR(45) NULL,
   `idCategorie` INT NOT NULL,
   `Aantal` INT NOT NULL,
@@ -118,7 +118,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `VoedselbankMaaskantje`.`VoedselPakket_has_Product` (
   `VoedselPakket_idVoedselPakket` INT NOT NULL,
   `Product_idProduct` INT NOT NULL,
-  `Aantal` INT NOT NULL,
+  `Aantal` INT NULL,
   PRIMARY KEY (`VoedselPakket_idVoedselPakket`, `Product_idProduct`),
   INDEX `fk_VoedselPakket_has_Product_Product1_idx` (`Product_idProduct` ASC) VISIBLE,
   INDEX `fk_VoedselPakket_has_Product_VoedselPakket1_idx` (`VoedselPakket_idVoedselPakket` ASC) VISIBLE,
@@ -154,7 +154,23 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VoedselbankMaaskantje`;
-INSERT INTO `VoedselbankMaaskantje`.`Medewerker` (`idMedewerker`, `Voornaam`, `Achternaam`, `Rol`, `TelefoonNummer`, `Email`, `Wachtwoord`) VALUES (0, 'admin', 'admin', 'Administrator', '111111111111111', 'admin@admin.admin', '$2y$10$hEy2iekEHGhZoQeOTOpONOcBKgoBchSZXQQsp4G9FsfKlzYDt1p0G');
+INSERT INTO `VoedselbankMaaskantje`.`Medewerker` (`idMedewerker`, `Voornaam`, `Achternaam`, `Rol`, `TelefoonNummer`, `Email`, `Wachtwoord`) VALUES (1, 'Kees', 'Jansen', 'Administrator', '0629372947', 'keesjansen@gmail.com', '$2y$10$lqWwSWeXTK9pDP0bTOmSmejgxH7kBmHPKRYMjoC4hqbcexgkJI8Qy');
+INSERT INTO `VoedselbankMaaskantje`.`Medewerker` (`idMedewerker`, `Voornaam`, `Achternaam`, `Rol`, `TelefoonNummer`, `Email`, `Wachtwoord`) VALUES (2, 'Jan', 'Hendriksen', 'Magazijn medewerker', '0618856949', 'janhendriksen@gmail.com', '$2y$10$4iIs.YNAOrE9IPcRJzSv/OPQDCZ66o.r21QQYESOC4ZjLrMlE8vM2');
+INSERT INTO `VoedselbankMaaskantje`.`Medewerker` (`idMedewerker`, `Voornaam`, `Achternaam`, `Rol`, `TelefoonNummer`, `Email`, `Wachtwoord`) VALUES (3, 'Henk', 'Visser', 'Vrijwilliger', '0641864985', 'henkvisser@gmail.com', '$2y$10$VvhigslDpErDnOaExXAqougbzpkgBKZ0UyFJLPXZntM3ALB2Tw44a');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `VoedselbankMaaskantje`.`Klant`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `VoedselbankMaaskantje`;
+INSERT INTO `VoedselbankMaaskantje`.`Klant` (`idKlant`, `GezinsNaam`, `TelefoonNummer`, `Email`, `Adres`, `Postcode`, `AantalVolwassenen`, `AantalKinderen`, `AantalBabys`, `Wensen`, `Allergiën`) VALUES (1, 'Johnson', '0651234567', 'johnson.family@example.com', 'Maple street 123', '2749DK', 2, 3, 1, NULL, 'Gluten');
+INSERT INTO `VoedselbankMaaskantje`.`Klant` (`idKlant`, `GezinsNaam`, `TelefoonNummer`, `Email`, `Adres`, `Postcode`, `AantalVolwassenen`, `AantalKinderen`, `AantalBabys`, `Wensen`, `Allergiën`) VALUES (2, 'Smith', '0629456295', 'smith.family@example.com', 'Oak avenue 29', '2284AP', 1, 2, 0, NULL, 'Pinda\'s');
+INSERT INTO `VoedselbankMaaskantje`.`Klant` (`idKlant`, `GezinsNaam`, `TelefoonNummer`, `Email`, `Adres`, `Postcode`, `AantalVolwassenen`, `AantalKinderen`, `AantalBabys`, `Wensen`, `Allergiën`) VALUES (3, 'Brown', '0629346293', 'brown.family@example.com', 'Pine roud 103', '5551AV', 2, 1, 3, 'Geen varkensvlees', NULL);
+INSERT INTO `VoedselbankMaaskantje`.`Klant` (`idKlant`, `GezinsNaam`, `TelefoonNummer`, `Email`, `Adres`, `Postcode`, `AantalVolwassenen`, `AantalKinderen`, `AantalBabys`, `Wensen`, `Allergiën`) VALUES (4, 'Davis', '0629473028', 'davis.family@example.com', 'Birch boulevard 2', '2564UD', 2, 0, 0, NULL, NULL);
+INSERT INTO `VoedselbankMaaskantje`.`Klant` (`idKlant`, `GezinsNaam`, `TelefoonNummer`, `Email`, `Adres`, `Postcode`, `AantalVolwassenen`, `AantalKinderen`, `AantalBabys`, `Wensen`, `Allergiën`) VALUES (5, 'Miller', '0688946894', 'miller.family@example.com', 'Cedar lane 84', '6546UC', 2, 4, 2, NULL, 'schelpdieren');
 
 COMMIT;
 
@@ -173,6 +189,34 @@ INSERT INTO `VoedselbankMaaskantje`.`Categorie` (`idCategorie`, `Naam`, `Omschri
 INSERT INTO `VoedselbankMaaskantje`.`Categorie` (`idCategorie`, `Naam`, `Omschrijving`) VALUES (7, 'Soepen, sauzen, kruiden en olie', NULL);
 INSERT INTO `VoedselbankMaaskantje`.`Categorie` (`idCategorie`, `Naam`, `Omschrijving`) VALUES (8, 'Snoep, koek, chips en chocolade', NULL);
 INSERT INTO `VoedselbankMaaskantje`.`Categorie` (`idCategorie`, `Naam`, `Omschrijving`) VALUES (9, 'Baby, verzorging en hygiëne', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `VoedselbankMaaskantje`.`Product`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `VoedselbankMaaskantje`;
+INSERT INTO `VoedselbankMaaskantje`.`Product` (`idProduct`, `Barcode`, `Naam`, `idCategorie`, `Aantal`) VALUES (1, '847392615003', 'gouda kaas', 2, 29);
+INSERT INTO `VoedselbankMaaskantje`.`Product` (`idProduct`, `Barcode`, `Naam`, `idCategorie`, `Aantal`) VALUES (2, '193847502617', 'Campina yoghurt', 3, 132);
+INSERT INTO `VoedselbankMaaskantje`.`Product` (`idProduct`, `Barcode`, `Naam`, `idCategorie`, `Aantal`) VALUES (3, '574829163950', 'Lays naturel', 8, 28);
+INSERT INTO `VoedselbankMaaskantje`.`Product` (`idProduct`, `Barcode`, `Naam`, `idCategorie`, `Aantal`) VALUES (4, '280164739582', 'Fristi', 3, 89);
+INSERT INTO `VoedselbankMaaskantje`.`Product` (`idProduct`, `Barcode`, `Naam`, `idCategorie`, `Aantal`) VALUES (5, '750193846205', 'Wit brood', 4, 74);
+INSERT INTO `VoedselbankMaaskantje`.`Product` (`idProduct`, `Barcode`, `Naam`, `idCategorie`, `Aantal`) VALUES (6, '492817364050', 'Stroopwafels', 8, 12);
+INSERT INTO `VoedselbankMaaskantje`.`Product` (`idProduct`, `Barcode`, `Naam`, `idCategorie`, `Aantal`) VALUES (7, '630582174396', 'sla', 1, 3);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `VoedselbankMaaskantje`.`Leverancier`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `VoedselbankMaaskantje`;
+INSERT INTO `VoedselbankMaaskantje`.`Leverancier` (`idLeverancier`, `BedrijfsNaam`, `Adres`, `Postcode`, `ContactspersoonNaam`, `Email`, `TelefoonNummer`, `Levering`) VALUES (1, 'Fresh Produce Co.', 'Farm Lane 28', '2840WK', 'Sarah Green', 'sarah.green@freshproduce.com', '0629472048', '2024-07-07');
+INSERT INTO `VoedselbankMaaskantje`.`Leverancier` (`idLeverancier`, `BedrijfsNaam`, `Adres`, `Postcode`, `ContactspersoonNaam`, `Email`, `TelefoonNummer`, `Levering`) VALUES (2, 'Wholesale Foods Ltd.', 'Market Street 10', '3397KQ', 'John Baker', 'john.baker@wholesalefoods.com', '0656553879', '2024-07-10');
+INSERT INTO `VoedselbankMaaskantje`.`Leverancier` (`idLeverancier`, `BedrijfsNaam`, `Adres`, `Postcode`, `ContactspersoonNaam`, `Email`, `TelefoonNummer`, `Levering`) VALUES (3, 'Organic Supplies Inc.', 'Fresh Lane 83', '9274DL', 'Emily Fields', 'emily.fields@organicsupplies.com', '0658864669', '2024-07-12');
 
 COMMIT;
 
