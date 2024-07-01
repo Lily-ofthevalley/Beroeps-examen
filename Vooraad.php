@@ -28,8 +28,8 @@ session_start();
           <option value="Barcode DESC">Barcode (hoog - laag)</option>
           <option value="Naam ASC">Naam (A - Z)</option>
           <option value="Naam DESC">Naam (Z - A)</option>
-          <option vlaue="Aantal ASC">Aantal (laag - hoog)</option>
-          <option vlaue="Aantal DESC">Aantal (hoog - laag)</option>
+          <option value="Aantal ASC">Aantal (laag - hoog)</option>
+          <option value="Aantal DESC">Aantal (hoog - laag)</option>
         </select>
       </div>
       <div class="sort-filter__item-container">
